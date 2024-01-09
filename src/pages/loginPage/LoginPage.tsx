@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom";
 import { loginValidation } from "@/validation/loginValidation";
 import { useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
+import useAutoLogin from "@/hooks/useAutoLogin";
+import { storeToken } from "@/service/storageService";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -39,7 +41,9 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
         email: emailValue,
         password: passwordValue,
       });
-      // storeToken(data, rememberMe);
+      // const token = data.token;
+
+      storeToken(data.jwt, rememberMe);
       toast.success("You logged in successfully 🎉", {
         position: "top-center",
         autoClose: 5000,

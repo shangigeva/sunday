@@ -28,7 +28,7 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
   );
   const navigate = useNavigate();
   // const dispatch = useDispatch();
-  // const autoLogin = useAutoLogin();
+  const autoLogin = useAutoLogin();
   const handleButtonSubmit = async () => {
     try {
       const joiResponse = loginValidation({
@@ -44,6 +44,8 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
       // const token = data.token;
 
       storeToken(data.jwt, rememberMe);
+      console.log(data.jwt);
+
       toast.success("You logged in successfully 🎉", {
         position: "top-center",
         autoClose: 5000,
@@ -54,7 +56,7 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
         progress: undefined,
       });
       console.log("Successfully logged in:", data);
-      // autoLogin(true);
+      autoLogin(true);
       navigate(ROUTES.HOME);
     } catch (err) {
       console.log("err from login", err);

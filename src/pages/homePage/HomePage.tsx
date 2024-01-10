@@ -21,14 +21,14 @@ const HomePage: React.FC = () => {
         </p>
 
         <img
-          src="/public/assets/images/404img.jpg"
+          src="/assets/images/404img.jpg"
           alt="Example 1"
           className="w-[40rem] h-[30rem]"
         />
       </div>
       <div className="image-gallery flex mb-8">
         <img
-          src="/public/assets/images/404img.jpg"
+          src="/assets/images/404img.jpg"
           alt="Example 1"
           className="rounded-lg shadow-md mr-4"
         />
@@ -86,7 +86,7 @@ const HomePage: React.FC = () => {
         <div className="support-info ">
           <div className="details-area flex items-center ">
             <img
-              src="/public/assets/images/connectImage.png"
+              src="/assets/images/connectImage.png"
               alt="connect details image"
               className="connectImage w-3/6 ml-5 h-auto"
             />

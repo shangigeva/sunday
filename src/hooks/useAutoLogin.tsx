@@ -4,16 +4,30 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../store/authSlice";
 import { getToken } from "@/service/storageService";
 interface UserData {
-  _id: string;
+  payload: IJWTPayload;
+  iat: number;
+  exp: number;
 }
+type IJWTPayload = {
+  _id: string;
+  email: string;
+  isAdmin: boolean;
+};
 const useAutoLogin = () => {
   const dispatch = useDispatch();
+
   return async (skipTokenTest: boolean = false): Promise<void> => {
     try {
       const token: string | null = getToken();
+      console.log(token);
+
       if (!token) return;
       const dataFromToken: UserData = jwtDecode(token) as UserData;
-      if (skipTokenTest) await axios.get(`/users/${dataFromToken._id}`);
+      console.log(dataFromToken);
+      console.log(skipTokenTest);
+
+      if (skipTokenTest) await axios.get(`/users/${dataFromToken.payload._id}`);
+      console.log(dataFromToken);
 
       dispatch(authActions.login(dataFromToken));
     } catch (err) {

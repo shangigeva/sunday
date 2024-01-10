@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { loggedInLinks, loggedOutLinks } from "../myLinks";
+import { isAdminHeader, loggedInLinks } from "../myLinks";
 import NavLinkComponent from "./NavLinkComponent";
 
 interface AuthState {
@@ -21,6 +21,14 @@ const Links: React.FC = () => {
   return (
     <div>
       <div>
+        {" "}
+        {/* loggedOut */}
+        {/* {!loggedIn &&
+          loggedOutLinks.map((myItem, index) => (
+            <NavLinkComponent to={myItem.to} key={index}>
+              {myItem.children}
+            </NavLinkComponent>
+          ))} */}
         {/* regular user */}
         {loggedIn && !userData.isAdmin
           ? loggedInLinks.map((myItem, index) => (
@@ -30,20 +38,13 @@ const Links: React.FC = () => {
             ))
           : null}
         {/* admin user */}
-        {/* {loggedIn && userData.isAdmin
-          ? isAdmin.map((myItem,index) => (
+        {loggedIn && userData.isAdmin
+          ? isAdminHeader.map((myItem, index) => (
               <NavLinkComponent to={myItem.to} key={index}>
                 {myItem.children}
               </NavLinkComponent>
             ))
-          : null} */}
-        {/* loggedOut */}
-        {!loggedIn &&
-          loggedOutLinks.map((myItem, index) => (
-            <NavLinkComponent to={myItem.to} key={index}>
-              {myItem.children}
-            </NavLinkComponent>
-          ))}
+          : null}
       </div>
     </div>
   );

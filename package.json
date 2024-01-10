@@ -41,6 +41,7 @@
     "faker": "^6.6.6",
     "generate-key": "^0.0.6",
     "joi": "^17.11.0",
+    "jwt-decode": "^4.0.0",
     "localforage": "^1.10.0",
     "lucide-react": "^0.302.0",
     "match-sorter": "^6.3.1",

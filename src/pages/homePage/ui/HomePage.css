@@ -23,7 +23,7 @@
   overflow: hidden;
   background-size: 22px;
   background-position: 45% 50%;
-  background-image: url("/public/assets/images/search.png");
+  background-image: url("/assets/images/search.png");
 }
 .input:hover {
   border-bottom: 1px solid #000;
@@ -38,5 +38,5 @@
   border-bottom: 1px solid #000;
   background-size: 22px;
   background-position: 10px 50%;
-  background-image: url("/public/assets/images/search.png");
+  background-image: url("/assets/images/search.png");
 }

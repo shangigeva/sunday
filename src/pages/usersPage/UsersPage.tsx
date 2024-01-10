@@ -32,30 +32,33 @@ const UsersPage = () => {
   // delete user
   // upgrade user to admin
   return (
-    <Table>
-      <TableCaption>Users</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead>first name</TableHead>
-          <TableHead>last name</TableHead>
-          <TableHead>phone</TableHead>
-          <TableHead>email</TableHead>
-          <TableHead>status</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {users.map((user) => (
+    <div>
+      {" "}
+      <h1 className="text-xl font-bold mb-4 text-center">Users</h1>
+      <Table>
+        <TableHeader>
           <TableRow>
-            <TableCell>{user.firstName}</TableCell>
-            <TableCell>{user.lastName}</TableCell>
-            <TableCell>{user.phone}</TableCell>
-            <TableCell>{user.email}</TableCell>
-            {/* <TableCell>{user.email}</TableCell> upgrade */}
-            {/* <TableCell>{user.email}</TableCell> delete */}
+            <TableHead>first name</TableHead>
+            <TableHead>last name</TableHead>
+            <TableHead>phone</TableHead>
+            <TableHead>email</TableHead>
+            <TableHead>status</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {users.map((user) => (
+            <TableRow>
+              <TableCell>{user.firstName}</TableCell>
+              <TableCell>{user.lastName}</TableCell>
+              <TableCell>{user.phone}</TableCell>
+              <TableCell>{user.email}</TableCell>
+              {/* <TableCell>{user.email}</TableCell> upgrade */}
+              {/* <TableCell>{user.email}</TableCell> delete */}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 };
 

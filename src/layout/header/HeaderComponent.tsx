@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from "react";
-import myLinks from "../myLinks";
+import myLinks, { isAdminHeader, loggedInLinks } from "../myLinks";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ModeToggle } from "@/components/ModeToggle";
-import SearchIcon from "@mui/icons-material/Search";
+import { useSelector } from "react-redux";
+import { RootStateType } from "@/store/bigPie";
 const HeaderComponent = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
+
+  const loggedIn: boolean = useSelector(
+    (bigPie: RootStateType) => bigPie.auth.loggedIn
+  );
+  console.log(loggedIn);
+
+  const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
+  console.log(userData);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -23,6 +32,9 @@ const HeaderComponent = () => {
   const handleSearchSubmit = () => {
     navigate(`/?filter=${searchQuery}`);
   };
+  console.log(userData);
+  // console.log(isAdmin);
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -75,9 +87,61 @@ const HeaderComponent = () => {
           ></img>
         </a>{" "}
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">
+            <li>
+              {/* <details>
+                <summary>Parent</summary>
+                <ul className="p-2">
+                  <li>
+                    <a>Submenu 1</a>
+                  </li>
+                  <li>
+                    <a>Submenu 2</a>
+                  </li>
+                </ul>
+              </details> */}
+            </li>
+            {loggedIn &&
+              loggedInLinks.map((link, index) => (
+                <li key={index}>
+                  <a
+                    className={`${
+                      link.to === location.pathname
+                        ? "bg-primary text-secondary"
+                        : null
+                    }`}
+                    onClick={() => navigate(link.to)}
+                  >
+                    {link.children}
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </div>
+        <div>
+          {/* {loggedIn
+            ? loggedInLinks.map((link, index) => (
+                <a
+                  key={index}
+                  className={`${
+                    link.to === location.pathname
+                      ? "bg-primary text-secondary"
+                      : null
+                  }`}
+                  onClick={() => navigate(link.to)}
+                >
+                  {link.children}
+                </a>
+              ))
+            : null} */}
+        </div>
+      </div>
+
+      {/* <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          {/* <li>
+          <li>
             <details>
               <summary>Parent</summary>
               <ul className="p-2">
@@ -89,7 +153,7 @@ const HeaderComponent = () => {
                 </li>
               </ul>
             </details>
-          </li> */}{" "}
+          </li>
           {myLinks.map((link, index) => (
             <li key={index}>
               <a
@@ -105,18 +169,9 @@ const HeaderComponent = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
       <div className="navbar-end">
         <div className="flex items-center relative">
-          {/* <input
-            type="text"
-            placeholder="Search"
-            className="text-xs h-6 w-36 rounded-full pl-10 transition-all duration-500 cursor-pointer border-b-[1px] border-white  hover:border-black focus:border-black focus:pl-20 focus:text-black focus:outline-none "
-            
-          />
-          <button className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-            <SearchIcon />
-          </button> */}
           <input
             type="text"
             value={searchQuery}
@@ -124,7 +179,7 @@ const HeaderComponent = () => {
             placeholder="Search"
             className="relative bg-center w-10 h-10 rounded-full p-2 cursor-pointer border-[1px] border-white overflow-hidden transition-all duration-500 bg-no-repeat focus:w-48 pl-8 focus:outline-none focus:bg-left  focus:border-black hover:border-black"
             style={{
-              backgroundImage: "url('/public/assets/images/search.png')",
+              backgroundImage: "url('/assets/images/search.png')",
               backgroundSize: "20px",
             }}
           />

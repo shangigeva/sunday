@@ -20,20 +20,17 @@ const isAdminHeader: Link[] = [
   { to: ROUTES.TASKS, children: "Tasks" },
 ];
 // no user
-// const loggedOutLinks: Link[] = [
-//   { to: ROUTES.HOME, children: "Home page" },
-//   { to: ROUTES.REGISTER, children: "Sign up" },
-//   { to: ROUTES.LOGIN, children: "Login" },
-//   { to: ROUTES.ABOUT, children: "About" },
-//   { to: ROUTES.TASKS, children: "Tasks" },
-// ];
+const loggedOutLinks: Link[] = [
+  { to: ROUTES.REGISTER, children: "Sign up" },
+  { to: ROUTES.LOGIN, children: "Login" },
+  { to: ROUTES.ABOUT, children: "About" },
+];
 // regular user
 const loggedInLinks: Link[] = [
-  { to: ROUTES.HOME, children: "Home page" },
   { to: ROUTES.ABOUT, children: "About" },
   { to: ROUTES.TASKS, children: "Tasks" },
 ];
 
-export { myLinks, isAdminHeader, loggedInLinks };
+export { myLinks, isAdminHeader, loggedInLinks, loggedOutLinks };
 
 export default myLinks;

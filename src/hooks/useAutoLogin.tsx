@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store/authSlice";
 import { getToken } from "@/service/storageService";
-interface UserData {
+export interface UserData {
   payload: IJWTPayload;
   iat: number;
   exp: number;

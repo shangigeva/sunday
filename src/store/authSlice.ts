@@ -1,10 +1,15 @@
+import { UserData } from "@/hooks/useAutoLogin";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface AuthState {
+  loggedIn: boolean;
+  userData: UserData | undefined;
+}
+
+const initialState: AuthState = {
   loggedIn: false,
   userData: undefined,
 };
-
 const authSlice = createSlice({
   name: "auth",
   initialState,

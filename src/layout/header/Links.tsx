@@ -1,36 +1,23 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { isAdminHeader, loggedInLinks } from "../myLinks";
+import { isAdminHeader, loggedInLinks, loggedOutLinks } from "../myLinks";
 import NavLinkComponent from "./NavLinkComponent";
-
-interface AuthState {
-  loggedIn: boolean;
-  userData: {
-    isAdmin: boolean;
-  };
-}
+import { RootStateType } from "@/store/bigPie";
 
 const Links: React.FC = () => {
-  const loggedIn = useSelector(
-    (bigPie: { auth: AuthState }) => bigPie.auth.loggedIn
+  const loggedIn: boolean = useSelector(
+    (bigPie: RootStateType) => bigPie.auth.loggedIn
   );
-  const userData = useSelector(
-    (bigPie: { auth: AuthState }) => bigPie.auth.userData
-  );
+  const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
+  console.log(userData?.payload.isAdmin);
+
+  console.log(loggedIn);
 
   return (
     <div>
       <div>
-        {" "}
-        {/* loggedOut */}
-        {/* {!loggedIn &&
-          loggedOutLinks.map((myItem, index) => (
-            <NavLinkComponent to={myItem.to} key={index}>
-              {myItem.children}
-            </NavLinkComponent>
-          ))} */}
         {/* regular user */}
-        {loggedIn && !userData.isAdmin
+        {loggedIn && !userData?.payload.isAdmin
           ? loggedInLinks.map((myItem, index) => (
               <NavLinkComponent to={myItem.to} key={index}>
                 {myItem.children}
@@ -38,13 +25,20 @@ const Links: React.FC = () => {
             ))
           : null}
         {/* admin user */}
-        {loggedIn && userData.isAdmin
+        {loggedIn && userData?.payload.isAdmin
           ? isAdminHeader.map((myItem, index) => (
               <NavLinkComponent to={myItem.to} key={index}>
                 {myItem.children}
               </NavLinkComponent>
             ))
           : null}
+        {/* loggedOut */}
+        {!loggedIn &&
+          loggedOutLinks.map((myItem, index) => (
+            <NavLinkComponent to={myItem.to} key={index}>
+              {myItem.children}
+            </NavLinkComponent>
+          ))}
       </div>
     </div>
   );

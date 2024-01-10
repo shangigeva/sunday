@@ -46,9 +46,9 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
       storeToken(data.jwt, rememberMe);
       console.log(data.jwt);
 
-      toast.success("You logged in successfully 🎉", {
+      toast.success("You logged in successfully", {
         position: "top-center",
-        autoClose: 5000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -57,7 +57,7 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
       });
       console.log("Successfully logged in:", data);
       autoLogin(true);
-      navigate(ROUTES.HOME);
+      navigate(ROUTES.TASKS);
     } catch (err) {
       console.log("err from login", err);
     }

@@ -3,42 +3,60 @@ import MailIcon from "@mui/icons-material/Mail";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Button } from "@mui/material";
+
 const FooterComponent = () => {
   return (
-    <footer>
-      <div className="footer p-5 items-center bg-gray-200 text-base-content">
-        <nav>
-          <header className="footer-title">Contact</header>
-          <p className="flex text-xs text-black font-bold ">
-            <MailIcon />
-            <a href="#email">shanig7@gmail.com</a>
+    <footer className="bg-[#f0aa780e] pא-8">
+      <div className="flex justify-between items-center px-6">
+        <div>
+          <header className="text-lg font-semibold mb-2">Contact</header>
+          <p className="flex items-center text-sm text-gray-700 mb-2">
+            <MailIcon className="mr-2" />
+            <a href="#email" className="hover:underline">
+              shanig7@gmail.com
+            </a>
           </p>
-          <p className="flex text-xs text-black font-bold">
-            <LocalPhoneIcon />
+          <p className="flex items-center text-sm text-gray-700 mb-2">
+            <LocalPhoneIcon className="mr-2" />
             <span>054-4655700</span>
           </p>
-          <p className="flex text-xs text-black font-bold">
-            <LocationOnIcon />
-            <span>Ness-Zionns</span>
+          <p className="flex items-center text-sm text-gray-700 mb-2">
+            <LocationOnIcon className="mr-2" />
+            <span>Ness-Zionna</span>
           </p>
-        </nav>
-        <nav>
-          <header className="footer-title">Company</header>
-          <a className="link link-hover">Home</a>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">My tasks</a>
-        </nav>
-        <nav>
+        </div>
+        <div>
+          <header className="text-lg font-semibold mb-2">Company</header>
+          <a
+            href="/"
+            className="block text-sm text-gray-700 mb-1 hover:underline"
+          >
+            Home
+          </a>
+          <a
+            href="/"
+            className="block text-sm text-gray-700 mb-1 hover:underline"
+          >
+            About us
+          </a>
+          <a
+            href="/"
+            className="block text-sm text-gray-700 mb-1 hover:underline"
+          >
+            My tasks
+          </a>
+        </div>
+        <div>
           <img
             src="../../assets/images/sundayLogo.png"
             alt="Sunday Logo"
             style={{ width: "90px", height: "40px" }}
           ></img>
-        </nav>
+        </div>
       </div>
-      <div className="bg-gray-300 text-black">
-        <p className="text-sm text-center">
-          ©2024, SUNDAY All Rights Reserved.
+      <div className="bg-[#f0aa783c] text-center py-2">
+        <p className="text-sm text-gray-800">
+          ©2024 SUNDAY All Rights Reserved.
         </p>
       </div>
     </footer>

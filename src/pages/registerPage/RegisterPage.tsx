@@ -44,7 +44,6 @@ export function RegisterPage({ className, ...props }: UserAuthFormProps) {
   console.log(validationErrors);
 
   const handleInputsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setRegister((currentState) => ({
       ...currentState,
       [e.target.id]: e.target.value,

@@ -23,7 +23,7 @@ const isAdminHeader: Link[] = [
 const loggedOutLinks: Link[] = [
   { to: ROUTES.REGISTER, children: "Sign up" },
   { to: ROUTES.LOGIN, children: "Login" },
-  { to: ROUTES.ABOUT, children: "About" },
+  { to: ROUTES.HOME, children: "Home page" },
 ];
 // regular user
 const loggedInLinks: Link[] = [

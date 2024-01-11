@@ -12,6 +12,7 @@ import data from "@/pages/tasks/data/tasks";
 import Links from "./Links";
 import axios from "axios";
 import { UserData } from "@/hooks/useAutoLogin";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 type IUser = {
   firstName: string;
   lastName: string;
@@ -140,7 +141,7 @@ const HeaderComponent = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">
+        <a className="btn btn-ghost text-xl ">
           <img
             src="../../assets/images/sundayLogo.png"
             alt="Sunday Logo"
@@ -242,11 +243,11 @@ const HeaderComponent = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-10 rounded-full flex items-center justify-center text-white bg-primary">
-                <span>
+              <Avatar>
+                <AvatarFallback className="bg-[#F1C2D9]">
                   {user && getInitials(user.firstName, user.lastName)}
-                </span>
-              </div>
+                </AvatarFallback>
+              </Avatar>
             </div>
             <ul
               tabIndex={0}

@@ -1,5 +1,4 @@
 import React from "react";
-import { UserNav } from "./components/user-nav";
 import { DataTable } from "./components/data-table";
 import { columns } from "./components/columns";
 import { tasks } from "./data/data";
@@ -31,9 +30,7 @@ const Tasks = () => {
               Here&apos;s a list of your tasks for this month!
             </p>
           </div>
-          <div className="flex items-center space-x-2">
-            <UserNav />
-          </div>
+          <div className="flex items-center space-x-2"></div>
         </div>
         <DataTable data={tasks} columns={columns} />
       </div>

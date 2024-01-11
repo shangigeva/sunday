@@ -8,6 +8,7 @@ const storeToken = (token: string, rememberMe: boolean): void => {
   if (rememberMe) {
     localStorage.setItem(TOKEN, token);
   } else {
+    sessionStorage.removeItem(TOKEN);
     sessionStorage.setItem(TOKEN, token);
   }
 };

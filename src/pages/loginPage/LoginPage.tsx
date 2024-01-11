@@ -44,6 +44,7 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
       // const token = data.token;
 
       storeToken(data.jwt, rememberMe);
+      console.log(rememberMe);
       console.log(data.jwt);
 
       toast.success("You logged in successfully", {

@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from "react";
-import myLinks, {
-  isAdminHeader,
-  loggedInLinks,
-  loggedOutLinks,
-} from "../myLinks";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ModeToggle } from "@/components/ModeToggle";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
-import data from "@/pages/tasks/data/tasks";
 import Links from "./Links";
 import axios from "axios";
-import { UserData } from "@/hooks/useAutoLogin";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 type IUser = {
   firstName: string;

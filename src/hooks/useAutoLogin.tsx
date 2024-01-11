@@ -26,9 +26,13 @@ const useAutoLogin = () => {
       console.log(dataFromToken);
       console.log(skipTokenTest);
 
-      if (skipTokenTest) await axios.get(`/users/${dataFromToken.payload._id}`);
-      console.log(dataFromToken);
-
+      if (skipTokenTest) {
+        await axios
+          .get(`/users/${dataFromToken.payload._id}`)
+          .then((response) => console.log("Server response:", response))
+          .catch((error) => console.error("Server error:", error));
+      }
+      console.log("Data from token after server call:", dataFromToken);
       dispatch(authActions.login(dataFromToken));
     } catch (err) {
       console.log("err from auto login", err);

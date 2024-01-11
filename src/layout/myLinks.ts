@@ -15,15 +15,14 @@ const myLinks: Link[] = [
 ];
 // admin user
 const isAdminHeader: Link[] = [
-  { to: ROUTES.HOME, children: "Home page" },
   { to: ROUTES.ABOUT, children: "About" },
   { to: ROUTES.TASKS, children: "Tasks" },
 ];
 // no user
 const loggedOutLinks: Link[] = [
+  { to: ROUTES.HOME, children: "Home page" },
   { to: ROUTES.REGISTER, children: "Sign up" },
   { to: ROUTES.LOGIN, children: "Login" },
-  { to: ROUTES.HOME, children: "Home page" },
 ];
 // regular user
 const loggedInLinks: Link[] = [

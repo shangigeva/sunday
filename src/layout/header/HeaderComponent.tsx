@@ -28,7 +28,6 @@ type IUser = {
 
 const HeaderComponent = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -63,22 +62,6 @@ const HeaderComponent = () => {
     return `${firstName.charAt(0).toUpperCase()}${lastName
       .charAt(0)
       .toUpperCase()}`;
-  };
-
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const filterParam = searchParams.get("filter");
-    if (filterParam) {
-      setSearchQuery(filterParam);
-    }
-  }, [location.search]);
-
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSearchSubmit = () => {
-    navigate(`/?filter=${searchQuery}`);
   };
   console.log(userData);
   // console.log(isAdmin);
@@ -224,7 +207,6 @@ const HeaderComponent = () => {
             <input
               type="text"
               value={searchQuery}
-              onChange={handleSearchInputChange}
               placeholder="Search"
               className="relative bg-center w-10 h-10 rounded-full p-2 cursor-pointer border-[1px] border-white overflow-hidden transition-all duration-500 bg-no-repeat focus:w-48 pl-8 focus:outline-none focus:bg-left  focus:border-black hover:border-black"
               style={{

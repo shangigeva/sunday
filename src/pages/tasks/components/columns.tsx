@@ -44,16 +44,37 @@ export const columns: ColumnDef<Task>[] = [
     enableHiding: false,
   },
   {
+    accessorKey: "label",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="label" />
+    ),
+    cell: ({ row }) => {
+      const label = labels.find(
+        (label) => label.value === row.getValue("label")
+      );
+
+      if (!label) {
+        return null;
+      }
+
+      return (
+        <div className="flex space-x-2">
+          {label && <Badge variant="outline">{label.label}</Badge>}
+        </div>
+      );
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
+  },
+  {
     accessorKey: "title",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Title" />
     ),
     cell: ({ row }) => {
-      const label = labels.find((label) => label.value === row.original.label);
-
       return (
         <div className="flex space-x-2">
-          {label && <Badge variant="outline">{label.label}</Badge>}
           <span className="max-w-[500px] truncate font-medium">
             {row.getValue("title")}
           </span>
@@ -61,6 +82,7 @@ export const columns: ColumnDef<Task>[] = [
       );
     },
   },
+
   {
     accessorKey: "status",
     header: ({ column }) => (

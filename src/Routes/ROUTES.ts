@@ -5,6 +5,5 @@ const ROUTES = {
   ABOUT: "/about",
   USERSLIST: "/userslist",
   TASKS: "/tasks",
-  TASKSDETAILS: "/tasksdetails",
 };
 export default ROUTES;

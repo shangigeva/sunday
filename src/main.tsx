@@ -10,7 +10,6 @@ import { getToken } from "./service/storageService.ts";
 axios.defaults.baseURL = "http://localhost:9090/api/v1";
 axios.interceptors.request.use((config) => {
   const token = getToken();
-  console.log(token);
 
   if (token) {
     /*

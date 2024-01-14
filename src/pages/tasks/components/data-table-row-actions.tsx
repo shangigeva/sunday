@@ -16,15 +16,48 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useState } from "react";
+import axios from "axios";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
+interface TaskType {
+  id: string;
+  title: string;
+  status: string;
+  priority: string;
+  label: string;
+}
 
-export function DataTableRowActions<TData>({
+export function DataTableRowActions<TData extends TaskType>({
   row,
 }: DataTableRowActionsProps<TData>) {
-  const task = taskSchema.parse(row.original);
+  // const task = taskSchema.parse(row.original);
+  const [selectedTask, setSelectedTask] = useState<TaskType | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  // const fetchTaskDetails = async (taskId: string) => {
+  //   try {
+  //     const response = await axios.get(`/tasks/${taskId}`);
+  //     return response.data; // אם המידע נמצא ב-data
+  //   } catch (error) {
+  //     console.error("Error fetching task details:", error);
+  //     throw error;
+  //   }
+  // };
+  const handleMoreClick = async (taskId: string) => {
+    try {
+      // const taskDetails = await fetchTaskDetails(taskId);
+      // setSelectedTask(taskDetails);
+      openModal();
+    } catch (error) {
+      console.error("Error fetching task details:", error);
+    }
+  };
 
   return (
     <DropdownMenu>
@@ -38,6 +71,13 @@ export function DataTableRowActions<TData>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
+        <DropdownMenuItem className="flex items-center">
+          <ModeEditIcon
+            className="mr-2 h-5 w-5"
+            onClick={() => handleMoreClick(row.original.id)}
+          />
+          more{" "}
+        </DropdownMenuItem>
         <DropdownMenuItem className="flex items-center">
           <ModeEditIcon className="mr-2 h-5 w-5" />
           Edit{" "}

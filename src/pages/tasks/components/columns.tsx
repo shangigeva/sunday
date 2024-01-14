@@ -35,13 +35,17 @@ export const columns: ColumnDef<Task>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "id",
+    accessorKey: "taskNumber",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Task" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
-    enableSorting: false,
-    enableHiding: false,
+    cell: ({ row }) => (
+      <div className="w-[80px]">
+        <span className="max-w-[500px] truncate font-medium">
+          {row.getValue("taskNumber")}
+        </span>
+      </div>
+    ),
   },
   {
     accessorKey: "label",

@@ -70,9 +70,9 @@ export const priorities = [
   },
 ];
 
-export const tasks = [
+export const taskss = [
   {
-    id: "TASK-8782",
+    taskNumber: "TASK-8782",
     title:
       "You can't compress the program without quantifying the open-source SSD pixel!",
     status: "in progress",
@@ -80,7 +80,7 @@ export const tasks = [
     priority: "medium",
   },
   {
-    id: "TASK-8782",
+    taskNumber: "TASK-8782",
     title:
       "aaa can't compress the program without quantifying the open-source SSD pixel!",
     status: "in progress",
@@ -88,7 +88,7 @@ export const tasks = [
     priority: "medium",
   },
   {
-    id: "TASK-7878",
+    taskNumber: "TASK-7878",
     title:
       "Try to calculate the EXE feed, maybe it will index the multi-byte pixel!",
     status: "backlog",
@@ -96,7 +96,7 @@ export const tasks = [
     priority: "medium",
   },
   {
-    id: "TASK-7839",
+    taskNumber: "TASK-7839",
     title: "We need to bypass the neural TCP card!",
     status: "todo",
     label: "bug",

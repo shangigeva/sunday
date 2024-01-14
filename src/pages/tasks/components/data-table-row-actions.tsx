@@ -2,20 +2,16 @@
 
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { Row } from "@tanstack/react-table";
-
-import { labels } from "../data/data";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { taskSchema } from "../data/schema";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
-  DropdownMenuSub,
-  DropdownMenuRadioGroup,
-  DropdownMenuSubTrigger,
   DropdownMenuContent,
-  DropdownMenuSubContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuRadioItem,
   DropdownMenuShortcut,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -37,31 +33,28 @@ export function DataTableRowActions<TData>({
           variant="ghost"
           className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
         >
-          <DotsHorizontalIcon className="h-4 w-4" />
+          <DotsHorizontalIcon className="h-4 w-4 text-gray-500" />
           <span className="sr-only">Open menu</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem>Edit</DropdownMenuItem>
-        <DropdownMenuItem>Make a copy</DropdownMenuItem>
-        <DropdownMenuItem>Favorite</DropdownMenuItem>
+        <DropdownMenuItem className="flex items-center">
+          <ModeEditIcon className="mr-2 h-5 w-5" />
+          Edit{" "}
+        </DropdownMenuItem>
+        <DropdownMenuItem className="flex items-center">
+          <ContentCopyIcon className="mr-2 h-5 w-5" />
+          Make a copy{" "}
+        </DropdownMenuItem>
+        <DropdownMenuItem className="flex items-center">
+          <FavoriteIcon className="mr-2 h-5 w-5" />
+          Favorite{" "}
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
-          <DropdownMenuSubContent>
-            <DropdownMenuRadioGroup value={task.label}>
-              {labels.map((label) => (
-                <DropdownMenuRadioItem key={label.value} value={label.value}>
-                  {label.label}
-                </DropdownMenuRadioItem>
-              ))}
-            </DropdownMenuRadioGroup>
-          </DropdownMenuSubContent>
-        </DropdownMenuSub>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
+
+        <DropdownMenuItem className="flex items-center">
+          <DeleteIcon className="mr-2 h-5 w-5" />
           Delete
-          <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

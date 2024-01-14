@@ -7,6 +7,7 @@ import ResiterAuthPage from "@/pages/registerPage/RegisterAuthPage";
 import LoginAuthPage from "@/pages/loginPage/LoginAuthPage";
 import Tasks from "@/pages/tasks/Tasks";
 import UsersPage from "@/pages/usersPage/UsersPage";
+import TaskDetails from "@/pages/taskDetails/TaskDetails";
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
       <Route path={ROUTES.REGISTER} element={<ResiterAuthPage />} />
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
       <Route path={ROUTES.USERSLIST} element={<UsersPage />} />
+      <Route path={ROUTES.TASKSDETAILS} element={<TaskDetails />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );

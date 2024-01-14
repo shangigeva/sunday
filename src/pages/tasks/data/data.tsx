@@ -82,7 +82,7 @@ export const tasks = [
   {
     id: "TASK-8782",
     title:
-      "You can't compress the program without quantifying the open-source SSD pixel!",
+      "aaa can't compress the program without quantifying the open-source SSD pixel!",
     status: "in progress",
     label: "documentation",
     priority: "medium",
@@ -92,7 +92,7 @@ export const tasks = [
     title:
       "Try to calculate the EXE feed, maybe it will index the multi-byte pixel!",
     status: "backlog",
-    label: "documentation",
+    label: "feature",
     priority: "medium",
   },
   {

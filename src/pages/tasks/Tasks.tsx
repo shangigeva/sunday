@@ -3,7 +3,7 @@ import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "./components/data-table";
 import { columns } from "./components/columns";
-import CreateTask, { CreateTasks } from "./components/createTask";
+import CreateTask, { CreateTasks } from "./components/CreateTask";
 interface TaskInput {
   title: string;
   status: string;
@@ -42,31 +42,6 @@ const Tasks: React.FC = () => {
     };
     getTasks();
   }, []);
-
-  // const handleUpdateChangesClick = async () => {
-  //   try {
-  //     const { data } = await axios.post("/tasks", {
-  //       title: newTask.title,
-  //       status: newTask.status,
-  //       priority: newTask.priority,
-  //       label: newTask.label,
-  //     });
-
-  //     navigate(ROUTES.HOME);
-  //     toast.success("Task created successfully!", {
-  //       position: "top-center",
-  //       autoClose: 3000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //     });
-  //   } catch (error) {
-  //     console.error("Error handling update changes:", error);
-  //   }
-  // };
-
   const createTaskProps: CreateTasks = {
     isModalOpen,
     closeModal,

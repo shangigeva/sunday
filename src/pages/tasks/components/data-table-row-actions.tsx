@@ -6,24 +6,29 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { taskSchema } from "../data/schema";
+import InfoIcon from "@mui/icons-material/Info";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuShortcut,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
-import axios from "axios";
+import EditTask, { EditTasks } from "@/pages/editTask.tsx/EditTask";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
 interface TaskType {
-  id: string;
+  _id: string;
+  title: string;
+  status: string;
+  priority: string;
+  label: string;
+}
+interface TaskInput {
   title: string;
   status: string;
   priority: string;
@@ -34,29 +39,30 @@ export function DataTableRowActions<TData extends TaskType>({
   row,
 }: DataTableRowActionsProps<TData>) {
   // const task = taskSchema.parse(row.original);
-  const [selectedTask, setSelectedTask] = useState<TaskType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editTask, setEditTask] = useState<TaskInput>({
+    title: "",
+    status: "",
+    priority: "",
+    label: "",
+  });
+  // console.log(row?.original?._id);
 
   const openModal = () => {
+    console.log("Modal opened");
+
     setIsModalOpen(true);
   };
-  // const fetchTaskDetails = async (taskId: string) => {
-  //   try {
-  //     const response = await axios.get(`/tasks/${taskId}`);
-  //     return response.data; // אם המידע נמצא ב-data
-  //   } catch (error) {
-  //     console.error("Error fetching task details:", error);
-  //     throw error;
-  //   }
-  // };
-  const handleMoreClick = async (taskId: string) => {
-    try {
-      // const taskDetails = await fetchTaskDetails(taskId);
-      // setSelectedTask(taskDetails);
-      openModal();
-    } catch (error) {
-      console.error("Error fetching task details:", error);
-    }
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const editTaskProps: EditTasks = {
+    isModalOpen,
+    closeModal,
+    editTask,
+    setEditTask,
+    taskId: row?.original?._id,
   };
 
   return (
@@ -72,16 +78,13 @@ export function DataTableRowActions<TData extends TaskType>({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
         <DropdownMenuItem className="flex items-center">
-          <ModeEditIcon
-            className="mr-2 h-5 w-5"
-            onClick={() => handleMoreClick(row.original.id)}
-          />
+          <InfoIcon className="mr-2 h-5 w-5" />
           more{" "}
-        </DropdownMenuItem>
-        <DropdownMenuItem className="flex items-center">
+        </DropdownMenuItem>{" "}
+        <DropdownMenuItem className="flex items-center" onClick={openModal}>
           <ModeEditIcon className="mr-2 h-5 w-5" />
-          Edit{" "}
-        </DropdownMenuItem>
+          Edit
+        </DropdownMenuItem>{" "}
         <DropdownMenuItem className="flex items-center">
           <ContentCopyIcon className="mr-2 h-5 w-5" />
           Make a copy{" "}
@@ -91,12 +94,12 @@ export function DataTableRowActions<TData extends TaskType>({
           Favorite{" "}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-
         <DropdownMenuItem className="flex items-center">
           <DeleteIcon className="mr-2 h-5 w-5" />
           Delete
         </DropdownMenuItem>
-      </DropdownMenuContent>
+      </DropdownMenuContent>{" "}
+      {isModalOpen && <EditTask {...editTaskProps} />}
     </DropdownMenu>
   );
 }

@@ -18,7 +18,6 @@ interface TaskType {
   status: string;
   priority: string;
   label: string;
-  // Add more properties as needed
 }
 
 const TaskDetailsPage: React.FC<TaskDetailsProps> = ({ task, onClose }) => {

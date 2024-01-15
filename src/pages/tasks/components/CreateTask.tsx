@@ -10,7 +10,6 @@ interface Status {
   value: string;
   label: string;
 }
-
 interface Label {
   value: string;
   label: string;
@@ -19,7 +18,6 @@ interface Priority {
   value: string;
   label: string;
 }
-
 interface TaskInput {
   title: string;
   status: string;
@@ -39,18 +37,17 @@ export type CreateTasks = {
   newTask: TaskInput;
   setNewTask: React.Dispatch<React.SetStateAction<TaskInput>>;
 };
+
 const statuses: Status[] = [
   { value: "backlog", label: "Backlog" },
   { value: "todo", label: "Todo" },
   { value: "in progress", label: "In Progress" },
 ];
-
 const priorities: Priority[] = [
   { value: "low", label: "Low" },
   { value: "medium", label: "Medium" },
   { value: "high", label: "High" },
 ];
-
 const labels: Label[] = [
   { value: "bug", label: "Bug" },
   { value: "feature", label: "Feature" },
@@ -71,7 +68,6 @@ const CreateTask: React.FC<{
     label: "",
   });
   const navigate = useNavigate();
-
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -134,6 +130,9 @@ const CreateTask: React.FC<{
                 onChange={handleInputChange}
                 className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
               >
+                <option disabled value={""}>
+                  please choose status
+                </option>
                 {statuses.map((status) => (
                   <option key={status.value} value={status.value}>
                     {status.label}
@@ -147,6 +146,9 @@ const CreateTask: React.FC<{
                 onChange={handleInputChange}
                 className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
               >
+                <option disabled value={""}>
+                  please choose label
+                </option>
                 {labels.map((label) => (
                   <option key={label.value} value={label.value}>
                     {label.label}
@@ -160,6 +162,9 @@ const CreateTask: React.FC<{
                 onChange={handleInputChange}
                 className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
               >
+                <option disabled value={""}>
+                  Please choose priority
+                </option>
                 {priorities.map((priority) => (
                   <option key={priority.value} value={priority.value}>
                     {priority.label}

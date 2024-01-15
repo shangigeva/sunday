@@ -19,12 +19,9 @@ const useAutoLogin = () => {
   return async (skipTokenTest: boolean = false): Promise<void> => {
     try {
       const token: string | null = getToken();
-      console.log(token);
 
       if (!token) return;
       const dataFromToken: UserData = jwtDecode(token) as UserData;
-      console.log(dataFromToken);
-      console.log(skipTokenTest);
 
       if (skipTokenTest) {
         await axios
@@ -33,6 +30,7 @@ const useAutoLogin = () => {
           .catch((error) => console.error("Server error:", error));
       }
       console.log("Data from token after server call:", dataFromToken);
+
       dispatch(authActions.login(dataFromToken));
     } catch (err) {
       console.log("err from auto login", err);

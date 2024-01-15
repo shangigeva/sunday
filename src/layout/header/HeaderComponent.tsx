@@ -25,12 +25,14 @@ const HeaderComponent = () => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState<IUser | undefined>(undefined);
+
   const loggedIn: boolean = useSelector(
     (bigPie: RootStateType) => bigPie.auth.loggedIn
   );
+  console.log(loggedIn);
+
   const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
   console.log(userData?.payload.isAdmin);
-
   useEffect(() => {
     if (loggedIn && userData && userData.payload) {
       axios
@@ -44,7 +46,8 @@ const HeaderComponent = () => {
           console.error("Error fetching user data", err);
         });
     }
-  }, [loggedIn, userData]);
+  }, []);
+  console.log(user);
 
   const token = localStorage.getItem("token");
   const handleMobileMenuClose = () => {
@@ -60,19 +63,19 @@ const HeaderComponent = () => {
   // console.log(isAdmin);
 
   // logout
-  const handleMenu = (
-    item: string,
-    token: string | null,
-    navigate: Function
-  ) => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-    if (item === "Logout" && token) {
-      localStorage.removeItem("token");
-      navigate("/");
-      window.location.reload();
-    }
-  };
+  // const handleMenu = (
+  //   item: string,
+  //   token: string | null,
+  //   navigate: Function
+  // ) => {
+  //   setAnchorEl(null);
+  //   handleMobileMenuClose();
+  //   if (item === "Logout" && token) {
+  //     localStorage.removeItem("token");
+  //     navigate("/");
+  //     window.location.reload();
+  //   }
+  // };
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -128,8 +131,8 @@ const HeaderComponent = () => {
       <div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              {/* <details>
+            {/* <li> */}
+            {/* <details>
                 <summary>Parent</summary>
                 <ul className="p-2">
                   <li>
@@ -140,7 +143,10 @@ const HeaderComponent = () => {
                   </li>
                 </ul>
               </details> */}
-            </li>
+            {/* </li> */}
+            {/* <li>
+              <a href="login">Item 3</a>
+            </li> */}
             <Links />
           </ul>
         </div>
@@ -239,9 +245,9 @@ const HeaderComponent = () => {
               </li>
               <li>
                 <a
-                  onClick={() => {
-                    handleMenu("Logout", token, navigate);
-                  }}
+                // onClick={() => {
+                //   handleMenu("Logout", token, navigate);
+                // }}
                 >
                   Logout
                 </a>

@@ -63,19 +63,19 @@ const HeaderComponent = () => {
   // console.log(isAdmin);
 
   // logout
-  // const handleMenu = (
-  //   item: string,
-  //   token: string | null,
-  //   navigate: Function
-  // ) => {
-  //   setAnchorEl(null);
-  //   handleMobileMenuClose();
-  //   if (item === "Logout" && token) {
-  //     localStorage.removeItem("token");
-  //     navigate("/");
-  //     window.location.reload();
-  //   }
-  // };
+  const handleMenu = (
+    item: string,
+    token: string | null,
+    navigate: Function
+  ) => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+    if (item === "Logout" && token) {
+      localStorage.removeItem("token");
+      navigate("/");
+      window.location.reload();
+    }
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -245,9 +245,9 @@ const HeaderComponent = () => {
               </li>
               <li>
                 <a
-                // onClick={() => {
-                //   handleMenu("Logout", token, navigate);
-                // }}
+                  onClick={() => {
+                    handleMenu("Logout", token, navigate);
+                  }}
                 >
                   Logout
                 </a>

@@ -69,6 +69,18 @@ export const priorities = [
     icon: ArrowUpIcon,
   },
 ];
+export const owners = [
+  {
+    label: "first",
+    value: "last",
+    icon: ArrowDownIcon,
+  },
+  {
+    label: "firsqt",
+    value: "lastq",
+    icon: ArrowDownIcon,
+  },
+];
 
 export const taskss = [
   {

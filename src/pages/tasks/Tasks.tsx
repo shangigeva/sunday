@@ -21,8 +21,6 @@ const Tasks: React.FC = () => {
     label: "",
   });
 
-  // const navigate = useNavigate();
-
   const openModal = () => {
     setIsModalOpen(true);
   };

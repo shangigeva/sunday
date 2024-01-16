@@ -5,6 +5,7 @@ import ROUTES from "@/Routes/ROUTES";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { owners } from "../data/data";
 
 interface Status {
   value: string;
@@ -20,9 +21,11 @@ interface Priority {
 }
 interface TaskInput {
   title: string;
+  subtitle: string;
   status: string;
   priority: string;
   label: string;
+  owner: string;
 }
 
 export interface createTaskProps {
@@ -63,9 +66,11 @@ const CreateTask: React.FC<{
   >({});
   const [newTask, setNewTask] = useState<TaskInput>({
     title: "",
+    subtitle: "",
     status: "",
     priority: "",
     label: "",
+    owner: "",
   });
   const navigate = useNavigate();
   const handleInputChange = (
@@ -87,9 +92,11 @@ const CreateTask: React.FC<{
     try {
       const { data } = await axios.post("/tasks", {
         title: newTask.title,
+        subtitle: newTask.subtitle,
         status: newTask.status,
         priority: newTask.priority,
         label: newTask.label,
+        owner: newTask.owner,
       });
       navigate(ROUTES.HOME);
       toast.success("Task created successfully!", {
@@ -122,7 +129,14 @@ const CreateTask: React.FC<{
                 onChange={handleInputChange}
                 className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
               />
-
+              <label className="block mt-2">Subtitle:</label>
+              <input
+                type="text"
+                id="subtitle"
+                value={newTask.subtitle}
+                onChange={handleInputChange}
+                className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
+              />
               <label className="block mt-2">Status:</label>
               <select
                 id="status"
@@ -168,6 +182,22 @@ const CreateTask: React.FC<{
                 {priorities.map((priority) => (
                   <option key={priority.value} value={priority.value}>
                     {priority.label}
+                  </option>
+                ))}
+              </select>{" "}
+              <label className="block mt-2">Owner:</label>
+              <select
+                id="owner"
+                value={newTask.owner}
+                onChange={handleInputChange}
+                className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
+              >
+                <option disabled value={""}>
+                  Please choose owner
+                </option>
+                {owners.map((owner) => (
+                  <option key={owner.value} value={owner.value}>
+                    {owner.label}
                   </option>
                 ))}
               </select>

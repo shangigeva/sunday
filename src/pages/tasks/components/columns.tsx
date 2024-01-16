@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { labels, priorities, statuses } from "../data/data";
+import { labels, owners, priorities, statuses } from "../data/data";
 import { Task } from "../data/schema";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
@@ -79,8 +79,23 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate font-medium">
+          <span className="max-w-[200px] truncate font-medium">
             {row.getValue("title")}
+          </span>
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: "subtitle",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="subtitle" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <div className="flex space-x-2">
+          <span className="max-w-[500px] truncate font-medium">
+            {row.getValue("subtitle")}
           </span>
         </div>
       );
@@ -134,6 +149,33 @@ export const columns: ColumnDef<Task>[] = [
             <priority.icon className="mr-2 h-4 w-4 text-muted-foreground" />
           )}
           <span>{priority.label}</span>
+        </div>
+      );
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
+  },
+  {
+    accessorKey: "owner",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Owner" />
+    ),
+    cell: ({ row }) => {
+      const owner = owners.find(
+        (owner) => owner.value === row.getValue("owner")
+      );
+
+      if (!owner) {
+        return null;
+      }
+
+      return (
+        <div className="flex items-center">
+          {/* {priority.icon && (
+            <priority.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+          )} */}
+          <span>{owner.label}</span>
         </div>
       );
     },

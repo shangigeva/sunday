@@ -24,15 +24,19 @@ interface DataTableRowActionsProps<TData> {
 interface TaskType {
   _id: string;
   title: string;
+  subtitle: string;
   status: string;
   priority: string;
   label: string;
+  owner: string;
 }
 interface TaskInput {
   title: string;
+  subtitle: string;
   status: string;
   priority: string;
   label: string;
+  owner: string;
 }
 
 export function DataTableRowActions<TData extends TaskType>({
@@ -42,9 +46,11 @@ export function DataTableRowActions<TData extends TaskType>({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editTask, setEditTask] = useState<TaskInput>({
     title: "",
+    subtitle: "",
     status: "",
     priority: "",
     label: "",
+    owner: "",
   });
   // console.log(row?.original?._id);
 

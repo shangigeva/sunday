@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
 import EditTask, { EditTasks } from "@/pages/editTask.tsx/EditTask";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -62,6 +64,33 @@ export function DataTableRowActions<TData extends TaskType>({
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const handleDeleteTask = () => {
+    const taskId = row?.original?._id;
+    if (taskId) {
+      axios
+        .delete(`/tasks/${taskId}`)
+        .then(function (response) {
+          if (response.status === 200) {
+            console.log("Task deleted successfully!");
+            window.location.reload();
+          } else {
+            console.error("Error deleting task:", response.statusText);
+          }
+        })
+        .catch(function (error) {
+          console.error("Error deleting task:", error);
+          toast.error("Unable to delete card", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
+    }
+  };
 
   const editTaskProps: EditTasks = {
     isModalOpen,
@@ -85,26 +114,29 @@ export function DataTableRowActions<TData extends TaskType>({
       <DropdownMenuContent align="end" className="w-[160px]">
         <DropdownMenuItem className="flex items-center">
           <InfoIcon className="mr-2 h-5 w-5" />
-          more{" "}
-        </DropdownMenuItem>{" "}
+          more
+        </DropdownMenuItem>
         <DropdownMenuItem className="flex items-center" onClick={openModal}>
           <ModeEditIcon className="mr-2 h-5 w-5" />
           Edit
-        </DropdownMenuItem>{" "}
+        </DropdownMenuItem>
         <DropdownMenuItem className="flex items-center">
           <ContentCopyIcon className="mr-2 h-5 w-5" />
-          Make a copy{" "}
+          Make a copy
         </DropdownMenuItem>
         <DropdownMenuItem className="flex items-center">
           <FavoriteIcon className="mr-2 h-5 w-5" />
-          Favorite{" "}
+          Favorite
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="flex items-center">
+        <DropdownMenuItem
+          className="flex items-center"
+          onClick={handleDeleteTask}
+        >
           <DeleteIcon className="mr-2 h-5 w-5" />
           Delete
         </DropdownMenuItem>
-      </DropdownMenuContent>{" "}
+      </DropdownMenuContent>
       {isModalOpen && <EditTask {...editTaskProps} />}
     </DropdownMenu>
   );

@@ -225,7 +225,7 @@ const HeaderComponent = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <Avatar>
-                <AvatarFallback className="bg-[#F1C2D9]">
+                <AvatarFallback className="bg-[#F1C2D9] text-primary">
                   {user && getInitials(user.firstName, user.lastName)}
                 </AvatarFallback>
               </Avatar>

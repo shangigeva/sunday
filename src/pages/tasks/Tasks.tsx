@@ -9,6 +9,8 @@ interface TaskInput {
   status: string;
   priority: string;
   label: string;
+  subtitle: string;
+  owner: string;
 }
 
 const Tasks: React.FC = () => {
@@ -19,6 +21,8 @@ const Tasks: React.FC = () => {
     status: "",
     priority: "",
     label: "",
+    subtitle: "",
+    owner: "",
   });
 
   const openModal = () => {

@@ -17,6 +17,7 @@ const myLinks: Link[] = [
 const isAdminHeader: Link[] = [
   { to: ROUTES.ABOUT, children: "About" },
   { to: ROUTES.TASKS, children: "Tasks" },
+  { to: ROUTES.USERSLIST, children: "User List" },
 ];
 // no user
 const loggedOutLinks: Link[] = [
@@ -28,6 +29,7 @@ const loggedOutLinks: Link[] = [
 const loggedInLinks: Link[] = [
   { to: ROUTES.ABOUT, children: "About" },
   { to: ROUTES.TASKS, children: "Tasks" },
+  { to: ROUTES.MYTASKS, children: "My Tasks" },
 ];
 
 export { myLinks, isAdminHeader, loggedInLinks, loggedOutLinks };

@@ -19,6 +19,8 @@ import { useState } from "react";
 import EditTask, { EditTasks } from "@/pages/editTask.tsx/EditTask";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { RootStateType } from "@/store/bigPie";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -55,6 +57,7 @@ export function DataTableRowActions<TData extends TaskType>({
     owner: "",
   });
   // console.log(row?.original?._id);
+  // const user = { isAdmin: true };
 
   const openModal = () => {
     console.log("Modal opened");
@@ -64,9 +67,13 @@ export function DataTableRowActions<TData extends TaskType>({
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
+
+  console.log(userData?.payload.isAdmin);
+
   const handleDeleteTask = () => {
     const taskId = row?.original?._id;
-    if (taskId) {
+    if (userData?.payload.isAdmin && taskId) {
       axios
         .delete(`/tasks/${taskId}`)
         .then(function (response) {
@@ -89,6 +96,8 @@ export function DataTableRowActions<TData extends TaskType>({
             progress: undefined,
           });
         });
+    } else {
+      console.log("User does not have permission to delete tasks");
     }
   };
 
@@ -128,14 +137,15 @@ export function DataTableRowActions<TData extends TaskType>({
           <FavoriteIcon className="mr-2 h-5 w-5" />
           Favorite
         </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem
-          className="flex items-center"
-          onClick={handleDeleteTask}
-        >
-          <DeleteIcon className="mr-2 h-5 w-5" />
-          Delete
-        </DropdownMenuItem>
+        {userData?.payload.isAdmin && (
+          <DropdownMenuItem
+            className="flex items-center"
+            onClick={handleDeleteTask}
+          >
+            <DeleteIcon className="mr-2 h-5 w-5" />
+            Delete
+          </DropdownMenuItem>
+        )}
       </DropdownMenuContent>
       {isModalOpen && <EditTask {...editTaskProps} />}
     </DropdownMenu>

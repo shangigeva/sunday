@@ -1,40 +1,69 @@
 import React, { useEffect, useState } from "react";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import axios from "axios";
+import { toast } from "react-toastify";
+
 type User = {
+  _id: string;
   firstName: string;
   lastName: string;
   phone: string;
   email: string;
 };
+
 const UsersPage = () => {
   const [users, setUsers] = useState<User[]>([]);
+
   const getUsers = () => {
-    axios.get("/users/allusers").then(({ data }) => {
-      if (data) {
-        setUsers(data);
-      } else {
-        // Handle unexpected response structure
-      }
-      console.log(data.users);
-      console.log(data);
-    });
+    axios
+      .get("/users/allusers")
+      .then(({ data }) => {
+        if (Array.isArray(data)) {
+          setUsers(data);
+        } else {
+          // Handle unexpected response structure
+          console.error("Unexpected response structure:", data);
+        }
+      })
+      .catch((error) => {
+        // Handle error when the request fails
+        console.error("Error fetching users:", error);
+        toast.error("Failed to fetch users. Please try again later.");
+      });
   };
+
   useEffect(() => {
     getUsers();
   }, []);
 
-  //  edit user
-  // delete user
-  // upgrade user to admin
+  const handleDeleteUser = (userId: string) => {
+    axios
+      .delete(`users/${userId}`)
+      .then((response) => {
+        toast.success("🎉 User deleted successfully!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        getUsers();
+      })
+      .catch((error) => {
+        toast.error("Something went wrong!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        console.error("Error deleting user:", error);
+      });
+  };
+
   return (
     <div>
       <h1 className="text-xl font-bold mb-4 text-center">Users</h1>
@@ -52,12 +81,16 @@ const UsersPage = () => {
             </thead>
             <tbody>
               {users.map((user) => (
-                <tr key={user.email} className="bg-base-200">
+                <tr key={user._id} className="bg-base-200">
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
                   <td>{user.phone}</td>
                   <td>{user.email}</td>
-                  <td>{/* Status column content */}</td>
+                  <td>
+                    <button onClick={() => handleDeleteUser(user._id)}>
+                      delete
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -69,4 +102,5 @@ const UsersPage = () => {
     </div>
   );
 };
+
 export default UsersPage;

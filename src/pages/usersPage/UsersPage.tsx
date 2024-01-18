@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import DeleteIcon from "@mui/icons-material/Delete";
+import UpgradeIcon from "@mui/icons-material/Upgrade";
+import EditIcon from "@mui/icons-material/Edit";
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import { useSelector } from "react-redux";
+import { RootStateType } from "@/store/bigPie";
 type User = {
   _id: string;
   firstName: string;
   lastName: string;
   phone: string;
   email: string;
+  isAdmin: string;
 };
 
 const UsersPage = () => {
   const [users, setUsers] = useState<User[]>([]);
-
+  const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
+  console.log(userData?.payload.isAdmin);
   const getUsers = () => {
     axios
       .get("/users/allusers")
@@ -35,6 +42,35 @@ const UsersPage = () => {
     getUsers();
   }, []);
 
+  const handleUpdateUser = (userId: string) => {
+    axios
+      .patch(`users/${userId}`, { isAdmin: true })
+      .then((response) => {
+        toast.success("🎉 User updated successfully!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        console.log(userData?.payload.isAdmin);
+        getUsers();
+      })
+      .catch((error) => {
+        toast.error("Something went wrong!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        console.error("Error updating user:", error);
+      });
+  };
   const handleDeleteUser = (userId: string) => {
     axios
       .delete(`users/${userId}`)
@@ -63,6 +99,8 @@ const UsersPage = () => {
         console.error("Error deleting user:", error);
       });
   };
+  console.log(userData?.payload.isAdmin);
+  console.log(users);
 
   return (
     <div>
@@ -76,11 +114,13 @@ const UsersPage = () => {
                 <th>last name</th>
                 <th>phone</th>
                 <th>email</th>
+                <th>delete</th>
                 <th>status</th>
+                <th>edit</th>
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
+              {users.map((user: User) => (
                 <tr key={user._id} className="bg-base-200">
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
@@ -88,7 +128,21 @@ const UsersPage = () => {
                   <td>{user.email}</td>
                   <td>
                     <button onClick={() => handleDeleteUser(user._id)}>
-                      delete
+                      <DeleteIcon />
+                    </button>
+                  </td>
+                  <td>
+                    {user.isAdmin ? (
+                      <BusinessCenterIcon />
+                    ) : (
+                      <button onClick={() => handleUpdateUser(user._id)}>
+                        <UpgradeIcon />
+                      </button>
+                    )}
+                  </td>
+                  <td>
+                    <button onClick={() => handleDeleteUser(user._id)}>
+                      <EditIcon />
                     </button>
                   </td>
                 </tr>

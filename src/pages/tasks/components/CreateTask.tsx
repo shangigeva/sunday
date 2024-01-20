@@ -104,16 +104,19 @@ const CreateTask: React.FC<{
         label: newTask.label,
         owner: newTask.owner,
       });
-      navigate(ROUTES.HOME);
-      toast.success("Task created successfully!", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+
+      toast.success(
+        "Task number: " + data?.task?.TaskNumb + " created successfully!",
+        {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
     } catch (error) {
       console.error("Error handling update changes:", error);
     }

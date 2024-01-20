@@ -34,6 +34,8 @@ const HeaderComponent = () => {
   const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
   console.log(userData?.payload.isAdmin);
   useEffect(() => {
+    console.log("this is the userData:", userData);
+
     if (loggedIn && userData && userData.payload) {
       axios
         .get(`/users/${userData.payload._id}`)
@@ -46,8 +48,7 @@ const HeaderComponent = () => {
           console.error("Error fetching user data", err);
         });
     }
-  }, []);
-  console.log(user);
+  }, [userData]);
 
   const token = localStorage.getItem("token");
   const handleMobileMenuClose = () => {
@@ -59,7 +60,7 @@ const HeaderComponent = () => {
       .charAt(0)
       .toUpperCase()}`;
   };
-  console.log(userData);
+
   // console.log(isAdmin);
 
   // logout
@@ -130,7 +131,7 @@ const HeaderComponent = () => {
       </div>
       <div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 ">
             {/* <li> */}
             {/* <details>
                 <summary>Parent</summary>

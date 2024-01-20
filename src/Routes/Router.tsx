@@ -19,11 +19,8 @@ const Router = () => {
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
       <Route path={ROUTES.USERSLIST} element={<UsersPage />} />
       <Route path={ROUTES.MYTASKS} element={<MyTasks />} />
-      <Route path={ROUTES.TASKDETAILS} element={<TaskDetailsPage />} />
-      {/* <Route
-        path={`${ROUTES.TASKDETAILS}/:taskId`}
-        element={<TaskDetailsPage />}
-      /> */}
+      {/* <Route path={ROUTES.TASKDETAILS} element={<TaskDetailsPage />} /> */}
+      <Route path={`${ROUTES.TASKS}/:taskId`} element={<TaskDetailsPage />} />
 
       <Route path="*" element={<ErrorPage />} />
     </Routes>

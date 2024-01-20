@@ -104,6 +104,7 @@ const EditTask: React.FC<{
   const handleUpdateChangesClick = async () => {
     try {
       console.log("omer");
+      console.log(editTask);
 
       const { data } = await axios.put(`/tasks/${taskId}`, {
         label: editTask.label,
@@ -113,7 +114,7 @@ const EditTask: React.FC<{
         subtitle: editTask.subtitle,
         owner: editTask.owner,
       });
-      navigate(ROUTES.HOME);
+      closeModal();
       toast.success("Task updated successfully!", {
         position: "top-center",
         autoClose: 3000,

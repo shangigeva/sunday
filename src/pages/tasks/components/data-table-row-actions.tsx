@@ -21,6 +21,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "@/Routes/ROUTES";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -56,9 +58,8 @@ export function DataTableRowActions<TData extends TaskType>({
     label: "",
     owner: "",
   });
-  // console.log(row?.original?._id);
-  // const user = { isAdmin: true };
 
+  const navigate = useNavigate();
   const openModal = () => {
     console.log("Modal opened");
 
@@ -69,7 +70,7 @@ export function DataTableRowActions<TData extends TaskType>({
   };
   const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
 
-  console.log(userData?.payload.isAdmin);
+  console.log(userData);
 
   const handleDeleteTask = () => {
     const taskId = row?.original?._id;
@@ -121,11 +122,17 @@ export function DataTableRowActions<TData extends TaskType>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem className="flex items-center">
+        <DropdownMenuItem
+          className="flex items-center"
+          onClick={() => navigate(`${ROUTES.TASKS}/${row?.original?._id}`)}
+        >
           <InfoIcon className="mr-2 h-5 w-5" />
           more
         </DropdownMenuItem>
-        <DropdownMenuItem className="flex items-center" onClick={openModal}>
+        <DropdownMenuItem
+          className="flex items-center"
+          onClick={() => setIsModalOpen(isModalOpen)}
+        >
           <ModeEditIcon className="mr-2 h-5 w-5" />
           Edit
         </DropdownMenuItem>

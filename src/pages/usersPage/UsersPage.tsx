@@ -27,12 +27,10 @@ const UsersPage = () => {
         if (Array.isArray(data)) {
           setUsers(data);
         } else {
-          // Handle unexpected response structure
           console.error("Unexpected response structure:", data);
         }
       })
       .catch((error) => {
-        // Handle error when the request fails
         console.error("Error fetching users:", error);
         toast.error("Failed to fetch users. Please try again later.");
       });

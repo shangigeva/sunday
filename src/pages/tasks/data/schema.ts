@@ -13,6 +13,7 @@ export const taskSchema = z.object({
   TaskNumb: z.number(),
   Status: z.string(),
   __v: z.number(),
+  createTime: z.date(),
 });
 
 export type Task = z.infer<typeof taskSchema>;

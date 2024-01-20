@@ -48,6 +48,21 @@ export const columns: ColumnDef<Task>[] = [
     ),
   },
   {
+    accessorKey: "createTime",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Create Time" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <div className="w-[200px]">
+          <span className="max-w-[600px] truncate font-medium">
+            {row.getValue("createTime")}
+          </span>
+        </div>
+      );
+    },
+  },
+  {
     accessorKey: "project",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Project" />
@@ -183,7 +198,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "owner",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Owner" />
+      <DataTableColumnHeader column={column} title="Assigned to" />
     ),
     cell: ({ row }) => {
       console.log(row);

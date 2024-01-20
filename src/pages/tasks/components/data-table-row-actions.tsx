@@ -43,6 +43,7 @@ interface TaskInput {
   priority: string;
   label: string;
   owner: string;
+  taskId: string;
 }
 
 export function DataTableRowActions<TData extends TaskType>({
@@ -57,6 +58,7 @@ export function DataTableRowActions<TData extends TaskType>({
     priority: "",
     label: "",
     owner: "",
+    taskId: "",
   });
 
   const navigate = useNavigate();

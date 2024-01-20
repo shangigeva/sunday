@@ -29,7 +29,20 @@ export function DataTableToolbar<TData>({
           }
           className="h-8 w-[150px] lg:w-[250px]"
         />
-
+        {table.getColumn("project") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("project")}
+            title="Project"
+            options={projects}
+          />
+        )}{" "}
+        {table.getColumn("label") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("label")}
+            title="labels"
+            options={labels}
+          />
+        )}
         {table.getColumn("status") && (
           <DataTableFacetedFilter
             column={table.getColumn("status")}
@@ -44,25 +57,11 @@ export function DataTableToolbar<TData>({
             options={priorities}
           />
         )}
-        {table.getColumn("project") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("project")}
-            title="Project"
-            options={projects}
-          />
-        )}
         {table.getColumn("owner") && (
           <DataTableFacetedFilter
             column={table.getColumn("owner")}
             title="owner"
             options={owners}
-          />
-        )}
-        {table.getColumn("label") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("label")}
-            title="labels"
-            options={labels}
           />
         )}
         {isFiltered && (

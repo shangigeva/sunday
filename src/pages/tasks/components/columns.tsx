@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { labels, owners, priorities, statuses } from "../data/data";
+import { labels, owners, priorities, projects, statuses } from "../data/data";
 import { Task } from "../data/schema";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
@@ -35,17 +35,41 @@ export const columns: ColumnDef<Task>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "taskNumber",
+    accessorKey: "TaskNumb",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Task" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
         <span className="max-w-[500px] truncate font-medium">
-          {row.getValue("taskNumber")}
+          {row.getValue("TaskNumb")}
         </span>
       </div>
     ),
+  },
+  {
+    accessorKey: "project",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Project" />
+    ),
+    cell: ({ row }) => {
+      const project = projects.find(
+        (project) => project.value === row.getValue("project")
+      );
+
+      if (!project) {
+        return null;
+      }
+
+      return (
+        <div className="flex w-[100px] items-center">
+          <span>{project.label}</span>
+        </div>
+      );
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
     accessorKey: "label",
@@ -94,7 +118,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate font-medium">
+          <span className="max-w-[200px] truncate font-medium">
             {row.getValue("subtitle")}
           </span>
         </div>

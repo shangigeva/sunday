@@ -3,7 +3,7 @@
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
 
-import { labels, owners, priorities, statuses } from "../data/data";
+import { labels, owners, priorities, projects, statuses } from "../data/data";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,6 +29,7 @@ export function DataTableToolbar<TData>({
           }
           className="h-8 w-[150px] lg:w-[250px]"
         />
+
         {table.getColumn("status") && (
           <DataTableFacetedFilter
             column={table.getColumn("status")}
@@ -41,6 +42,13 @@ export function DataTableToolbar<TData>({
             column={table.getColumn("priority")}
             title="Priority"
             options={priorities}
+          />
+        )}
+        {table.getColumn("project") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("project")}
+            title="Project"
+            options={projects}
           />
         )}
         {table.getColumn("owner") && (

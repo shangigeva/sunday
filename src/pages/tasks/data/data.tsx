@@ -23,6 +23,24 @@ export const labels = [
     label: "Documentation",
   },
 ];
+export const projects = [
+  {
+    value: "Malam Team",
+    label: "Malam Team",
+  },
+  {
+    value: "IBM",
+    label: "IBM",
+  },
+  {
+    value: "Amazon",
+    label: "Amazon",
+  },
+  {
+    value: "Payoneer",
+    label: "Payoneer",
+  },
+];
 
 export const statuses = [
   {

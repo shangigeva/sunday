@@ -69,6 +69,12 @@ const TaskDetailsPage = () => {
                 <strong>Title:</strong> {taskDetails.title}
               </div>
               <div>
+                <strong>Subitle:</strong> {taskDetails.subtitle}
+              </div>{" "}
+              <div>
+                <strong>Label:</strong> {taskDetails.label}
+              </div>
+              <div>
                 <strong>Status:</strong> {taskDetails.status}
               </div>
               <div>
@@ -76,6 +82,9 @@ const TaskDetailsPage = () => {
               </div>
               <div>
                 <strong>Label:</strong> {taskDetails.label}
+              </div>
+              <div>
+                <strong>Owner:</strong> {taskDetails.owner}
               </div>
             </>
           ) : (

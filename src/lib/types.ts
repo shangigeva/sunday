@@ -6,6 +6,7 @@ export type TaskInput = {
   label: string;
   owner: string;
   taskId?: string;
+  project: string;
 };
 
 export type TaskType = {
@@ -14,4 +15,5 @@ export type TaskType = {
   status: string;
   label: string;
   priority: string;
+  project: string;
 };

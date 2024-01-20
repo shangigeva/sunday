@@ -27,7 +27,12 @@ export type EditTasks = {
   setEditTask: React.Dispatch<React.SetStateAction<TaskInput>>;
   taskId: string;
 };
-
+const projects: Status[] = [
+  { value: "Malam Team", label: "Malam Team" },
+  { value: "IBM", label: "IBM" },
+  { value: "Amazon", label: "Amazon" },
+  { value: "Payoneer", label: "Payoneer" },
+];
 const statuses: Status[] = [
   { value: "backlog", label: "Backlog" },
   { value: "todo", label: "Todo" },
@@ -65,6 +70,7 @@ const EditTask: React.FC<{
     label: "",
     owner: "",
     taskId: "",
+    project: "",
   });
 
   const navigate = useNavigate();
@@ -108,6 +114,7 @@ const EditTask: React.FC<{
         title: editTask.title,
         subtitle: editTask.subtitle,
         owner: editTask.owner,
+        project: editTask.project,
       });
       closeModal();
       toast.success("Task updated successfully!", {
@@ -131,7 +138,20 @@ const EditTask: React.FC<{
           <div className="flex items-center justify-center min-h-screen">
             <div className="fixed inset-0 bg-black opacity-50"></div>
             <div className="bg-white p-4 rounded shadow-md w-96 relative z-10">
-              <h1 className="text-2xl font-bold mb-4">Edit Task</h1>
+              <h1 className="text-2xl font-bold mb-4">Edit Task</h1>{" "}
+              <label className="block mt-2">Project:</label>
+              <select
+                id="project"
+                value={editTask.project}
+                onChange={handleSelectChange}
+                className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
+              >
+                {projects.map((project) => (
+                  <option key={project.value} value={project.value}>
+                    {project.label}
+                  </option>
+                ))}
+              </select>
               <label className="block mt-2">Title:</label>
               <input
                 type="text"
@@ -148,7 +168,6 @@ const EditTask: React.FC<{
                 onChange={handleSelectChange}
                 className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
               />
-
               <label className="block mt-2">Status:</label>
               <select
                 id="status"

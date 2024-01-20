@@ -43,6 +43,7 @@ export function DataTableRowActions<TData>({
     label: "",
     owner: "",
     taskId: "",
+    project: "",
   });
 
   const navigate = useNavigate();

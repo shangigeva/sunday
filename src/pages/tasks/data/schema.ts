@@ -11,6 +11,7 @@ export const taskSchema = z.object({
   label: z.string(),
   owner: z.string(),
   TaskNumb: z.number(),
+  Status: z.string(),
   __v: z.number(),
 });
 

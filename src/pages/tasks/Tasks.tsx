@@ -17,6 +17,7 @@ const Tasks: React.FC = () => {
     label: "",
     subtitle: "",
     owner: "",
+    project: "",
   });
 
   const openModal = () => {

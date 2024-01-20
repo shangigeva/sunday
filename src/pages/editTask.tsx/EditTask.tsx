@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import ROUTES from "@/Routes/ROUTES";
 import { owners } from "../tasks/data/data";
+import { TaskInput } from "@/lib/types";
 
 interface Status {
   value: string;
@@ -17,14 +18,6 @@ interface Label {
 interface Priority {
   value: string;
   label: string;
-}
-interface TaskInput {
-  title: string;
-  subtitle: string;
-  status: string;
-  priority: string;
-  label: string;
-  owner: string;
 }
 
 export type EditTasks = {
@@ -70,6 +63,7 @@ const EditTask: React.FC<{
     priority: "",
     label: "",
     owner: "",
+    taskId: "",
   });
 
   const navigate = useNavigate();

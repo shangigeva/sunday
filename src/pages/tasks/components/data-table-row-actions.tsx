@@ -23,30 +23,14 @@ import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "@/Routes/ROUTES";
+import { TaskInput, TaskType } from "@/lib/types";
+import { Task } from "../data/schema";
 
 interface DataTableRowActionsProps<TData> {
-  row: Row<TData>;
-}
-interface TaskType {
-  _id: string;
-  title: string;
-  subtitle: string;
-  status: string;
-  priority: string;
-  label: string;
-  owner: string;
-}
-interface TaskInput {
-  title: string;
-  subtitle: string;
-  status: string;
-  priority: string;
-  label: string;
-  owner: string;
-  taskId: string;
+  row: Row<Task>;
 }
 
-export function DataTableRowActions<TData extends TaskType>({
+export function DataTableRowActions<TData>({
   row,
 }: DataTableRowActionsProps<TData>) {
   // const task = taskSchema.parse(row.original);
@@ -72,13 +56,11 @@ export function DataTableRowActions<TData extends TaskType>({
   };
   const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
 
-  console.log(userData);
-
+  const task = row.original;
   const handleDeleteTask = () => {
-    const taskId = row?.original?._id;
-    if (userData?.payload.isAdmin && taskId) {
+    if (userData?.payload.isAdmin && task?._id) {
       axios
-        .delete(`/tasks/${taskId}`)
+        .delete(`/tasks/${task._id}`)
         .then(function (response) {
           if (response.status === 200) {
             console.log("Task deleted successfully!");
@@ -109,7 +91,7 @@ export function DataTableRowActions<TData extends TaskType>({
     closeModal,
     editTask,
     setEditTask,
-    taskId: row?.original?._id,
+    taskId: task._id,
   };
 
   return (
@@ -131,10 +113,7 @@ export function DataTableRowActions<TData extends TaskType>({
           <InfoIcon className="mr-2 h-5 w-5" />
           more
         </DropdownMenuItem>
-        <DropdownMenuItem
-          className="flex items-center"
-          onClick={() => setIsModalOpen(isModalOpen)}
-        >
+        <DropdownMenuItem className="flex items-center" onClick={openModal}>
           <ModeEditIcon className="mr-2 h-5 w-5" />
           Edit
         </DropdownMenuItem>

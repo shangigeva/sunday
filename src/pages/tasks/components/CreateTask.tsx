@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { owners } from "../data/data";
+import { TaskInput } from "@/lib/types";
 
 interface Status {
   value: string;
@@ -18,14 +19,6 @@ interface Label {
 interface Priority {
   value: string;
   label: string;
-}
-interface TaskInput {
-  title: string;
-  subtitle: string;
-  status: string;
-  priority: string;
-  label: string;
-  owner: string;
 }
 
 export interface createTaskProps {

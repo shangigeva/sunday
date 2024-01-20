@@ -4,14 +4,7 @@ import { Button } from "@/components/ui/button";
 import CreateTask, { CreateTasks } from "../tasks/components/CreateTask";
 import { columns } from "../tasks/components/columns";
 import { DataTable } from "../tasks/components/data-table";
-interface TaskInput {
-  title: string;
-  status: string;
-  priority: string;
-  label: string;
-  subtitle: string;
-  owner: string;
-}
+import { TaskInput } from "@/lib/types";
 
 const MyTasks: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

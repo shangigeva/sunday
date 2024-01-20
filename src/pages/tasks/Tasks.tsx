@@ -4,18 +4,12 @@ import { Button } from "@/components/ui/button";
 import { DataTable } from "./components/data-table";
 import { columns } from "./components/columns";
 import CreateTask, { CreateTasks } from "./components/CreateTask";
-interface TaskInput {
-  title: string;
-  status: string;
-  priority: string;
-  label: string;
-  subtitle: string;
-  owner: string;
-}
+import { TaskInput } from "@/lib/types";
+import { Task } from "./data/schema";
 
 const Tasks: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState<TaskInput>({
     title: "",
     status: "",
@@ -34,12 +28,14 @@ const Tasks: React.FC = () => {
   };
 
   useEffect(() => {
-    const getTasks = async () => {
+    const getTasks = async (): Promise<Task[]> => {
       try {
         const { data } = await axios.get("/tasks");
         setTasks(data);
+        return data;
       } catch (error) {
         console.error("Error fetching tasks:", error);
+        return [];
       }
     };
     getTasks();

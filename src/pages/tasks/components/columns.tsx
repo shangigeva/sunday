@@ -41,7 +41,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => (
       <div className="w-[80px]">
         <span className="max-w-[500px] truncate font-medium">
-          {row.getValue("TaskNumb")}
+          TASK-{row.getValue("TaskNumb")}
         </span>
       </div>
     ),

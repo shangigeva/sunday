@@ -184,7 +184,7 @@ export const columns: ColumnDef<Task>[] = [
       }
 
       return (
-        <div className="flex items-center">
+        <div className="flex w-[80px] items-center">
           {priority.icon && (
             <priority.icon className="mr-2 h-4 w-4 text-muted-foreground" />
           )}
@@ -213,7 +213,7 @@ export const columns: ColumnDef<Task>[] = [
       }
 
       return (
-        <div className="flex items-center">
+        <div className="flex w-[80px] items-center">
           <span>{owner.label}</span>
         </div>
       );

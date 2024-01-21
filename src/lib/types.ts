@@ -20,3 +20,25 @@ export type TaskType = {
   owner: string;
   createTime: string;
 };
+export type User = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  isAdmin: boolean;
+};
+export type EditTasks = {
+  isModalOpen: boolean;
+  closeModal: () => void;
+  editTask: TaskInput;
+  setEditTask: React.Dispatch<React.SetStateAction<TaskInput>>;
+  taskId: string;
+};
+export type EditUsers = {
+  isModalOpen: boolean;
+  closeModal: () => void;
+  editUser: User;
+  setEditUser: React.Dispatch<React.SetStateAction<User>>;
+  userId: string;
+};

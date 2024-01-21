@@ -76,7 +76,7 @@ export const columns: ColumnDef<Task>[] = [
       }
 
       return (
-        <div className="flex w-[100px] items-center">
+        <div className="flex w-24 items-center">
           <span>{project.label}</span>
         </div>
       );
@@ -100,7 +100,7 @@ export const columns: ColumnDef<Task>[] = [
       }
 
       return (
-        <div className="flex space-x-2">
+        <div className="flex w-24">
           {label && <Badge variant="outline">{label.label}</Badge>}
         </div>
       );
@@ -117,7 +117,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[200px] truncate font-medium">
+          <span className="max-w-40 truncate font-medium">
             {row.getValue("title")}
           </span>
         </div>
@@ -132,7 +132,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[200px] truncate font-medium">
+          <span className="max-w-48 truncate font-medium">
             {row.getValue("subtitle")}
           </span>
         </div>

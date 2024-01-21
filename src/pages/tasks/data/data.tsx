@@ -68,12 +68,6 @@ export const statuses = [
     icon: CheckCircledIcon,
     badgeType: "badge-success rounded-full px-2",
   },
-
-  {
-    value: "canceled",
-    label: "Canceled",
-    icon: CrossCircledIcon,
-  },
 ];
 
 export const priorities = [

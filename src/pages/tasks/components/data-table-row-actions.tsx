@@ -23,7 +23,7 @@ import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "@/Routes/ROUTES";
-import { TaskInput, TaskType } from "@/lib/types";
+import { TaskInput } from "@/lib/types";
 import { Task } from "../data/schema";
 
 interface DataTableRowActionsProps<TData> {

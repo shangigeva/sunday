@@ -12,8 +12,11 @@ export type TaskInput = {
 export type TaskType = {
   id: string;
   title: string;
+  subtitle: string;
   status: string;
   label: string;
   priority: string;
   project: string;
+  owner: string;
+  createTime: string;
 };

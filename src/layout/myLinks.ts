@@ -10,14 +10,14 @@ const myLinks: Link[] = [
   { to: ROUTES.HOME, children: "Home page" },
   { to: ROUTES.REGISTER, children: "Register page" },
   { to: ROUTES.LOGIN, children: "Login page" },
-  { to: ROUTES.ABOUT, children: "About" },
   { to: ROUTES.TASKS, children: "Tasks" },
+  { to: ROUTES.ABOUT, children: "About" },
 ];
 // admin user
 const isAdminHeader: Link[] = [
-  { to: ROUTES.ABOUT, children: "About" },
   { to: ROUTES.TASKS, children: "Tasks" },
   { to: ROUTES.USERSLIST, children: "Users List" },
+  { to: ROUTES.ABOUT, children: "About" },
 ];
 // no user
 const loggedOutLinks: Link[] = [
@@ -27,9 +27,9 @@ const loggedOutLinks: Link[] = [
 ];
 // regular user
 const loggedInLinks: Link[] = [
-  { to: ROUTES.ABOUT, children: "About" },
   { to: ROUTES.TASKS, children: "Tasks" },
   { to: ROUTES.MYTASKS, children: "My Tasks" },
+  { to: ROUTES.ABOUT, children: "About" },
 ];
 
 export { myLinks, isAdminHeader, loggedInLinks, loggedOutLinks };

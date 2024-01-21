@@ -3,8 +3,11 @@ import MailIcon from "@mui/icons-material/Mail";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "@/Routes/ROUTES";
 
 const FooterComponent = () => {
+  const navigate = useNavigate();
   return (
     <footer className="bg-[#f0aa780e] pא-8">
       <div className="flex justify-between items-center px-6">
@@ -28,23 +31,23 @@ const FooterComponent = () => {
         <div>
           <header className="text-lg font-semibold mb-2">Company</header>
           <a
-            href="/"
+            onClick={() => navigate(ROUTES.TASKS)}
             className="block text-sm text-gray-700 mb-1 hover:underline"
           >
             Home
           </a>
           <a
-            href="/"
+            onClick={() => navigate(ROUTES.ABOUT)}
             className="block text-sm text-gray-700 mb-1 hover:underline"
           >
             About us
           </a>
-          <a
-            href="/"
+          <button
+            onClick={() => navigate(ROUTES.TASKS)}
             className="block text-sm text-gray-700 mb-1 hover:underline"
           >
             My tasks
-          </a>
+          </button>
         </div>
         <div>
           <img

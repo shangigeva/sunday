@@ -16,14 +16,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
-import EditTask, { EditTasks } from "@/pages/editTask.tsx/EditTask";
+import EditTask from "@/pages/editTask.tsx/EditTask";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "@/Routes/ROUTES";
-import { TaskInput } from "@/lib/types";
+import { EditTasks, TaskInput } from "@/lib/types";
 import { Task } from "../data/schema";
 
 interface DataTableRowActionsProps<TData> {

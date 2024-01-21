@@ -40,9 +40,9 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         <img
-          src="/assets/images/errorImage.jpg"
+          src="/assets/images/table.png"
           alt="Example 1"
-          className="w-[40rem] h-[30rem] rounded-lg shadow-lg"
+          className="w-[45rem] h-[30rem] rounded-lg shadow-lg"
         />
       </div>
       {/* Section 2 */}

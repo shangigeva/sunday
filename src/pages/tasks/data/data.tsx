@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import {
   ArrowDownIcon,
   ArrowRightIcon,
@@ -47,22 +48,27 @@ export const statuses = [
     value: "backlog",
     label: "Backlog",
     icon: QuestionMarkCircledIcon,
+    badgeType: "badge-error",
   },
   {
     value: "todo",
     label: "Todo",
     icon: CircleIcon,
+    badgeType: "badge-info",
   },
   {
     value: "in progress",
     label: "In Progress",
     icon: StopwatchIcon,
+    badgeType: "badge-warning",
   },
   {
     value: "done",
     label: "Done",
     icon: CheckCircledIcon,
+    badgeType: "badge-success ",
   },
+
   {
     value: "canceled",
     label: "Canceled",

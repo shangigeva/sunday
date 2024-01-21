@@ -2,7 +2,6 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { owners } from "../tasks/data/data";
 import { TaskInput } from "@/lib/types";
 
@@ -19,13 +18,6 @@ interface Priority {
   label: string;
 }
 
-export type EditTasks = {
-  isModalOpen: boolean;
-  closeModal: () => void;
-  editTask: TaskInput;
-  setEditTask: React.Dispatch<React.SetStateAction<TaskInput>>;
-  taskId: string;
-};
 const projects: Status[] = [
   { value: "Malam Team", label: "Malam Team" },
   { value: "IBM", label: "IBM" },
@@ -72,8 +64,6 @@ const EditTask: React.FC<{
     project: "",
   });
 
-  const navigate = useNavigate();
-
   const handleSelectChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -103,7 +93,6 @@ const EditTask: React.FC<{
 
   const handleUpdateChangesClick = async () => {
     try {
-      console.log("omer");
       console.log(editTask);
 
       const { data } = await axios.put(`/tasks/${taskId}`, {

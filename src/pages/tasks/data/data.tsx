@@ -48,25 +48,25 @@ export const statuses = [
     value: "backlog",
     label: "Backlog",
     icon: QuestionMarkCircledIcon,
-    badgeType: "badge-error rounded-full px-2",
+    badgeType: "badge-error rounded-full px-2 py-1",
   },
   {
     value: "todo",
     label: "Todo",
     icon: CircleIcon,
-    badgeType: "badge-info rounded-full px-2",
+    badgeType: "badge-info rounded-full px-2 py-1",
   },
   {
     value: "in progress",
     label: "In Progress",
     icon: StopwatchIcon,
-    badgeType: "badge-warning rounded-full px-2",
+    badgeType: "badge-warning rounded-full px-2 py-1",
   },
   {
     value: "done",
     label: "Done",
     icon: CheckCircledIcon,
-    badgeType: "badge-success rounded-full px-2",
+    badgeType: "badge-success rounded-full px-2 py-1",
   },
 ];
 

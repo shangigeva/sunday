@@ -2,8 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
-import ROUTES from "@/Routes/ROUTES";
+import { useNavigate } from "react-router-dom";
 import { owners } from "../tasks/data/data";
 import { TaskInput } from "@/lib/types";
 

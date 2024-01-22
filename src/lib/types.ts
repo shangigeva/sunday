@@ -27,6 +27,7 @@ export type User = {
   phone: string;
   email: string;
   isAdmin: boolean;
+  profilePicture?: string;
 };
 export type EditTasks = {
   isModalOpen: boolean;

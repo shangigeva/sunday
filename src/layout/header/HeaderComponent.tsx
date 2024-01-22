@@ -6,6 +6,7 @@ import { RootStateType } from "@/store/bigPie";
 import Links from "./Links";
 import axios from "axios";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import ROUTES from "@/Routes/ROUTES";
 type IUser = {
   firstName: string;
   lastName: string;
@@ -236,13 +237,12 @@ const HeaderComponent = () => {
               className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="justify-between">
+                <a
+                  className="justify-between"
+                  onClick={() => navigate(ROUTES.PROFILE)}
+                >
                   Profile
-                  <span className="badge">New</span>
                 </a>
-              </li>
-              <li>
-                <a>Settings</a>
               </li>
               <li>
                 <a

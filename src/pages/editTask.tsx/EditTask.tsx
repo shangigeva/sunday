@@ -3,7 +3,9 @@ import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { owners } from "../tasks/data/data";
-import { TaskInput } from "@/lib/types";
+import { TaskInput, User } from "@/lib/types";
+import { useSelector } from "react-redux";
+import { RootStateType } from "@/store/bigPie";
 
 interface Status {
   value: string;
@@ -49,6 +51,7 @@ const EditTask: React.FC<{
   taskId: string;
 }> = ({ isModalOpen, closeModal, taskId }) => {
   console.log("EditTask component rendered");
+  const [users, setUsers] = useState<User[]>([]);
 
   const [validationErrors, setValidationErrors] = useState<
     Record<string, string>
@@ -78,6 +81,27 @@ const EditTask: React.FC<{
   };
   console.log(editTask);
 
+  const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
+  console.log(userData?.payload.isAdmin);
+  const getUsers = () => {
+    axios
+      .get("/users/allusers")
+      .then(({ data }) => {
+        if (Array.isArray(data)) {
+          setUsers(data);
+        } else {
+          console.error("Unexpected response structure:", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+        toast.error("Failed to fetch users. Please try again later.");
+      });
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
   useEffect(() => {
     axios
       .get(`/tasks/${taskId}`)
@@ -211,9 +235,9 @@ const EditTask: React.FC<{
                 onChange={handleSelectChange}
                 className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
               >
-                {owners.map((owner) => (
-                  <option key={owner.value} value={owner.value}>
-                    {owner.label}
+                {users.map((user: User) => (
+                  <option key={user._id} value={user._id}>
+                    {`${user.firstName} ${user.lastName}`}
                   </option>
                 ))}
               </select>

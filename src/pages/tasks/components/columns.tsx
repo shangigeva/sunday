@@ -7,32 +7,33 @@ import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
+import UserSelectComponent from "./UserSelect";
 
 export const columns: ColumnDef<Task>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-        className="translate-y-[2px]"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-        className="translate-y-[2px]"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
+  // {
+  //   id: "select",
+  //   header: ({ table }) => (
+  //     <Checkbox
+  //       checked={
+  //         table.getIsAllPageRowsSelected() ||
+  //         (table.getIsSomePageRowsSelected() && "indeterminate")
+  //       }
+  //       onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+  //       aria-label="Select all"
+  //       className="translate-y-[2px]"
+  //     />
+  //   ),
+  //   cell: ({ row }) => (
+  //     <Checkbox
+  //       checked={row.getIsSelected()}
+  //       onCheckedChange={(value) => row.toggleSelected(!!value)}
+  //       aria-label="Select row"
+  //       className="translate-y-[2px]"
+  //     />
+  //   ),
+  //   enableSorting: false,
+  //   enableHiding: false,
+  // },
   {
     accessorKey: "TaskNumb",
     header: ({ column }) => (
@@ -155,7 +156,7 @@ export const columns: ColumnDef<Task>[] = [
       }
 
       return (
-        <div className="flex w-[120px] items-center">
+        <div className="flex w-28 items-center">
           {status.icon && (
             <status.icon className="mr-2 h-4 w-4 text-muted-foreground" />
           )}
@@ -184,7 +185,7 @@ export const columns: ColumnDef<Task>[] = [
       }
 
       return (
-        <div className="flex w-[80px] items-center">
+        <div className="flex w-20 items-center">
           {priority.icon && (
             <priority.icon className="mr-2 h-4 w-4 text-muted-foreground" />
           )}
@@ -202,26 +203,19 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Assigned to" />
     ),
     cell: ({ row }) => {
-      console.log(row);
-
-      const owner = owners.find(
-        (owner) => owner.value === row.getValue("owner")
-      );
-
-      if (!owner) {
-        return null;
-      }
-
       return (
-        <div className="flex w-[80px] items-center">
-          <span>{owner.label}</span>
-        </div>
+        <UserSelectComponent
+          users={[]}
+          selectedUser={row.getValue("owner")}
+          onSelectUser={(value) => {}}
+        />
       );
     },
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
     },
   },
+
   {
     id: "actions",
     cell: ({ row }) => {

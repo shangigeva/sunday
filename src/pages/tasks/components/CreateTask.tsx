@@ -1,10 +1,11 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { owners } from "../data/data";
-import { TaskInput } from "@/lib/types";
+import { TaskInput, User } from "@/lib/types";
+import { useSelector } from "react-redux";
+import { RootStateType } from "@/store/bigPie";
 
 interface Status {
   value: string;
@@ -66,6 +67,8 @@ const CreateTask: React.FC<{
   const [validationErrors, setValidationErrors] = useState<
     Record<string, string>
   >({});
+  const [users, setUsers] = useState<User[]>([]);
+
   const [newTask, setNewTask] = useState<TaskInput>({
     title: "",
     subtitle: "",
@@ -90,6 +93,27 @@ const CreateTask: React.FC<{
     }));
   };
   console.log(newTask);
+
+  const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
+  console.log(userData?.payload.isAdmin);
+  const getUsers = () => {
+    axios
+      .get("/users/allusers")
+      .then(({ data }) => {
+        if (Array.isArray(data)) {
+          setUsers(data);
+        } else {
+          console.error("Unexpected response structure:", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+        toast.error("Failed to fetch users. Please try again later.");
+      });
+  };
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const handleUpdateChangesClick = async () => {
     try {
@@ -227,9 +251,9 @@ const CreateTask: React.FC<{
                 <option disabled value={""}>
                   Please choose owner
                 </option>
-                {owners.map((owner) => (
-                  <option key={owner.value} value={owner.value}>
-                    {owner.label}
+                {users.map((user: User) => (
+                  <option key={user._id} value={user._id}>
+                    {`${user.firstName} ${user.lastName}`}
                   </option>
                 ))}
               </select>

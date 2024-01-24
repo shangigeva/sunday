@@ -88,7 +88,16 @@ export function RegisterPage({ className, ...props }: UserAuthFormProps) {
       // autoLogin(true);
       navigate(ROUTES.LOGIN);
     } catch (err) {
-      console.log("err from login", err);
+      console.log("Please try again", err);
+      toast.error("Unable to delete card", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   async function onSubmit(event: React.SyntheticEvent) {

@@ -65,6 +65,15 @@ export function DataTableRowActions<TData>({
         .then(function (response) {
           if (response.status === 200) {
             console.log("Task deleted successfully!");
+            toast.success("Task deleted successfully", {
+              position: "top-center",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
             window.location.reload();
           } else {
             console.error("Error deleting task:", response.statusText);
@@ -72,7 +81,7 @@ export function DataTableRowActions<TData>({
         })
         .catch(function (error) {
           console.error("Error deleting task:", error);
-          toast.error("Unable to delete card", {
+          toast.error("Unable to delete task", {
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: false,

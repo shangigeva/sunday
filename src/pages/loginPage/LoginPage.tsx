@@ -60,7 +60,15 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
       autoLogin(true);
       navigate(ROUTES.TASKS);
     } catch (err) {
-      console.log("err from login", err);
+      toast.error("plese try again", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   const handleEmailInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

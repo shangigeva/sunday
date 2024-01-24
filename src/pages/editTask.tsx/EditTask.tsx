@@ -116,6 +116,15 @@ const EditTask: React.FC<{
       });
     } catch (error) {
       console.error("Error updating task:", error);
+      toast.error("Unable to edit task", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 

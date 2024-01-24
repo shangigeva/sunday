@@ -117,6 +117,15 @@ const CreateTask: React.FC<{
       );
     } catch (error) {
       console.error("Error handling update changes:", error);
+      toast.error("something went wrong, plese try again", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 

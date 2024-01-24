@@ -11,16 +11,7 @@ const NavLinkComponent: React.FC<NavLinkComponentProps> = ({
   children,
 }) => {
   return (
-    <NavLink
-      to={to}
-      style={{
-        textDecoration: "none",
-        color: "inherit",
-        padding: "8px 16px",
-        fontSize: "0.9rem",
-        fontWeight: 500,
-      }}
-    >
+    <NavLink className="text-primary" to={to}>
       {children}
     </NavLink>
   );

@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { RootStateType } from "@/store/bigPie";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -11,52 +12,52 @@ interface User {
 }
 
 interface UserSelectComponentProps {
-  users: User[];
   selectedUser: string;
-  onSelectUser: (value: string) => void;
 }
 
-const UserSelectComponent = ({
-  selectedUser,
-  onSelectUser,
-}: UserSelectComponentProps) => {
-  const [users, setUsers] = useState<User[]>([]);
+const UserSelectComponent = ({ selectedUser }: UserSelectComponentProps) => {
+  const [user, setUser] = useState<User>();
+  console.log(selectedUser);
 
-  const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
-  console.log(userData?.payload.isAdmin);
-  const getUsers = () => {
+  if (selectedUser === "last" || selectedUser === "lastq")
+    return <h1>לא קיים יוזר</h1>;
+  const getInitials = (firstName: string, lastName: string) => {
+    return `${firstName.charAt(0).toUpperCase()}${lastName
+      .charAt(0)
+      .toUpperCase()}`;
+  };
+  console.log(selectedUser);
+
+  const getUser = () => {
     axios
-      .get("/users/allusers")
+      .get(`/users/${selectedUser}`)
       .then(({ data }) => {
-        if (Array.isArray(data)) {
-          setUsers(data);
-        } else {
-          console.error("Unexpected response structure:", data);
-        }
+        setUser(data.user);
       })
       .catch((error) => {
-        console.error("Error fetching users:", error);
+        console.error("Error fetching user:", error);
         toast.error("Failed to fetch users. Please try again later.");
       });
   };
 
   useEffect(() => {
-    getUsers();
+    getUser();
   }, []);
+  console.log(user);
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onSelectUser(event.target.value);
-  };
   //   console.log(user);
 
   return (
-    <select value={selectedUser} onChange={handleSelectChange}>
-      {users.map((user: User) => (
-        <option key={user._id} value={user._id}>
-          {`${user.firstName} ${user.lastName}`}
-        </option>
-      ))}
-    </select>
+    <div
+      className="lg:tooltip"
+      data-tip={`${user?.firstName} ${user?.lastName}`}
+    >
+      <Avatar>
+        <AvatarFallback className="bg-[#F1C2D9] text-primary">
+          {user && getInitials(user?.firstName || "", user?.lastName || "")}
+        </AvatarFallback>
+      </Avatar>
+    </div>
   );
 };
 

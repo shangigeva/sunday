@@ -209,7 +209,7 @@ const HeaderComponent = () => {
               type="text"
               value={searchQuery}
               placeholder="Search"
-              className="relative bg-center w-10 h-10 rounded-full p-2 cursor-pointer border-[1px] border-white overflow-hidden transition-all duration-500 bg-no-repeat focus:w-48 pl-8 focus:outline-none focus:bg-left  focus:border-black hover:border-black"
+              className=" relative bg-center w-10 h-10 rounded-full p-2 cursor-pointer border-[1px] border-white overflow-hidden transition-all duration-500 bg-no-repeat focus:w-48 pl-8 focus:outline-none focus:bg-left  focus:border-black hover:border-black"
               style={{
                 backgroundImage: "url('/assets/images/search.png')",
                 backgroundSize: "20px",

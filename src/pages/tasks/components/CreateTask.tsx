@@ -38,28 +38,6 @@ export type CreateTasks = {
   setNewTask: React.Dispatch<React.SetStateAction<TaskInput>>;
 };
 
-// const statuses: Status[] = [
-//   { value: "backlog", label: "Backlog" },
-//   { value: "todo", label: "Todo" },
-//   { value: "in progress", label: "In Progress" },
-// ];
-
-// const projects: Project[] = [
-//   { value: "Malam Team", label: "Malam Team" },
-//   { value: "IBM", label: "IBM" },
-//   { value: "Amazon", label: "Amazon" },
-//   { value: "Payoneer", label: "Payoneer" },
-// ];
-// const priorities: Priority[] = [
-//   { value: "low", label: "Low" },
-//   { value: "medium", label: "Medium" },
-//   { value: "high", label: "High" },
-// ];
-// const labels: Label[] = [
-//   { value: "bug", label: "Bug" },
-//   { value: "feature", label: "Feature" },
-//   { value: "documentation", label: "Documentation" },
-// ];
 // START
 const CreateTask: React.FC<{
   isModalOpen: boolean;

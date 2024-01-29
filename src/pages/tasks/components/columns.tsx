@@ -203,13 +203,7 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Assigned to" />
     ),
     cell: ({ row }) => {
-      return (
-        <UserSelectComponent
-          users={[]}
-          selectedUser={row.getValue("owner")}
-          onSelectUser={(value) => {}}
-        />
-      );
+      return <UserSelectComponent selectedUser={row.getValue("owner")} />;
     },
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));

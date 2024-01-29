@@ -61,7 +61,7 @@ export function DataTableToolbar<TData>({
           <DataTableFacetedFilter
             column={table.getColumn("owner")}
             title="owner"
-            options={owners}
+            options={[]}
           />
         )}
         {isFiltered && (

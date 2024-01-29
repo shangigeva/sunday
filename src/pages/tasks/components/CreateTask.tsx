@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { TaskInput, User } from "@/lib/types";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
+import { labels, priorities, projects, statuses } from "../data/data";
 
 interface Status {
   value: string;
@@ -37,28 +38,28 @@ export type CreateTasks = {
   setNewTask: React.Dispatch<React.SetStateAction<TaskInput>>;
 };
 
-const statuses: Status[] = [
-  { value: "backlog", label: "Backlog" },
-  { value: "todo", label: "Todo" },
-  { value: "in progress", label: "In Progress" },
-];
+// const statuses: Status[] = [
+//   { value: "backlog", label: "Backlog" },
+//   { value: "todo", label: "Todo" },
+//   { value: "in progress", label: "In Progress" },
+// ];
 
-const projects: Project[] = [
-  { value: "Malam Team", label: "Malam Team" },
-  { value: "IBM", label: "IBM" },
-  { value: "Amazon", label: "Amazon" },
-  { value: "Payoneer", label: "Payoneer" },
-];
-const priorities: Priority[] = [
-  { value: "low", label: "Low" },
-  { value: "medium", label: "Medium" },
-  { value: "high", label: "High" },
-];
-const labels: Label[] = [
-  { value: "bug", label: "Bug" },
-  { value: "feature", label: "Feature" },
-  { value: "documentation", label: "Documentation" },
-];
+// const projects: Project[] = [
+//   { value: "Malam Team", label: "Malam Team" },
+//   { value: "IBM", label: "IBM" },
+//   { value: "Amazon", label: "Amazon" },
+//   { value: "Payoneer", label: "Payoneer" },
+// ];
+// const priorities: Priority[] = [
+//   { value: "low", label: "Low" },
+//   { value: "medium", label: "Medium" },
+//   { value: "high", label: "High" },
+// ];
+// const labels: Label[] = [
+//   { value: "bug", label: "Bug" },
+//   { value: "feature", label: "Feature" },
+//   { value: "documentation", label: "Documentation" },
+// ];
 // START
 const CreateTask: React.FC<{
   isModalOpen: boolean;
@@ -78,7 +79,7 @@ const CreateTask: React.FC<{
     owner: "",
     project: "",
   });
-  const navigate = useNavigate();
+
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -241,7 +242,7 @@ const CreateTask: React.FC<{
                   </option>
                 ))}
               </select>{" "}
-              <label className="block mt-2">Owner:</label>
+              <label className="block mt-2">Assign to:</label>
               <select
                 id="owner"
                 value={newTask.owner}

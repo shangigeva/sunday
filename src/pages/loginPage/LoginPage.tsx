@@ -101,7 +101,7 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
             </Label>
             <Input
               id="email"
-              placeholder="name@example.com"
+              placeholder="mail@mail.com"
               type="email"
               autoCapitalize="none"
               autoComplete="email"
@@ -116,7 +116,7 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
             </Label>
             <Input
               id="Password"
-              placeholder="Password"
+              placeholder="password"
               type="password"
               autoCapitalize="none"
               autoComplete="password"

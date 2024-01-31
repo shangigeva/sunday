@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import CreateTask from "../tasks/components/CreateTask";
 import { columns } from "../tasks/components/columns";
 import { DataTable } from "../tasks/components/data-table";
-import { TaskInput } from "@/lib/types";
+import { CreateTasks, TaskInput } from "@/lib/types";
 
 const MyTasks: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -38,12 +38,12 @@ const MyTasks: React.FC = () => {
     };
     getTasks();
   }, []);
-  // const createTaskProps: CreateTasks = {
-  //   isModalOpen,
-  //   closeModal,
-  //   newTask,
-  //   setNewTask,
-  // };
+  const createTaskProps: CreateTasks = {
+    isModalOpen,
+    closeModal,
+    newTask,
+    setNewTask,
+  };
 
   return (
     <>
@@ -76,7 +76,7 @@ const MyTasks: React.FC = () => {
         </div>
         <DataTable data={tasks} columns={columns} />
         <Button onClick={openModal}>Create New Task</Button>
-        {/* {isModalOpen && <CreateTask {...createTaskProps} />} */}
+        {isModalOpen && <CreateTask {...createTaskProps} />}
       </div>
     </>
   );

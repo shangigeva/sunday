@@ -43,3 +43,30 @@ export type EditUsers = {
   setEditUser: React.Dispatch<React.SetStateAction<User>>;
   userId: string;
 };
+export type IJWTPayload = {
+  _id: string;
+  email: string;
+  isAdmin: boolean;
+};
+export type Link = {
+  to: string;
+  children: string;
+};
+export type IUser = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  isAdmin?: boolean;
+  createdAt?: Date;
+  _id?: string;
+  failedLoginAttempts: number;
+  lastFailedLogin: Date;
+};
+export type CreateTasks = {
+  isModalOpen: boolean;
+  closeModal: () => void;
+  newTask: TaskInput;
+  setNewTask: React.Dispatch<React.SetStateAction<TaskInput>>;
+};

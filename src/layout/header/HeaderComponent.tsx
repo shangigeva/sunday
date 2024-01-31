@@ -7,18 +7,7 @@ import Links from "./Links";
 import axios from "axios";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import ROUTES from "@/Routes/ROUTES";
-type IUser = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  password: string;
-  isAdmin?: boolean;
-  createdAt?: Date;
-  _id?: string;
-  failedLoginAttempts: number;
-  lastFailedLogin: Date;
-};
+import { IUser } from "@/lib/types";
 
 const HeaderComponent = () => {
   const navigate = useNavigate();

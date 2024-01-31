@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
-import CreateTask, { CreateTasks } from "../tasks/components/CreateTask";
+import CreateTask from "../tasks/components/CreateTask";
 import { columns } from "../tasks/components/columns";
 import { DataTable } from "../tasks/components/data-table";
 import { TaskInput } from "@/lib/types";

@@ -3,16 +3,13 @@ import { jwtDecode } from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store/authSlice";
 import { getToken } from "@/service/storageService";
+import { IJWTPayload } from "@/lib/types";
 export interface UserData {
   payload: IJWTPayload;
   iat: number;
   exp: number;
 }
-type IJWTPayload = {
-  _id: string;
-  email: string;
-  isAdmin: boolean;
-};
+
 const useAutoLogin = () => {
   const dispatch = useDispatch();
 

@@ -31,12 +31,6 @@ export interface createTaskProps {
   newTask: TaskInput;
   setNewTask: React.Dispatch<React.SetStateAction<TaskInput>>;
 }
-export type CreateTasks = {
-  isModalOpen: boolean;
-  closeModal: () => void;
-  newTask: TaskInput;
-  setNewTask: React.Dispatch<React.SetStateAction<TaskInput>>;
-};
 
 // START
 const CreateTask: React.FC<{

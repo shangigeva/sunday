@@ -1,10 +1,6 @@
 import ROUTES from "@/Routes/ROUTES";
+import { Link } from "@/lib/types";
 import React from "react";
-
-type Link = {
-  to: string;
-  children: string;
-};
 
 const myLinks: Link[] = [
   { to: ROUTES.HOME, children: "Home page" },

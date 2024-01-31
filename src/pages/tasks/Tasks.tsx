@@ -3,8 +3,8 @@ import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "./components/data-table";
 import { columns } from "./components/columns";
-import CreateTask, { CreateTasks } from "./components/CreateTask";
-import { TaskInput } from "@/lib/types";
+import CreateTask from "./components/CreateTask";
+import { CreateTasks, TaskInput } from "@/lib/types";
 import { Task } from "./data/schema";
 
 const Tasks: React.FC = () => {

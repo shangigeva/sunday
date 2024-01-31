@@ -17,6 +17,7 @@ const myLinks: Link[] = [
 const isAdminHeader: Link[] = [
   { to: ROUTES.TASKS, children: "Tasks" },
   { to: ROUTES.USERSLIST, children: "Users List" },
+  { to: ROUTES.MYTASKS, children: "My Tasks" },
   { to: ROUTES.ABOUT, children: "About" },
 ];
 // no user

@@ -26,6 +26,9 @@ import {
 
 import { DataTablePagination } from "../components/data-table-pagination";
 import { DataTableToolbar } from "../components/data-table-toolbar";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { User } from "@/lib/types";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -43,6 +46,7 @@ export function DataTable<TData, TValue>({
     []
   );
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [users, setUsers] = React.useState<User[]>([]);
 
   const table = useReactTable({
     data,
@@ -65,10 +69,29 @@ export function DataTable<TData, TValue>({
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
+  const getUsers = () => {
+    axios
+      .get("/users/allusers")
+      .then(({ data }) => {
+        if (Array.isArray(data)) {
+          setUsers(data);
+        } else {
+          console.error("Unexpected response structure:", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+        toast.error("Failed to fetch users. Please try again later.");
+      });
+  };
+
+  React.useEffect(() => {
+    getUsers();
+  }, []);
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar table={table} users={users} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>

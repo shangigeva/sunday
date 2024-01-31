@@ -51,7 +51,7 @@ const FooterComponent = () => {
         </div>
         <div>
           <img
-            src="../../assets/images/sundayLogo.png"
+            src="../../assets/images/logo.jpg"
             alt="Sunday Logo"
             style={{ width: "90px", height: "40px" }}
           ></img>

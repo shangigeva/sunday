@@ -124,7 +124,7 @@ const HeaderComponent = () => {
         </div>
         <a className="btn btn-ghost text-xl ">
           <img
-            src="../../assets/images/sundayLogo.png"
+            src="../../assets/images/logo.jpg"
             alt="Sunday Logo"
             style={{ width: "90px", height: "40px" }}
           ></img>

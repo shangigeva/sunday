@@ -202,9 +202,9 @@ export function RegisterPage({ className, ...props }: UserAuthFormProps) {
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
-          <Icons.gitHub className="mr-2 h-4 w-4" />
+          <Icons.google className="mr-2 h-4 w-4" />
         )}{" "}
-        Github
+        Google
       </Button>
     </div>
   );

@@ -16,6 +16,7 @@ const MyTasks: React.FC = () => {
     label: "",
     subtitle: "",
     owner: "",
+    project: "",
   });
 
   const openModal = () => {
@@ -29,7 +30,7 @@ const MyTasks: React.FC = () => {
   useEffect(() => {
     const getTasks = async () => {
       try {
-        const { data } = await axios.get("/tasks");
+        const { data } = await axios.get("/tasks/mytasks");
         setTasks(data);
       } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -37,12 +38,12 @@ const MyTasks: React.FC = () => {
     };
     getTasks();
   }, []);
-  const createTaskProps: CreateTasks = {
-    isModalOpen,
-    closeModal,
-    newTask,
-    setNewTask,
-  };
+  // const createTaskProps: CreateTasks = {
+  //   isModalOpen,
+  //   closeModal,
+  //   newTask,
+  //   setNewTask,
+  // };
 
   return (
     <>
@@ -75,7 +76,7 @@ const MyTasks: React.FC = () => {
         </div>
         <DataTable data={tasks} columns={columns} />
         <Button onClick={openModal}>Create New Task</Button>
-        {isModalOpen && <CreateTask {...createTaskProps} />}
+        {/* {isModalOpen && <CreateTask {...createTaskProps} />} */}
       </div>
     </>
   );

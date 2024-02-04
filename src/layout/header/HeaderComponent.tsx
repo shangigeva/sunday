@@ -15,7 +15,6 @@ const HeaderComponent = () => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState<IUser | undefined>(undefined);
-
   const loggedIn: boolean = useSelector(
     (bigPie: RootStateType) => bigPie.auth.loggedIn
   );
@@ -109,13 +108,29 @@ const HeaderComponent = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl ">
-          <img
-            src="../../assets/images/logo.jpg"
-            alt="Sunday Logo"
-            style={{ width: "90px", height: "40px" }}
-          ></img>
-        </a>{" "}
+        {loggedIn ? (
+          <a
+            className="btn btn-ghost text-xl "
+            onClick={() => navigate(ROUTES.TASKS)}
+          >
+            <img
+              src="../../assets/images/logo.jpg"
+              alt="Sunday Logo"
+              style={{ width: "90px", height: "40px" }}
+            ></img>
+          </a>
+        ) : (
+          <a
+            className="btn btn-ghost text-xl "
+            onClick={() => navigate(ROUTES.HOME)}
+          >
+            <img
+              src="../../assets/images/logo.jpg"
+              alt="Sunday Logo"
+              style={{ width: "90px", height: "40px" }}
+            ></img>
+          </a>
+        )}
       </div>
       <div>
         <div className="navbar-center hidden lg:flex">

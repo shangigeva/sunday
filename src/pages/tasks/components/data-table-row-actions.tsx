@@ -127,14 +127,14 @@ export function DataTableRowActions<TData>({
           <ModeEditIcon className="mr-2 h-5 w-5" />
           Edit
         </DropdownMenuItem>
-        <DropdownMenuItem className="flex items-center">
+        {/* <DropdownMenuItem className="flex items-center">
           <ContentCopyIcon className="mr-2 h-5 w-5" />
           Make a copy
         </DropdownMenuItem>
         <DropdownMenuItem className="flex items-center">
           <FavoriteIcon className="mr-2 h-5 w-5" />
           Favorite
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         {userData?.payload.isAdmin && (
           <DropdownMenuItem
             className="flex items-center"

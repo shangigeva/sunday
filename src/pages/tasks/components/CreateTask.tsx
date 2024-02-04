@@ -124,6 +124,7 @@ const CreateTask: React.FC<{
         progress: undefined,
       });
     }
+    window.location.reload();
   };
 
   return (

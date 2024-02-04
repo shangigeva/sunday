@@ -97,6 +97,7 @@ const EditUser = ({
       });
       console.error("Error editing user:", error);
     }
+    window.location.reload();
   };
   console.log(editUser);
 

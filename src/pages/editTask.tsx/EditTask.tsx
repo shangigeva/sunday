@@ -150,6 +150,7 @@ const EditTask: React.FC<{
         progress: undefined,
       });
     }
+    window.location.reload();
   };
 
   return (

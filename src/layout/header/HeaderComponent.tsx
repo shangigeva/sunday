@@ -51,8 +51,6 @@ const HeaderComponent = () => {
       .toUpperCase()}`;
   };
 
-  // console.log(isAdmin);
-
   // logout
   const handleMenu = (
     item: string,
@@ -68,7 +66,7 @@ const HeaderComponent = () => {
     }
   };
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-inherit">
       <div className="navbar-start">
         <div className="dropdown">
           {" "}
@@ -122,75 +120,11 @@ const HeaderComponent = () => {
       <div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 ">
-            {/* <li> */}
-            {/* <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details> */}
-            {/* </li> */}
-            {/* <li>
-              <a href="login">Item 3</a>
-            </li> */}
             <Links />
           </ul>
         </div>
-        <div>
-          {/* {loggedIn
-            ? loggedInLinks.map((link, index) => (
-                <a
-                  key={index}
-                  className={`${
-                    link.to === location.pathname
-                      ? "bg-primary text-secondary"
-                      : null
-                  }`}
-                  onClick={() => navigate(link.to)}
-                >
-                  {link.children}
-                </a>
-              ))
-            : null} */}
-        </div>
+        <div></div>
       </div>
-
-      {/* <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          {myLinks.map((link, index) => (
-            <li key={index}>
-              <a
-                className={`${
-                  link.to === location.pathname
-                    ? "bg-primary text-secondary"
-                    : null
-                }`}
-                onClick={() => navigate(link.to)}
-              >
-                {link.children}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div> */}
       <div className="navbar-end">
         <div className="flex items-center relative">
           {loggedIn && (

@@ -10,18 +10,12 @@ import { useNavigate } from "react-router-dom";
 import { RegisterValidation } from "@/validation/registerValidation";
 import axios from "axios";
 import Requirements from "./ui/Requirements";
+import { UserRegister } from "@/lib/types";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
-type User = {
-  firstName: string;
-  lastName: string;
-  phone: string;
-  email: string;
-  password: string;
-};
 export function RegisterPage({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [register, setRegister] = React.useState<User>({
+  const [register, setRegister] = React.useState<UserRegister>({
     firstName: "",
     lastName: "",
     phone: "",

@@ -8,23 +8,6 @@ import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
 import { labels, priorities, projects, statuses } from "../data/data";
 
-interface Status {
-  value: string;
-  label: string;
-}
-interface Label {
-  value: string;
-  label: string;
-}
-interface Priority {
-  value: string;
-  label: string;
-}
-interface Project {
-  value: string;
-  label: string;
-}
-
 export interface createTaskProps {
   isModalOpen: boolean;
   closeModal: () => void;

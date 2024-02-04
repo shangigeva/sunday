@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { isAdminHeader, loggedInLinks, loggedOutLinks } from "../myLinks";
-import NavLinkComponent from "./NavLinkComponent";
+import { isAdminHeader, loggedInLinks, loggedOutLinks } from "../myLinksHeader";
 import { RootStateType } from "@/store/bigPie";
 import { Link } from "react-router-dom";
 
@@ -21,9 +20,7 @@ const Links: React.FC = () => {
         {loggedIn && !userData?.payload.isAdmin
           ? loggedInLinks.map((myItem, index) => (
               <li key={index}>
-                <NavLinkComponent to={myItem.to}>
-                  {myItem.children}
-                </NavLinkComponent>
+                <Link to={myItem.to}>{myItem.children}</Link>
               </li>
             ))
           : null}
@@ -31,9 +28,7 @@ const Links: React.FC = () => {
         {loggedIn && userData?.payload.isAdmin
           ? isAdminHeader.map((myItem, index) => (
               <li key={index}>
-                <NavLinkComponent to={myItem.to}>
-                  {myItem.children}
-                </NavLinkComponent>
+                <Link to={myItem.to}>{myItem.children}</Link>
               </li>
             ))
           : null}

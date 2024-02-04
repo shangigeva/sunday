@@ -132,7 +132,7 @@ const UsersPage = () => {
     closeModal,
     editUser,
     setEditUser,
-    userId: userData?.payload._id || "",
+    userId: editUser._id,
   };
   return (
     <div>

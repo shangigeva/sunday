@@ -21,6 +21,8 @@ const EditUser = ({
   closeModal: () => void;
   userId: string;
 }) => {
+  console.log(userId);
+
   console.log("EditUser component rendered");
   const [validationErrors, setValidationErrors] = useState<
     Record<string, string>
@@ -53,7 +55,7 @@ const EditUser = ({
     axios
       .get(`/users/${userId}`)
       .then(({ data }) => {
-        setEditUser(data);
+        setEditUser(data.user);
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
@@ -96,6 +98,7 @@ const EditUser = ({
       console.error("Error editing user:", error);
     }
   };
+  console.log(editUser);
 
   return (
     <>

@@ -18,12 +18,12 @@ const LinksFooter: React.FC = () => {
   console.log(loggedIn);
 
   return (
-    <div className="navbar-center  lg:flex">
-      <ul className="menu menu-horizontal px-1">
+    <div className="navbar-center">
+      <ul className="menu menu-horizontal px-1 flex-col">
         {/* regular user */}
         {loggedIn && !userData?.payload.isAdmin
           ? loggedInLinksFooter.map((myItem, index) => (
-              <li key={index}>
+              <li key={index} className="flex">
                 <Link to={myItem.to}>{myItem.children}</Link>
               </li>
             ))
@@ -31,7 +31,7 @@ const LinksFooter: React.FC = () => {
         {/* admin user */}
         {loggedIn && userData?.payload.isAdmin
           ? isAdminFooter.map((myItem, index) => (
-              <li key={index}>
+              <li key={index} className="flex">
                 <Link to={myItem.to}>{myItem.children}</Link>
               </li>
             ))
@@ -39,7 +39,7 @@ const LinksFooter: React.FC = () => {
         {/* loggedOut */}
         {!loggedIn &&
           loggedOutLinksFooter.map((myItem, index) => (
-            <li key={index}>
+            <li key={index} className="flex">
               <Link to={myItem.to}>{myItem.children}</Link>
             </li>
           ))}
@@ -47,4 +47,5 @@ const LinksFooter: React.FC = () => {
     </div>
   );
 };
+
 export default LinksFooter;

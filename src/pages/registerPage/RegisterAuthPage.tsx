@@ -1,8 +1,4 @@
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import React from "react";
 import { RegisterPage } from "./RegisterPage";
-import Requirements from "./ui/Requirements";
 
 const ResiterAuthPage = () => {
   return (

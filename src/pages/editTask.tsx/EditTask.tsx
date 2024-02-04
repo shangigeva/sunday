@@ -2,48 +2,16 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { owners } from "../tasks/data/data";
+import {
+  labels,
+  owners,
+  priorities,
+  projects,
+  statuses,
+} from "../tasks/data/data";
 import { TaskInput, User } from "@/lib/types";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
-
-interface Status {
-  value: string;
-  label: string;
-}
-interface Label {
-  value: string;
-  label: string;
-}
-interface Priority {
-  value: string;
-  label: string;
-}
-
-const projects: Status[] = [
-  { value: "Malam Team", label: "Malam Team" },
-  { value: "IBM", label: "IBM" },
-  { value: "Amazon", label: "Amazon" },
-  { value: "Payoneer", label: "Payoneer" },
-];
-const statuses: Status[] = [
-  { value: "backlog", label: "Backlog" },
-  { value: "todo", label: "Todo" },
-  { value: "in progress", label: "In Progress" },
-  { value: "done", label: "Done" },
-];
-
-const priorities: Priority[] = [
-  { value: "low", label: "Low" },
-  { value: "medium", label: "Medium" },
-  { value: "high", label: "High" },
-];
-
-const labels: Label[] = [
-  { value: "bug", label: "Bug" },
-  { value: "feature", label: "Feature" },
-  { value: "documentation", label: "Documentation" },
-];
 
 const EditTask: React.FC<{
   isModalOpen: boolean;

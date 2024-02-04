@@ -5,6 +5,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "@/Routes/ROUTES";
+import LinksFooter from "./LinksFooter";
 
 const FooterComponent = () => {
   const navigate = useNavigate();
@@ -28,27 +29,7 @@ const FooterComponent = () => {
             <span>Ness-Zionna</span>
           </p>
         </div>
-        <div>
-          <header className="text-lg font-semibold mb-2">Company</header>
-          <a
-            onClick={() => navigate(ROUTES.TASKS)}
-            className="block text-sm text-gray-700 mb-1 hover:underline"
-          >
-            Home
-          </a>
-          <a
-            onClick={() => navigate(ROUTES.ABOUT)}
-            className="block text-sm text-gray-700 mb-1 hover:underline"
-          >
-            About us
-          </a>
-          <button
-            onClick={() => navigate(ROUTES.TASKS)}
-            className="block text-sm text-gray-700 mb-1 hover:underline"
-          >
-            My tasks
-          </button>
-        </div>
+        <LinksFooter />
         <div>
           <img
             src="../../assets/images/logo.jpg"

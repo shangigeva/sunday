@@ -129,17 +129,17 @@ const CreateTask: React.FC<{
   return (
     <div>
       {isModalOpen && (
-        <div className="fixed inset-0 z-10 overflow-y-auto">
-          <div className="flex items-center justify-center min-h-screen">
+        <div className="fixed inset-0 z-10 overflow-y-auto ">
+          <div className="flex items-center justify-center min-h-screen ">
             <div className="fixed inset-0 bg-black opacity-50"></div>
-            <div className="bg-white p-4 rounded shadow-md w-96 relative z-10">
+            <div className="bg-white p-4 rounded shadow-md w-96 relative z-10 ">
               <h1 className="text-2xl font-bold mb-4">Create New Task</h1>
               <label className="block mt-2">Project:</label>
               <select
                 id="project"
                 value={newTask.project}
                 onChange={handleInputChange}
-                className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
+                className=" w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
               >
                 <option disabled value={""}>
                   please choose project
@@ -233,13 +233,11 @@ const CreateTask: React.FC<{
               <div className="flex justify-end mt-4">
                 <Button
                   onClick={handleUpdateChangesClick}
-                  className="bg-blue-500 text-white mr-2"
+                  className="bg-blue-500 mr-2"
                 >
                   Save
                 </Button>
-                <Button onClick={closeModal} className="border border-gray-300">
-                  Cancel
-                </Button>
+                <Button onClick={closeModal}>Cancel</Button>
               </div>
             </div>
           </div>

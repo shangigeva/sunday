@@ -206,7 +206,7 @@ const CreateTask: React.FC<{
                 className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
               >
                 <option disabled value={""}>
-                  Please choose owner
+                  Please choose assignment
                 </option>
                 {users.map((user: User) => (
                   <option key={user._id} value={user._id}>

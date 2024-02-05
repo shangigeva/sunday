@@ -65,7 +65,7 @@ const HeaderComponent = () => {
     }
   };
   return (
-    <div className="navbar bg-inherit">
+    <div className="navbar bg-[#f0aa780e]">
       <div className="navbar-start">
         <div className="dropdown">
           {" "}

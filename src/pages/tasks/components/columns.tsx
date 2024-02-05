@@ -6,7 +6,6 @@ import { Task } from "../data/schema";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
 import UserSelectComponent from "./UserSelect";
 
 export const columns: ColumnDef<Task>[] = [

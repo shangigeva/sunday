@@ -26,8 +26,9 @@ const TaskDetailsPage = () => {
     return <div className="loading">Loading...</div>;
   }
   return (
-    <div className="task-details-page min-h-screen p-8">
-      <div className="bg-white p-6 rounded-md shadow-md max-w-2xl mx-auto">
+    <div className="task-details-page min-h-screen p-8 relative overflow-hidden flex flex-col">
+      <div className="bg-wave h-full w-full absolute top-0 left-0" />
+      <div className="flex-1 p-6 rounded-md max-w-2xl mx-auto relative z-10">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">Task Details</h1>
         {taskDetails ? (
           <div className="details space-y-4">
@@ -70,11 +71,24 @@ const TaskDetailsPage = () => {
         <div className="mt-8">
           <a
             onClick={() => navigate(ROUTES.TASKS)}
-            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+            className="bg-[#8ABBF6] text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
           >
             Back to Tasks
           </a>
         </div>
+      </div>{" "}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg
+          className="wave-svg"
+          viewBox="0 0 1440 320"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="#59D7D6"
+            fillOpacity="1"
+            d="M0,96L60,74.7C120,53,240,11,360,37.3C480,64,600,160,720,186.7C840,213,960,171,1080,149.3C1200,128,1320,128,1380,128L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+          ></path>
+        </svg>
       </div>
     </div>
   );

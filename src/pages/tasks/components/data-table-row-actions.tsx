@@ -74,7 +74,6 @@ export function DataTableRowActions<TData>({
               draggable: true,
               progress: undefined,
             });
-            window.location.reload();
           } else {
             console.error("Error deleting task:", response.statusText);
           }
@@ -94,6 +93,7 @@ export function DataTableRowActions<TData>({
     } else {
       console.log("User does not have permission to delete tasks");
     }
+    window.location.reload();
   };
 
   const editTaskProps: EditTasks = {
@@ -128,13 +128,13 @@ export function DataTableRowActions<TData>({
           Edit
         </DropdownMenuItem>
         {/* <DropdownMenuItem className="flex items-center">
-          <ContentCopyIcon className="mr-2 h-5 w-5" />
-          Make a copy
-        </DropdownMenuItem>
-        <DropdownMenuItem className="flex items-center">
-          <FavoriteIcon className="mr-2 h-5 w-5" />
-          Favorite
-        </DropdownMenuItem> */}
+            <ContentCopyIcon className="mr-2 h-5 w-5" />
+            Make a copy
+          </DropdownMenuItem>
+          <DropdownMenuItem className="flex items-center">
+            <FavoriteIcon className="mr-2 h-5 w-5" />
+            Favorite
+          </DropdownMenuItem> */}
         {userData?.payload.isAdmin && (
           <DropdownMenuItem
             className="flex items-center"

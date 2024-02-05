@@ -35,7 +35,7 @@ const ResiterAuthPage = () => {
                 Sign up{" "}
               </h1>
               <p className="text-sm text-muted-foreground">
-                Enter your email and password below to create to your account
+                Enter your details below to create a new account
               </p>
             </div>
             <RegisterPage />

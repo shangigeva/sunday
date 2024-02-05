@@ -72,13 +72,15 @@ const Tasks: React.FC = () => {
           <div>
             <h2 className="text-2xl font-bold tracking-tight">Welcome back!</h2>
             <p className="text-muted-foreground">
-              Here&apos;s a list of your tasks
+              Here&apos;s a list of your team tasks
             </p>
           </div>
           <div className="flex items-center space-x-2"></div>
         </div>
         <DataTable data={tasks} columns={columns} />
-        <Button onClick={openModal}>Create New Task</Button>
+        <Button onClick={openModal} className="bg-[#8ABBF6]">
+          Create New Task
+        </Button>
         {isModalOpen && <CreateTask {...createTaskProps} />}
       </div>
     </>

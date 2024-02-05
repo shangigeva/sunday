@@ -47,21 +47,32 @@ export const columns: ColumnDef<Task>[] = [
       </div>
     ),
   },
+
   {
     accessorKey: "createTime",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Create Time" />
     ),
     cell: ({ row }) => {
+      const createTime: Date = new Date(row.getValue("createTime") as string);
+      const formattedDate = createTime.toLocaleDateString("en-US");
+      const formattedTime = createTime.toLocaleTimeString("en-US", {
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+
       return (
-        <div className="w-[200px]">
-          <span className="max-w-[600px] truncate font-medium">
-            {row.getValue("createTime")}
+        <div className="w-36">
+          <span className="max-w-48 truncate font-medium">
+            {formattedDate} {formattedTime}
           </span>
         </div>
       );
     },
   },
+
   {
     accessorKey: "project",
     header: ({ column }) => (

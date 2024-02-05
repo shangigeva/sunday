@@ -174,7 +174,11 @@ export function RegisterPage({ className, ...props }: UserAuthFormProps) {
             ) : null}
             <Requirements passwordRef={passwordRef} />
           </div>
-          <Button disabled={isLoading} onClick={handleButtonSubmit}>
+          <Button
+            disabled={isLoading}
+            onClick={handleButtonSubmit}
+            className=" bg-[#8ABBF6]"
+          >
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}

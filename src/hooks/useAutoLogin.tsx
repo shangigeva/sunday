@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../store/authSlice";
 import { getToken } from "@/service/storageService";
 import { IJWTPayload } from "@/lib/types";
+import ROUTES from "@/Routes/ROUTES";
 export interface UserData {
   payload: IJWTPayload;
   iat: number;
@@ -32,6 +33,7 @@ const useAutoLogin = () => {
     } catch (err) {
       console.log("err from auto login", err);
       localStorage.clear();
+      window.location.href = ROUTES.HOME;
     }
   };
 };

@@ -1,45 +1,38 @@
-import { Metadata } from "next"
-import Image from "next/image"
-
-import { Button } from "@/registry/new-york/ui/button"
+// import { Metadata } from "next";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/new-york/ui/card"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/new-york/ui/tabs"
-import { CalendarDateRangePicker } from "@/app/examples/dashboard/components/date-range-picker"
-import { MainNav } from "@/app/examples/dashboard/components/main-nav"
-import { Overview } from "@/app/examples/dashboard/components/overview"
-import { RecentSales } from "@/app/examples/dashboard/components/recent-sales"
-import { Search } from "@/app/examples/dashboard/components/search"
-import TeamSwitcher from "@/app/examples/dashboard/components/team-switcher"
-import { UserNav } from "@/app/examples/dashboard/components/user-nav"
+} from "@/components/ui/card";
+import TeamSwitcher from "./components/team-switcher";
+import { UserNav } from "./components/user-nav";
+import { Search } from "./components/search";
+import { Overview } from "./components/overview";
+import { RecentSales } from "./components/recent-sales";
+import { MainNav } from "./components/main-nav";
+import { CalendarDateRangePicker } from "./components/date-range-picker";
+import { Button } from "@/components/ui/button";
 
-export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Example dashboard app built using the components.",
-}
+// export const metadata: Metadata = {
+//   title: "Dashboard",
+//   description: "Example dashboard app built using the components.",
+// };
 
 export default function DashboardPage() {
   return (
     <>
       <div className="md:hidden">
-        <Image
+        <img
           src="/examples/dashboard-light.png"
           width={1280}
           height={866}
           alt="Dashboard"
           className="block dark:hidden"
         />
-        <Image
+        <img
           src="/examples/dashboard-dark.png"
           width={1280}
           height={866}
@@ -209,5 +202,5 @@ export default function DashboardPage() {
         </div>
       </div>
     </>
-  )
+  );
 }

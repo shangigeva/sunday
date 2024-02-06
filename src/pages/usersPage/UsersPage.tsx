@@ -158,24 +158,83 @@ const UsersPage = () => {
                   <td>{user.lastName}</td>
                   <td>{user.phone}</td>
                   <td>{user.email}</td>
-                  <td>
-                    <button onClick={() => handleDeleteUser(user._id)}>
-                      <DeleteIcon />
-                    </button>
-                  </td>
+
+                  <label htmlFor={`delete_modal_${user._id}`} className="btn">
+                    <DeleteIcon />
+                  </label>
+                  <input
+                    type="checkbox"
+                    id={`delete_modal_${user._id}`}
+                    className="modal-toggle"
+                  />
+                  <div className="modal" role="dialog">
+                    <div className="modal-box">
+                      <p className="py-4">
+                        Are you sure you want to delete this user?
+                      </p>
+                      <div className="modal-action">
+                        <label
+                          htmlFor={`delete_modal_${user._id}`}
+                          className="btn"
+                        >
+                          NO
+                        </label>
+                        <label
+                          htmlFor={`delete_modal_${user._id}`}
+                          className="btn"
+                          onClick={() => handleDeleteUser(user._id)}
+                        >
+                          YES
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
                   <td>
                     {user.isAdmin ? (
-                      <BusinessCenterIcon />
+                      <label className="btn">
+                        <BusinessCenterIcon />
+                      </label>
                     ) : (
-                      <button onClick={() => handleUpdateUser(user._id)}>
-                        <UpgradeIcon />
-                      </button>
+                      <div>
+                        <label className="btn">
+                          <UpgradeIcon />
+                        </label>
+                        <input
+                          type="checkbox"
+                          id={`upgrade_modal_${user._id}`}
+                          className="modal-toggle"
+                        />
+                        <div className="modal" role="dialog">
+                          <div className="modal-box">
+                            <p className="py-4">
+                              Are you sure you want to upgrade this user?
+                            </p>
+                            <div className="modal-action">
+                              <label
+                                htmlFor={`upgrade_modal_${user._id}`}
+                                className="btn"
+                              >
+                                NO
+                              </label>
+                              <label
+                                htmlFor={`upgrade_modal_${user._id}`}
+                                className="btn"
+                                onClick={() => handleUpdateUser(user._id)}
+                              >
+                                YES
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     )}
                   </td>
+
                   <td>
-                    <button onClick={() => openModal(user)}>
+                    <label className="btn" onClick={() => openModal(user)}>
                       <EditIcon />
-                    </button>
+                    </label>
                   </td>
                 </tr>
               ))}

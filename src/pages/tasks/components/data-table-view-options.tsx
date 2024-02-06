@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { CreateTasks, TaskInput } from "@/lib/types";
 import CreateTask from "./CreateTask";
-
+import AddIcon from "@mui/icons-material/Add";
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
 }
@@ -52,12 +52,38 @@ export function DataTableViewOptions<TData>({
   return (
     <>
       {" "}
-      <Button
-        className="ml-auto hidden h-8 lg:flex mr-4 bg-[#8ABBF6]"
-        onClick={openModal}
-      >
+      <Button className=" h-8 lg:flex mr-4 bg-[#8ABBF6]" onClick={openModal}>
         Create New Task
       </Button>
+      <div>
+        <label htmlFor="my_modal_6" className=" btn lg:flex mr-4">
+          <AddIcon />{" "}
+        </label>
+        <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+        <div className="modal" role="dialog">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Add project</h3>
+            <input
+              type="text"
+              className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
+            />
+            <div className="modal-action flex justify-end mt-4">
+              <label
+                htmlFor="my_modal_6"
+                className="btn bg-blue-500 text-white mr-2 border-blue-500"
+              >
+                Save
+              </label>
+              <label
+                htmlFor="my_modal_6"
+                className="btn bg-black text-white mr-2 border-black"
+              >
+                Cancel
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button

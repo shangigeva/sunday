@@ -7,7 +7,7 @@ import axios from "axios";
 import { Provider } from "react-redux";
 import store from "./store/bigPie.ts";
 import { getToken } from "./service/storageService.ts";
-axios.defaults.baseURL = "http://localhost:9090/api/v1";
+axios.defaults.baseURL = "http://192.168.50.243:9090/api/v1";
 axios.interceptors.request.use((config) => {
   const token = getToken();
 

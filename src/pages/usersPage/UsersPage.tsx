@@ -135,11 +135,11 @@ const UsersPage = () => {
     userId: editUser._id,
   };
   return (
-    <div>
+    <div className="container mx-auto">
       <h1 className="text-xl font-bold mb-4 text-center">Users</h1>
       <div className="overflow-x-auto">
         {users.length > 0 ? (
-          <table className="table">
+          <table className="table w-full">
             <thead>
               <tr>
                 <th>first name</th>
@@ -158,37 +158,39 @@ const UsersPage = () => {
                   <td>{user.lastName}</td>
                   <td>{user.phone}</td>
                   <td>{user.email}</td>
-
-                  <label htmlFor={`delete_modal_${user._id}`} className="btn">
-                    <DeleteIcon />
-                  </label>
-                  <input
-                    type="checkbox"
-                    id={`delete_modal_${user._id}`}
-                    className="modal-toggle"
-                  />
-                  <div className="modal" role="dialog">
-                    <div className="modal-box">
-                      <p className="py-4">
-                        Are you sure you want to delete this user?
-                      </p>
-                      <div className="modal-action">
-                        <label
-                          htmlFor={`delete_modal_${user._id}`}
-                          className="btn"
-                        >
-                          NO
-                        </label>
-                        <label
-                          htmlFor={`delete_modal_${user._id}`}
-                          className="btn"
-                          onClick={() => handleDeleteUser(user._id)}
-                        >
-                          YES
-                        </label>
+                  <td>
+                    {" "}
+                    <label htmlFor={`delete_modal_${user._id}`} className="btn">
+                      <DeleteIcon />
+                    </label>
+                    <input
+                      type="checkbox"
+                      id={`delete_modal_${user._id}`}
+                      className="modal-toggle"
+                    />
+                    <div className="modal" role="dialog">
+                      <div className="modal-box">
+                        <p className="py-4">
+                          Are you sure you want to delete this user?
+                        </p>
+                        <div className="modal-action">
+                          <label
+                            htmlFor={`delete_modal_${user._id}`}
+                            className="btn"
+                          >
+                            NO
+                          </label>
+                          <label
+                            htmlFor={`delete_modal_${user._id}`}
+                            className="btn"
+                            onClick={() => handleDeleteUser(user._id)}
+                          >
+                            YES
+                          </label>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </td>
 
                   <td>
                     {user.isAdmin ? (

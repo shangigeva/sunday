@@ -29,7 +29,63 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
   const navigate = useNavigate();
   // const dispatch = useDispatch();
   const autoLogin = useAutoLogin();
-  const handleButtonSubmit = async () => {
+  // const handleButtonSubmit = async () => {
+  //   try {
+  //     const joiResponse = loginValidation({
+  //       email: emailValue,
+  //       password: passwordValue,
+  //     });
+  //     setErrorsState(joiResponse);
+  //     if (joiResponse) return;
+  //     let { data } = await axios.post("/users/login", {
+  //       email: emailValue,
+  //       password: passwordValue,
+  //     });
+  //     // const token = data.token;
+
+  //     storeToken(data.jwt, rememberMe);
+  //     console.log(rememberMe);
+  //     console.log(data.jwt);
+
+  //     toast.success("You logged in successfully", {
+  //       position: "top-center",
+  //       autoClose: 1000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //     });
+  //     console.log("Successfully logged in:", data);
+  //     autoLogin(true);
+  //     navigate(ROUTES.TASKS);
+  //   } catch (err) {
+  //     toast.error("plese try again", {
+  //       position: "top-center",
+  //       autoClose: 2000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //     });
+  //   }
+  // };
+  const handleEmailInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailValue(e.target.value);
+  };
+  const handlePasswordInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setPasswordValue(e.target.value);
+  };
+  const handleRememberMeChange = () => {
+    setRememberMe(!rememberMe);
+  };
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  async function onSubmit(event: React.SyntheticEvent) {
+    event.preventDefault();
+    setIsLoading(true);
     try {
       const joiResponse = loginValidation({
         email: emailValue,
@@ -69,27 +125,9 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
         draggable: true,
         progress: undefined,
       });
+    } finally {
+      setTimeout(() => setIsLoading(false), 1000);
     }
-  };
-  const handleEmailInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmailValue(e.target.value);
-  };
-  const handlePasswordInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setPasswordValue(e.target.value);
-  };
-  const handleRememberMeChange = () => {
-    setRememberMe(!rememberMe);
-  };
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  async function onSubmit(event: React.SyntheticEvent) {
-    event.preventDefault();
-    setIsLoading(true);
-    console.log("Attempting login...");
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
   }
   return (
     <div className={cn("grid gap-6", className)} {...props}>
@@ -126,7 +164,7 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
             />
           </div>
           <Button
-            onClick={handleButtonSubmit}
+            // onClick={handleButtonSubmit}
             disabled={isLoading}
             className=" bg-[#8ABBF6]"
           >

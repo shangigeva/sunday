@@ -3,27 +3,26 @@ import Router from "./Routes/Router";
 import LayoutComponent from "./layout/LayoutComponent";
 import { useEffect, useState } from "react";
 import useAutoLogin from "./hooks/useAutoLogin";
+import { LinearProgress } from "@mui/material";
 
 const App = () => {
-  // const [doneAuth, setDoneAuth] = useState(false);
+  const [doneAuth, setDoneAuth] = useState(false);
   const autoLogin = useAutoLogin();
   useEffect(() => {
-    console.log("trying to catch user");
-
     (async () => {
       try {
         await autoLogin();
       } catch (err) {
         console.log(err);
       } finally {
-        // setDoneAuth(true);
+        setDoneAuth(true);
       }
     })();
   }, []);
   return (
     <LayoutComponent>
       <ToastContainer />
-      <Router />
+      {doneAuth ? <Router /> : <LinearProgress />}
     </LayoutComponent>
   );
 };

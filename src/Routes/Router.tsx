@@ -11,6 +11,7 @@ import TaskDetailsPage from "@/pages/taskDetails/TaskDetailsPage";
 import MyTasks from "@/pages/myTasksPage/MyTasksPage";
 import ProfilePage from "@/pages/profilePage/ProfilePage";
 import DashboardPage from "@/pages/dashboard/page";
+import AuthGuard from "@/Guard/AuthGuard";
 const Router = () => {
   return (
     <Routes>
@@ -22,7 +23,14 @@ const Router = () => {
       <Route path={ROUTES.USERSLIST} element={<UsersPage />} />
       <Route path={ROUTES.MYTASKS} element={<MyTasks />} />
       <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
-      <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
+      <Route
+        path={ROUTES.DASHBOARD}
+        element={
+          <AuthGuard>
+            <DashboardPage />
+          </AuthGuard>
+        }
+      />
       <Route path={`${ROUTES.TASKS}/:taskId`} element={<TaskDetailsPage />} />
 
       <Route path="*" element={<ErrorPage />} />

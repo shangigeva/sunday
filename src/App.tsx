@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import useAutoLogin from "./hooks/useAutoLogin";
 
 const App = () => {
-  const [doneAuth, setDoneAuth] = useState(false);
+  // const [doneAuth, setDoneAuth] = useState(false);
   const autoLogin = useAutoLogin();
   useEffect(() => {
     console.log("trying to catch user");
@@ -16,7 +16,7 @@ const App = () => {
       } catch (err) {
         console.log(err);
       } finally {
-        setDoneAuth(true);
+        // setDoneAuth(true);
       }
     })();
   }, []);

@@ -113,7 +113,7 @@ export function LoginPage({ className, ...props }: UserAuthFormProps) {
         progress: undefined,
       });
       console.log("Successfully logged in:", data);
-      autoLogin(true);
+      await autoLogin(true);
       navigate(ROUTES.TASKS);
     } catch (err) {
       toast.error("plese try again", {

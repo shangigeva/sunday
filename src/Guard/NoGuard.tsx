@@ -2,13 +2,13 @@ import ROUTES from "@/Routes/ROUTES";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-const AuthGuard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const NoGuard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const loggedIn: boolean = useSelector((bigPie: any) => bigPie.auth.loggedIn);
-  if (loggedIn) {
+  if (!loggedIn) {
     return children;
   } else {
-    return <Navigate to={ROUTES.LOGIN} replace={true} />;
+    return <Navigate to={ROUTES.TASKS} replace={true} />;
   }
 };
 
-export default AuthGuard;
+export default NoGuard;

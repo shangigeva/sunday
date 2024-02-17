@@ -12,17 +12,70 @@ import MyTasks from "@/pages/myTasksPage/MyTasksPage";
 import ProfilePage from "@/pages/profilePage/ProfilePage";
 import DashboardPage from "@/pages/dashboard/page";
 import AuthGuard from "@/Guard/AuthGuard";
+import AdminGuard from "@/Guard/AdminGuard";
+import NoGuard from "@/Guard/NoGuard";
 const Router = () => {
   return (
     <Routes>
-      <Route path={ROUTES.HOME} element={<HomePage />} />
-      <Route path={ROUTES.TASKS} element={<Tasks />} />
-      <Route path={ROUTES.LOGIN} element={<LoginAuthPage />} />
-      <Route path={ROUTES.REGISTER} element={<ResiterAuthPage />} />
+      <Route
+        path={ROUTES.HOME}
+        element={
+          <NoGuard>
+            <HomePage />
+          </NoGuard>
+        }
+      />
+      <Route
+        path={ROUTES.TASKS}
+        element={
+          <AuthGuard>
+            <Tasks />
+          </AuthGuard>
+        }
+      />
+      <Route
+        path={ROUTES.LOGIN}
+        element={
+          <NoGuard>
+            <LoginAuthPage />
+          </NoGuard>
+        }
+      />
+      <Route
+        path={ROUTES.REGISTER}
+        element={
+          <NoGuard>
+            <ResiterAuthPage />
+          </NoGuard>
+        }
+      />
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
-      <Route path={ROUTES.USERSLIST} element={<UsersPage />} />
-      <Route path={ROUTES.MYTASKS} element={<MyTasks />} />
-      <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+      <Route
+        path={ROUTES.USERSLIST}
+        element={
+          <AuthGuard>
+            <AdminGuard>
+              <UsersPage />
+            </AdminGuard>
+          </AuthGuard>
+        }
+      />
+      <Route
+        path={ROUTES.MYTASKS}
+        element={
+          <AuthGuard>
+            <MyTasks />
+          </AuthGuard>
+        }
+      />
+      <Route
+        path={ROUTES.PROFILE}
+        element={
+          <AuthGuard>
+            <ProfilePage />
+          </AuthGuard>
+        }
+      />
       <Route
         path={ROUTES.DASHBOARD}
         element={
@@ -31,7 +84,14 @@ const Router = () => {
           </AuthGuard>
         }
       />
-      <Route path={`${ROUTES.TASKS}/:taskId`} element={<TaskDetailsPage />} />
+      <Route
+        path={`${ROUTES.TASKS}/:taskId`}
+        element={
+          <AuthGuard>
+            <TaskDetailsPage />
+          </AuthGuard>
+        }
+      />
 
       <Route path="*" element={<ErrorPage />} />
     </Routes>

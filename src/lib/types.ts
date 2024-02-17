@@ -78,3 +78,15 @@ export type UserRegister = {
   phone: string;
   password: string;
 };
+
+export type DashboardData = {
+  openTasks: number;
+  closeTasks: number;
+
+  createdToday: number;
+  closeToday: number;
+};
+export type ChartData = {
+  _id: string;
+  count: number;
+};

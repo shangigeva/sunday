@@ -19,6 +19,8 @@ const loggedOutLinks: Link[] = [
 ];
 // regular user
 const loggedInLinks: Link[] = [
+  { to: ROUTES.DASHBOARD, children: "Dashboard" },
+
   { to: ROUTES.TASKS, children: "Tasks" },
   { to: ROUTES.MYTASKS, children: "My Tasks" },
 ];

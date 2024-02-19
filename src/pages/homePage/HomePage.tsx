@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
       <div className="flex justify-center mb-8 items-center gap-8 p-8 rounded-lg shadow-lg">
         <div className="flex flex-col items-center justify-center p-8 rounded-lg">
           <p className="text-lg text-center text-gray-700 max-w-screen-md mx-auto p-5 leading-relaxed">
-            <strong className="text-[#007bff]">SUNDAY</strong> is the budding
+            <strong className="text-[#FF3E89]">SUNDAY</strong> is the budding
             platform designed for visionary teams. While we're just setting our
             sails, our commitment is unwavering. Aiming to be the go-to solution
             for teams seeking intuitive collaboration, meticulous planning, and
@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
           </p>
           <div className="mt-6">
             <button
-              className="bg-[#59D7D6] hover:bg-[#8ABBF6] text-white py-2 px-6 rounded-md shadow-md"
+              className="bg-[#715CF8] hover:bg-[#9584FF] text-white py-2 px-6 rounded-md shadow-md"
               onClick={() => navigate(ROUTES.REGISTER)}
             >
               Get Started
@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
               Already have an account?
               <a
                 onClick={() => navigate(ROUTES.LOGIN)}
-                className="text-[#59D7D6] hover:underline cursor-pointer text-center"
+                className="text-[#715CF8] hover:underline cursor-pointer text-center"
               >
                 Login
               </a>
@@ -48,14 +48,14 @@ const HomePage: React.FC = () => {
       {/* Section 2 */}
       <div className="flex justify-center mb-8 items-center gap-8 p-8 rounded-lg shadow-lg">
         <div className="flex flex-col items-center justify-center p-8 rounded-lg ">
-          <h1 className="text-3xl mb-4 font-bold text-[#8ABBF6]">
+          <h1 className="text-3xl mb-4 font-bold text-[#9584FF]">
             About SUNDAY
           </h1>
           <p className="text-lg text-center text-gray-700 max-w-screen-md mx-auto p-5 leading-relaxed">
             SUNDAY is a powerful task management platform designed to streamline
             your workflow, enhance collaboration, and boost productivity.
           </p>
-          <h2 className="text-2xl mt-6 mb-3 font-semibold text-[#8ABBF6]">
+          <h2 className="text-2xl mt-6 mb-3 font-semibold text-[#9584FF]">
             Why SUNDAY?
           </h2>
           <ul className="list-disc list-inside mb-6">

@@ -75,7 +75,7 @@ const MyTasks: React.FC = () => {
           <div className="flex items-center space-x-2"></div>
         </div>
         <DataTable data={tasks} columns={columns} />
-        <Button onClick={openModal} className=" bg-[#8ABBF6]">
+        <Button onClick={openModal} className=" bg-[#9584FF]">
           Create New Task
         </Button>
         {isModalOpen && <CreateTask {...createTaskProps} />}

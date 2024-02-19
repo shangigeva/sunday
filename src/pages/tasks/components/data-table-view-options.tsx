@@ -52,7 +52,7 @@ export function DataTableViewOptions<TData>({
   return (
     <>
       {" "}
-      <Button className=" h-8 lg:flex mr-4 bg-[#8ABBF6]" onClick={openModal}>
+      <Button className=" h-8 lg:flex mr-4 bg-[#9584FF]" onClick={openModal}>
         Create New Task
       </Button>
       <div>

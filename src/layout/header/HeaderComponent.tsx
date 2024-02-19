@@ -92,17 +92,7 @@ const HeaderComponent = () => {
             <li>
               <a>Item 1</a>
             </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
+
             <li>
               <a>Item 3</a>
             </li>
@@ -120,10 +110,7 @@ const HeaderComponent = () => {
             ></img>
           </a>
         ) : (
-          <a
-            className="btn btn-ghost text-xl "
-            onClick={() => navigate(ROUTES.HOME)}
-          >
+          <a className="btn btn-ghost text-xl ">
             <img
               src="../../assets/images/logo.jpg"
               alt="Sunday Logo"
@@ -138,7 +125,6 @@ const HeaderComponent = () => {
             <Links />
           </ul>
         </div>
-        <div></div>
       </div>
       <div className="navbar-end">
         <div className="flex items-center relative">

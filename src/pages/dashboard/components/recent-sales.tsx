@@ -20,10 +20,15 @@ export function RecentSales() {
   console.log(recenetTasks);
 
   return (
-    <div className="space-y-8">
-      {recenetTasks.map((task) => (
-        <div className="flex items-center">
-          <div className="ml-4 space-y-1">
+    <div className="space-y-4">
+      {recenetTasks.map((task, index) => (
+        <div
+          key={index}
+          className={`flex items-center py-2 px-4 rounded ${
+            index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+          }`}
+        >
+          <div className="flex-grow ml-4">
             <p className="text-sm font-medium leading-none">{task.title}</p>
             <p className="text-sm text-muted-foreground">{task.subtitle}</p>
           </div>

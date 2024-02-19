@@ -50,24 +50,7 @@ const Tasks: React.FC = () => {
 
   return (
     <>
-      {" "}
-      <div className="md:hidden">
-        <img
-          src="/examples/tasks-light.png"
-          width={1280}
-          height={998}
-          alt="Playground"
-          className="block dark:hidden"
-        />
-        <img
-          src="/examples/tasks-dark.png"
-          width={1280}
-          height={998}
-          alt="Playground"
-          className="hidden dark:block"
-        />
-      </div>
-      <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
+      <div className=" h-full flex-1 flex-col space-y-2 p-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">Welcome back!</h2>
@@ -75,7 +58,6 @@ const Tasks: React.FC = () => {
               Here&apos;s a list of your team tasks
             </p>
           </div>
-          <div className="flex items-center space-x-2"></div>
         </div>
         <DataTable data={tasks} columns={columns} />
         <Button onClick={openModal} className="bg-[#9584FF]">

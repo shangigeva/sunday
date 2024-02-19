@@ -65,7 +65,7 @@ const HeaderComponent = () => {
     }
   };
   return (
-    <div className="navbar bg-[#f0aa780e]">
+    <div className="navbar bg-slate-50">
       <div className="navbar-start">
         <div className="dropdown">
           {" "}
@@ -110,7 +110,10 @@ const HeaderComponent = () => {
             ></img>
           </a>
         ) : (
-          <a className="btn btn-ghost text-xl ">
+          <a
+            className="btn btn-ghost text-xl "
+            onClick={() => navigate(ROUTES.HOME)}
+          >
             <img
               src="../../assets/images/logo.jpg"
               alt="Sunday Logo"

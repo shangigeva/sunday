@@ -5,10 +5,9 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
 import { User } from "@/lib/types";
-import FileUploadIcon from "@mui/icons-material/FileUpload";
 import EditUser from "../editUser/EditUser";
 import ROUTES from "@/Routes/ROUTES";
-
+import HomeIcon from "@mui/icons-material/Home";
 const ProfilePage = () => {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
@@ -39,11 +38,16 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="flex items-center h-screen w-full justify-center">
+    <div className="flex items-center h-screen w-full justify-center my-10">
       <div className="max-w-md w-full">
         <h1 className="text-3xl mb-4 text-center">Profile</h1>
         {user ? (
-          <div className="bg-white shadow-xl rounded-lg p-4">
+          <div
+            className=" shadow-xl rounded-lg p-4"
+            style={{
+              backgroundImage: "url('/assets/images/blob-pink.png')",
+            }}
+          >
             <div className="photo-wrapper p-4 text-center">
               {user?.profilePicture ? (
                 <img
@@ -93,23 +97,26 @@ const ProfilePage = () => {
                   </tr>
                 </tbody>
               </table>
-              <div
-                className="flex items-center justify-center space-x-2 my-4"
-                onClick={openEditModal}
-              >
-                <div className="text-gray-500 font-semibold cursor-pointer">
-                  Edit
-                </div>
-                <EditIcon className="text-indigo-500 cursor-pointer" />
-              </div>
-
-              <div className="text-center my-4">
-                <a
-                  className="text-base text-indigo-500 italic hover:underline hover:text-indigo-600 font-medium"
-                  onClick={() => navigate(ROUTES.TASKS)}
+              <div className="flex justify-around">
+                <div
+                  className=" cursor-pointer flex items-center justify-center space-x-2 my- hover:underline hover:text-indigo-600 font-medium4"
+                  onClick={openEditModal}
                 >
-                  Back Home
-                </a>
+                  <div className="text-base text-[#715CF8]  hover:underline hover:text-indigo-600 font-medium">
+                    Edit
+                  </div>
+                  <EditIcon className="text-[#715CF8] " />
+                </div>
+
+                <div className="text-center my-4 cursor-pointer">
+                  <a
+                    className="text-base text-[#715CF8]  hover:underline hover:text-indigo-600 font-medium"
+                    onClick={() => navigate(ROUTES.TASKS)}
+                  >
+                    Back Home
+                  </a>
+                  <HomeIcon className=" text-[#715CF8] " />
+                </div>
               </div>
             </div>
           </div>

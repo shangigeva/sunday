@@ -128,7 +128,10 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-40 truncate font-medium">
+          <span
+            className="max-w-40 truncate font-medium"
+            title={row.getValue("title")}
+          >
             {row.getValue("title")}
           </span>
         </div>
@@ -138,19 +141,21 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "subtitle",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="subtitle" />
+      <DataTableColumnHeader column={column} title="Subtitle" />
     ),
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-48 truncate font-medium">
+          <span
+            className="max-w-48 truncate font-medium"
+            title={row.getValue("subtitle")}
+          >
             {row.getValue("subtitle")}
           </span>
         </div>
       );
     },
   },
-
   {
     accessorKey: "status",
     header: ({ column }) => (

@@ -10,7 +10,7 @@ import LinksFooter from "./LinksFooter";
 const FooterComponent = () => {
   const navigate = useNavigate();
   return (
-    <footer className="bg-[#f0aa780e] pא-8">
+    <footer className="bg-slate-50 pא-8">
       <div className="flex justify-between items-center px-6">
         <div>
           <header className="text-lg font-semibold mb-2">Contact</header>
@@ -38,7 +38,7 @@ const FooterComponent = () => {
           ></img>
         </div>
       </div>
-      <div className="bg-[#f0aa783c] text-center py-2">
+      <div className="bg-[#9484ff0d] text-center py-2">
         <p className="text-sm text-gray-800">
           ©2024 SUNDAY All Rights Reserved.
         </p>

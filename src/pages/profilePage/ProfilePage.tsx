@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Save } from "lucide-react";
 const ProfilePage = () => {
   const [picture, setPicture] = useState<FileList | null>();
-  const [newPic, setNewPic] = useState<string | ArrayBuffer | null>("");
+  const [newPic, setNewPic] = useState<string>("");
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
@@ -47,7 +47,10 @@ const ProfilePage = () => {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      setNewPic(reader.result); // Set the image source to the data URL
+      const type = typeof reader.result;
+      if (reader.result !== null && typeof reader.result === "string") {
+        setNewPic(reader.result); // Set the image source to the data URL
+      }
     };
 
     if (file) {

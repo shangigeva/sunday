@@ -8,7 +8,13 @@ import { User } from "@/lib/types";
 import EditUser from "../editUser/EditUser";
 import ROUTES from "@/Routes/ROUTES";
 import HomeIcon from "@mui/icons-material/Home";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { getInitials } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Save } from "lucide-react";
 const ProfilePage = () => {
+  const [picture, setPicture] = useState<FileList | null>();
+  const [newPic, setNewPic] = useState<string | ArrayBuffer | null>("");
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
@@ -36,38 +42,42 @@ const ProfilePage = () => {
   const closeEditModal = () => {
     setEditModalOpen(false);
   };
+  const handleFileInputChange = (event: any) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setNewPic(reader.result); // Set the image source to the data URL
+    };
+
+    if (file) {
+      reader.readAsDataURL(file); // Read the file as a data URL
+    }
+  };
+  console.log(newPic);
 
   return (
-    <div className="flex items-center h-screen w-full justify-center my-10">
-      <div className="max-w-md w-full">
-        <h1 className="text-3xl mb-4 text-center">Profile</h1>
+    <div className="flex items-center h-screen w-full justify-center ">
+      <div className="max-w-xl w-full">
         {user ? (
-          <div
-            className=" shadow-xl rounded-lg p-4"
-            style={{
-              backgroundImage: "url('/assets/images/blob-pink.png')",
-            }}
-          >
+          <div className=" shadow-xl rounded-lg p-4 bg-[url('/assets/images/blob-pink.png')] bg-repeat-round">
             <div className="photo-wrapper p-4 text-center">
-              {user?.profilePicture ? (
-                <img
-                  className="w-48 h-48 rounded-full mx-auto mb-4"
-                  src={user?.profilePicture}
-                  alt={`${user?.firstName} ${user?.lastName}`}
-                />
-              ) : (
-                <div className="mb-4">
-                  <img
-                    className="w-36 h-36 rounded-full mx-auto mb-2"
-                    src="/assets/images/avatar.png"
-                    alt="Default User"
-                  />
+              <div className="mb-4">
+                <Avatar className="w-36 h-36 rounded-full mx-auto mb-2">
+                  <AvatarImage src={newPic} alt="@shadcn" />
+                  <AvatarFallback className="text-3xl">
+                    {getInitials(user.firstName, user.lastName)}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex flex-col w-full items-center justify-center gap-3">
                   <input
                     type="file"
+                    onChange={handleFileInputChange}
                     className="file-input file-input-bordered file-input-xs w-full max-w-xs"
                   />
+                  {newPic && <Button className="">Save</Button>}
                 </div>
-              )}
+              </div>
             </div>
             <div className="p-4">
               <h3 className="text-center text-2xl text-gray-900 font-medium leading-8 mb-4">

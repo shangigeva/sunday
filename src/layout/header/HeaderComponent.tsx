@@ -8,6 +8,7 @@ import axios from "axios";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import ROUTES from "@/Routes/ROUTES";
 import { IUser } from "@/lib/types";
+import { getInitials } from "@/lib/utils";
 
 const HeaderComponent = () => {
   const navigate = useNavigate();
@@ -42,12 +43,6 @@ const HeaderComponent = () => {
   const token = localStorage.getItem("token");
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
-  };
-
-  const getInitials = (firstName: string, lastName: string) => {
-    return `${firstName.charAt(0).toUpperCase()}${lastName
-      .charAt(0)
-      .toUpperCase()}`;
   };
 
   // logout

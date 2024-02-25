@@ -71,7 +71,7 @@ const TaskDetailsPage = () => {
         <div className="mt-8">
           <a
             onClick={() => navigate(ROUTES.TASKS)}
-            className="bg-[#8ABBF6] text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+            className="bg-[#9584FF] text-white py-2 px-4 rounded-md hover:bg-[#715CF8] transition duration-300"
           >
             Back to Tasks
           </a>
@@ -84,7 +84,7 @@ const TaskDetailsPage = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill="#59D7D6"
+            fill="#9584FF"
             fillOpacity="1"
             d="M0,96L60,74.7C120,53,240,11,360,37.3C480,64,600,160,720,186.7C840,213,960,171,1080,149.3C1200,128,1320,128,1380,128L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
           ></path>

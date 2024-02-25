@@ -7,10 +7,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Search } from "./components/search";
 import { Overview } from "./components/overview";
 import { RecentSales } from "./components/recent-sales";
-import { CalendarDateRangePicker } from "./components/date-range-picker";
+
 import { Button } from "@/components/ui/button";
 import { CircleIcon, StopwatchIcon } from "@radix-ui/react-icons";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
@@ -64,9 +63,7 @@ export default function DashboardPage() {
       <div className="hidden flex-col md:flex">
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
-            <div className="flex items-center space-x-2">
-              <CalendarDateRangePicker />
-            </div>
+            <div className="flex items-center space-x-2"></div>
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>

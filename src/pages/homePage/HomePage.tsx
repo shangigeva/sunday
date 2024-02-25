@@ -96,15 +96,15 @@ const HomePage: React.FC = () => {
                 unlimited work.
               </p>
               <div className="supportDiv flex">
-                <div className="icon-container font-thin flex-col bg-[#8abbf669] flex justify-center items-center m-1 p-4 rounded-md h-36 hover:bg-[#8abbf6] transition-background-color duration-300 ease-in-out">
+                <div className="icon-container font-thin flex-col bg-[#9584FF] flex justify-center items-center m-1 p-4 rounded-md h-36 hover:bg-[#6753e9] transition-background-color duration-300 ease-in-out">
                   <PhoneIcon />
                   <p className="mt-2">24/7 support anytime, anywhere</p>
                 </div>
-                <div className="icon-container font-thin flex-col bg-[#8abbf669] flex justify-center items-center m-1 p-4 rounded-md h-36 hover:bg-[#8abbf6] transition-background-color duration-300 ease-in-out">
+                <div className="icon-container font-thin flex-col bg-[#9584FF] flex justify-center items-center m-1 p-4 rounded-md h-36 hover:bg-[#6753e9] transition-background-color duration-300 ease-in-out">
                   <AccessTimeIcon />
                   <p className="mt-2">Efficient and Fast Response</p>
                 </div>
-                <div className="icon-container font-thin flex-col bg-[#8abbf669] flex justify-center items-center m-1 p-4 rounded-md h-36 hover:bg-[#8abbf6] transition-background-color duration-300 ease-in-out">
+                <div className="icon-container font-thin flex-col bg-[#9584FF] flex justify-center items-center m-1 p-4 rounded-md h-36 hover:bg-[#6753e9] transition-background-color duration-300 ease-in-out">
                   <ConnectWithoutContactIcon />
                   <p className="mt-2">Multiple Ways to Connect</p>
                 </div>

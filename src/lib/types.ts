@@ -8,7 +8,9 @@ export type TaskInput = {
   taskId?: string;
   project: string;
 };
-
+export type ProjectInput = {
+  label: string;
+};
 export type TaskType = {
   id: string;
   title: string;

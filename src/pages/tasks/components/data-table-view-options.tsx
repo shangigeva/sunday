@@ -12,10 +12,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import { CreateTasks, TaskInput } from "@/lib/types";
+import { ChangeEvent, useState } from "react";
+import { CreateTasks, ProjectInput, TaskInput } from "@/lib/types";
 import CreateTask from "./CreateTask";
 import AddIcon from "@mui/icons-material/Add";
+import { useSelector } from "react-redux";
+import { RootStateType } from "@/store/bigPie";
+import axios from "axios";
+import { toast } from "react-toastify";
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
 }
@@ -33,9 +37,48 @@ export function DataTableViewOptions<TData>({
     owner: "",
     project: "",
   });
-
+  const [newProject, setNewProject] = useState<ProjectInput>({
+    label: "",
+  });
+  const [validationErrors, setValidationErrors] = useState<
+    Record<string, string>
+  >({});
   const openModal = () => {
     setIsModalOpen(true);
+  };
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { id, value } = e.target;
+    console.log(id);
+    setNewProject((currentState) => ({
+      ...currentState,
+      [id]: value,
+    }));
+    setValidationErrors((currentErrors) => ({
+      ...currentErrors,
+    }));
+  };
+  console.log(newProject);
+  const handleProjectSave = async () => {
+    try {
+      const { data } = await axios.post("/tasks/createProject", newProject);
+      console.log("Project saved successfully:", data);
+      toast.success("Project created successfully!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setNewProject({ ...newProject, label: "" });
+    } catch (error) {
+      console.error("Error saving project:", error);
+      toast.error("Error creating project");
+      setNewProject({ ...newProject, label: "" });
+    }
   };
 
   const closeModal = () => {
@@ -64,13 +107,17 @@ export function DataTableViewOptions<TData>({
           <div className="modal-box">
             <h3 className="font-bold text-lg">Add project</h3>
             <input
+              id="label"
               type="text"
               className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
+              value={newProject.label}
+              onChange={handleInputChange}
             />
             <div className="modal-action flex justify-end mt-4">
               <label
                 htmlFor="my_modal_6"
                 className="btn bg-blue-500 text-white mr-2 border-blue-500"
+                onClick={handleProjectSave}
               >
                 Save
               </label>

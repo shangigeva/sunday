@@ -24,7 +24,6 @@ const CreateTask: React.FC<{
     Record<string, string>
   >({});
   const [users, setUsers] = useState<User[]>([]);
-
   const [newTask, setNewTask] = useState<TaskInput>({
     title: "",
     subtitle: "",

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { TaskInput, User } from "@/lib/types";
+import { ProjectInput, TaskInput, User } from "@/lib/types";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
 import { labels, priorities, projects, statuses } from "../data/data";
@@ -24,6 +24,7 @@ const CreateTask: React.FC<{
     Record<string, string>
   >({});
   const [users, setUsers] = useState<User[]>([]);
+  const [projects, setProjects] = useState<ProjectInput[]>([]);
   const [newTask, setNewTask] = useState<TaskInput>({
     title: "",
     subtitle: "",
@@ -68,6 +69,24 @@ const CreateTask: React.FC<{
   };
   useEffect(() => {
     getUsers();
+  }, []);
+  const getProjects = () => {
+    axios
+      .get("/tasks/projects")
+      .then(({ data }) => {
+        if (Array.isArray(data)) {
+          setProjects(data);
+        } else {
+          console.error("Unexpected response structure:", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching projects:", error);
+        toast.error("Failed to fetch projects. Please try again later.");
+      });
+  };
+  useEffect(() => {
+    getProjects();
   }, []);
 
   const handleUpdateChangesClick = async () => {
@@ -127,7 +146,7 @@ const CreateTask: React.FC<{
                 <option disabled value={""}>
                   please choose project
                 </option>
-                {projects.map((project) => (
+                {projects.map((project: ProjectInput) => (
                   <option key={project.value} value={project.value}>
                     {project.label}
                   </option>

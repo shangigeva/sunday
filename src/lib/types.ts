@@ -10,6 +10,12 @@ export type TaskInput = {
 };
 export type ProjectInput = {
   label: string;
+  value?: string;
+};
+export type Project = {
+  label: string;
+  createdAt?: Date;
+  _id?: string;
 };
 export type TaskType = {
   id: string;

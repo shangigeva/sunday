@@ -8,16 +8,18 @@ import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DataTableViewOptions } from "./data-table-view-options";
-import { User } from "@/lib/types";
+import { ProjectInput, User } from "@/lib/types";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
   users: User[];
+  projects: ProjectInput[];
 }
 
 export function DataTableToolbar<TData>({
   table,
   users,
+  projects,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
@@ -36,7 +38,10 @@ export function DataTableToolbar<TData>({
           <DataTableFacetedFilter
             column={table.getColumn("project")}
             title="Project"
-            options={projects}
+            options={projects.map((project) => ({
+              value: project.value,
+              label: project.label,
+            }))}
           />
         )}{" "}
         {table.getColumn("label") && (

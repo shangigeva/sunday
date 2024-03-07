@@ -28,7 +28,7 @@ import { DataTablePagination } from "../components/data-table-pagination";
 import { DataTableToolbar } from "../components/data-table-toolbar";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { User } from "@/lib/types";
+import { ProjectInput, User } from "@/lib/types";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -47,7 +47,7 @@ export function DataTable<TData, TValue>({
   );
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [users, setUsers] = React.useState<User[]>([]);
-
+  const [projects, setProjects] = React.useState<ProjectInput[]>([]);
   const table = useReactTable({
     data,
     columns,
@@ -88,10 +88,25 @@ export function DataTable<TData, TValue>({
   React.useEffect(() => {
     getUsers();
   }, []);
+  React.useEffect(() => {
+    axios
+      .get("/tasks/projects")
+      .then(({ data }) => {
+        if (Array.isArray(data)) {
+          setProjects(data);
+        } else {
+          console.error("Unexpected response structure:", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching projects:", error);
+        toast.error("Failed to fetch projects. Please try again later.");
+      });
+  }, []);
 
   return (
     <div className="space-y-2">
-      <DataTableToolbar table={table} users={users} />
+      <DataTableToolbar table={table} users={users} projects={projects} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>

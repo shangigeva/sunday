@@ -78,17 +78,9 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Project" />
     ),
     cell: ({ row }) => {
-      const project = projects.find(
-        (project) => project.value === row.getValue("project")
-      );
-
-      if (!project) {
-        return null;
-      }
-
       return (
         <div className="flex w-24 items-center">
-          <span>{project.label}</span>
+          <span>{row.getValue("project")}</span>
         </div>
       );
     },

@@ -17,7 +17,6 @@ interface UserSelectComponentProps {
 
 const UserSelectComponent = ({ selectedUser }: UserSelectComponentProps) => {
   const [user, setUser] = useState<User>();
-  console.log(selectedUser);
 
   if (selectedUser === "last" || selectedUser === "lastq")
     return <h1>לא קיים יוזר</h1>;
@@ -26,7 +25,6 @@ const UserSelectComponent = ({ selectedUser }: UserSelectComponentProps) => {
       .charAt(0)
       .toUpperCase()}`;
   };
-  console.log(selectedUser);
 
   const getUser = () => {
     axios
@@ -36,21 +34,22 @@ const UserSelectComponent = ({ selectedUser }: UserSelectComponentProps) => {
       })
       .catch((error) => {
         console.error("Error fetching user:", error);
-        toast.error("Failed to fetch users. Please try again later.");
+        // toast.error("Failed to fetch users. Please try again later.");
       });
   };
 
   useEffect(() => {
     getUser();
   }, []);
-  console.log(user);
 
   //   console.log(user);
 
   return (
     <div
       className="lg:tooltip"
-      data-tip={`${user?.firstName} ${user?.lastName}`}
+      data-tip={
+        user ? `${user?.firstName} ${user?.lastName}` : "User does not exist"
+      }
     >
       <Avatar>
         <AvatarFallback className="bg-[#F1C2D9] text-primary">

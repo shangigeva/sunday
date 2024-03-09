@@ -10,7 +10,18 @@ export function Overview() {
   useEffect(() => {
     const chart = async () => {
       try {
-        const { data } = await axios.get("tasks/getChartData");
+        const { data }: { data: ChartData[] } = await axios.get(
+          "tasks/getChartData"
+        );
+        data.sort((a, b) => {
+          if (a._id < b._id) {
+            return -1;
+          }
+          if (a._id > b._id) {
+            return 1;
+          }
+          return 0;
+        });
         setChartData(data);
       } catch (error) {
         console.error("Error fetching chart details:", error);
@@ -18,6 +29,7 @@ export function Overview() {
     };
     chart();
   }, []);
+
   return (
     <ResponsiveContainer width="100%" height={350}>
       <BarChart data={chartData}>

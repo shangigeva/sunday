@@ -25,12 +25,18 @@ const Requirements: React.FC<{
     const passwordInput = passwordRef.current;
 
     if (passwordInput) {
+      console.log(passwordInput);
+
       const handleKeyUp = () => {
+        console.log("key up");
+
         setIsFocused(true);
       };
 
       const handleBlur = () => {
-        setIsFocused(false);
+        console.log("handl eblu");
+
+        // setIsFocused(false);
       };
 
       const handleInput = () => {

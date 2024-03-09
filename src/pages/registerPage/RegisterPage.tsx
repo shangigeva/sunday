@@ -14,6 +14,11 @@ import { UserRegister } from "@/lib/types";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 export function RegisterPage({ className, ...props }: UserAuthFormProps) {
+  const [errorsState, setErrorsState] = React.useState<Record<
+    string,
+    string
+  > | null>(null);
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [register, setRegister] = React.useState<UserRegister>({
     firstName: "",
@@ -24,11 +29,6 @@ export function RegisterPage({ className, ...props }: UserAuthFormProps) {
   });
   const passwordRef = React.useRef<HTMLInputElement>(null);
 
-  const [errorsState, setErrorsState] = React.useState<Record<
-    string,
-    string
-  > | null>(null);
-  const navigate = useNavigate();
   console.log(errorsState);
 
   const [validationErrors, setValidationErrors] = React.useState<Record<
@@ -102,6 +102,7 @@ export function RegisterPage({ className, ...props }: UserAuthFormProps) {
       setIsLoading(false);
     }, 3000);
   }
+
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={onSubmit}>
@@ -116,7 +117,7 @@ export function RegisterPage({ className, ...props }: UserAuthFormProps) {
               disabled={isLoading}
               onChange={handleInputsChange}
             />{" "}
-            {errorsState?.password ? (
+            {errorsState?.firstName ? (
               <span className="text-error">{errorsState.firstName}</span>
             ) : null}
             <Label className="sr-only" htmlFor="email">
@@ -128,7 +129,7 @@ export function RegisterPage({ className, ...props }: UserAuthFormProps) {
               disabled={isLoading}
               onChange={handleInputsChange}
             />{" "}
-            {errorsState?.password ? (
+            {errorsState?.lastName ? (
               <span className="text-error">{errorsState.lastName}</span>
             ) : null}
             <Label className="sr-only" htmlFor="number">
@@ -140,7 +141,7 @@ export function RegisterPage({ className, ...props }: UserAuthFormProps) {
               disabled={isLoading}
               onChange={handleInputsChange}
             />{" "}
-            {errorsState?.password ? (
+            {errorsState?.phone ? (
               <span className="text-error">{errorsState.phone}</span>
             ) : null}
             <Label className="sr-only" htmlFor="n">
@@ -155,7 +156,7 @@ export function RegisterPage({ className, ...props }: UserAuthFormProps) {
               disabled={isLoading}
               onChange={handleInputsChange}
             />{" "}
-            {errorsState?.password ? (
+            {errorsState?.email ? (
               <span className="text-error">{errorsState.email}</span>
             ) : null}
             <Label className="sr-only" htmlFor="number">

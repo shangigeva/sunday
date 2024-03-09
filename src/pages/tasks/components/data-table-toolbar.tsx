@@ -39,7 +39,7 @@ export function DataTableToolbar<TData>({
             column={table.getColumn("project")}
             title="Project"
             options={projects.map((project) => ({
-              value: project.value,
+              value: project.value!,
               label: project.label,
             }))}
           />

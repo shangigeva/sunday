@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
 import Links from "./Links";
 import axios from "axios";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ROUTES from "@/Routes/ROUTES";
-import { IUser } from "@/lib/types";
+import { IUser, User } from "@/lib/types";
 import { getInitials } from "@/lib/utils";
 
 const HeaderComponent = () => {
@@ -15,7 +15,7 @@ const HeaderComponent = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [user, setUser] = useState<IUser | undefined>(undefined);
+  const [user, setUser] = useState<User | undefined>(undefined);
   const loggedIn: boolean = useSelector(
     (bigPie: RootStateType) => bigPie.auth.loggedIn
   );
@@ -59,6 +59,8 @@ const HeaderComponent = () => {
       window.location.reload();
     }
   };
+  console.log(user);
+
   return (
     <div className="navbar bg-slate-50">
       <div className="navbar-start">
@@ -125,23 +127,8 @@ const HeaderComponent = () => {
         </div>
       </div>
       <div className="navbar-end">
-        <div className="flex items-center relative">
-          {loggedIn && (
-            <input
-              type="text"
-              value={searchQuery}
-              placeholder="Search"
-              className=" relative bg-center w-10 h-10 rounded-full p-2 cursor-pointer border-[1px] border-white overflow-hidden transition-all duration-500 bg-no-repeat focus:w-48 pl-8 focus:outline-none focus:bg-left  focus:border-black hover:border-black"
-              style={{
-                backgroundImage: "url('/assets/images/search.png')",
-                backgroundSize: "20px",
-              }}
-            />
-          )}
-        </div>
-
         <ModeToggle />
-        {loggedIn && (
+        {loggedIn && user && (
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -150,8 +137,14 @@ const HeaderComponent = () => {
             >
               <Avatar>
                 <AvatarFallback className="bg-[#F1C2D9] text-primary">
-                  {user && getInitials(user.firstName, user.lastName)}
+                  {getInitials(user.firstName, user.lastName)}
                 </AvatarFallback>
+                {user.picture && (
+                  <AvatarImage
+                    src={user.picture}
+                    alt={`${user.firstName}'s profile picture`}
+                  />
+                )}
               </Avatar>
             </div>
             <ul

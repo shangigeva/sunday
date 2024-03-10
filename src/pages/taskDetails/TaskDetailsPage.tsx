@@ -1,14 +1,27 @@
 import ROUTES from "@/Routes/ROUTES";
-import { TaskType } from "@/lib/types";
+import { EditTasks, TaskInput, TaskType } from "@/lib/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import EditTask from "../editTask.tsx/EditTask";
 
 const TaskDetailsPage = () => {
   const [taskDetails, setTaskDetails] = useState<TaskType | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editTask, setEditTask] = useState<TaskInput>({
+    title: "",
+    subtitle: "",
+    status: "",
+    priority: "",
+    label: "",
+    owner: "",
+    taskId: "",
+    project: "",
+  });
   const { taskId } = useParams();
   const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get(`/tasks/${taskId}`)
@@ -25,6 +38,24 @@ const TaskDetailsPage = () => {
   if (loading) {
     return <div className="loading">Loading...</div>;
   }
+
+  const openModal = () => {
+    console.log("Modal opened");
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const editTaskProps: EditTasks = {
+    isModalOpen,
+    closeModal,
+    editTask,
+    setEditTask,
+    taskId: taskId!,
+  };
+
   return (
     <div className="task-details-page min-h-screen p-8 relative overflow-hidden flex flex-col">
       <div className="bg-wave h-full w-full absolute top-0 left-0" />
@@ -61,7 +92,7 @@ const TaskDetailsPage = () => {
               {taskDetails.owner}
             </div>
             <div>
-              <strong className="text-gray-700">create Time:</strong>{" "}
+              <strong className="text-gray-700">Create Time:</strong>{" "}
               {taskDetails.createTime}
             </div>
           </div>
@@ -75,8 +106,14 @@ const TaskDetailsPage = () => {
           >
             Back to Tasks
           </a>
+          <button
+            onClick={openModal}
+            className="bg-[#9584FF] text-white py-2 px-4 rounded-md hover:bg-[#715CF8] transition duration-300 ml-4"
+          >
+            Edit Task
+          </button>
         </div>
-      </div>{" "}
+      </div>
       <div className="absolute bottom-0 left-0 right-0">
         <svg
           className="wave-svg"
@@ -89,7 +126,8 @@ const TaskDetailsPage = () => {
             d="M0,96L60,74.7C120,53,240,11,360,37.3C480,64,600,160,720,186.7C840,213,960,171,1080,149.3C1200,128,1320,128,1380,128L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
           ></path>
         </svg>
-      </div>
+      </div>{" "}
+      {isModalOpen && <EditTask {...editTaskProps} />}
     </div>
   );
 };

@@ -95,13 +95,20 @@ export function DataTableViewOptions<TData>({
   return (
     <>
       {" "}
-      <Button className=" h-8 lg:flex mr-4 bg-[#9584FF]" onClick={openModal}>
+      <label
+        className="inline-flex items-center justify-center rounded-md px-3 py-1 mr-4 bg-[#9584FF] text-white text-sm lg:text-base cursor-pointer"
+        onClick={openModal}
+      >
         Create New Task
-      </Button>
+      </label>
       <div>
-        <label htmlFor="my_modal_6" className=" btn lg:flex mr-4">
-          <AddIcon />{" "}
+        <label
+          htmlFor="my_modal_6"
+          className="inline-flex items-center justify-center rounded-md px-3 py-1 mr-4 bg-[#9584FF] text-white text-sm lg:text-base cursor-pointer"
+        >
+          Create New Project
         </label>
+
         <input type="checkbox" id="my_modal_6" className="modal-toggle" />
         <div className="modal" role="dialog">
           <div className="modal-box">
@@ -116,14 +123,14 @@ export function DataTableViewOptions<TData>({
             <div className="modal-action flex justify-end mt-4">
               <label
                 htmlFor="my_modal_6"
-                className="btn bg-blue-500 text-white mr-2 border-blue-500"
+                className="btn bg-[#715CF8] text-white mr-2 border-[#715CF8]"
                 onClick={handleProjectSave}
               >
                 Save
               </label>
               <label
                 htmlFor="my_modal_6"
-                className="btn bg-black text-white mr-2 border-black"
+                className="btn bg-[#9484ffa9] text-white mr-2 border-[#9484ff7f]"
               >
                 Cancel
               </label>

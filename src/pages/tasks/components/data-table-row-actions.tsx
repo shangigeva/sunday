@@ -25,6 +25,7 @@ import { useNavigate } from "react-router-dom";
 import ROUTES from "@/Routes/ROUTES";
 import { EditTasks, TaskInput } from "@/lib/types";
 import { Task } from "../data/schema";
+import { Label } from "recharts";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<Task>;
@@ -127,14 +128,6 @@ export function DataTableRowActions<TData>({
           <ModeEditIcon className="mr-2 h-5 w-5" />
           Edit
         </DropdownMenuItem>
-        {/* <DropdownMenuItem className="flex items-center">
-            <ContentCopyIcon className="mr-2 h-5 w-5" />
-            Make a copy
-          </DropdownMenuItem>
-          <DropdownMenuItem className="flex items-center">
-            <FavoriteIcon className="mr-2 h-5 w-5" />
-            Favorite
-          </DropdownMenuItem> */}
         {userData?.payload.isAdmin && (
           <DropdownMenuItem
             className="flex items-center"

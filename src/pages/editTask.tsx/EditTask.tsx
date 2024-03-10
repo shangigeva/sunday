@@ -9,7 +9,7 @@ import {
   projects,
   statuses,
 } from "../tasks/data/data";
-import { TaskInput, User } from "@/lib/types";
+import { ProjectInput, TaskInput, User } from "@/lib/types";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
 
@@ -20,7 +20,7 @@ const EditTask: React.FC<{
 }> = ({ isModalOpen, closeModal, taskId }) => {
   console.log("EditTask component rendered");
   const [users, setUsers] = useState<User[]>([]);
-
+  const [projects, setProjects] = useState<ProjectInput[]>([]);
   const [validationErrors, setValidationErrors] = useState<
     Record<string, string>
   >({});
@@ -80,6 +80,24 @@ const EditTask: React.FC<{
         console.error("Error fetching task data:", error);
       });
   }, [taskId]);
+  const getProjects = () => {
+    axios
+      .get("/tasks/projects")
+      .then(({ data }) => {
+        if (Array.isArray(data)) {
+          setProjects(data);
+        } else {
+          console.error("Unexpected response structure:", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching projects:", error);
+        toast.error("Failed to fetch projects. Please try again later.");
+      });
+  };
+  useEffect(() => {
+    getProjects();
+  }, []);
 
   console.log(editTask);
 

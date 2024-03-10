@@ -76,10 +76,10 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="flex items-center h-screen w-full justify-center ">
+    <div className="flex items-center justify-center ">
       <div className="max-w-xl w-full">
         {user ? (
-          <div className=" shadow-xl rounded-lg p-4 bg-[url('/assets/images/blob-pink.png')] bg-repeat-round">
+          <div className=" shadow-xl rounded-lg p-4 bg-[url('/assets/images/blob-pink.png')] bg-no-repeat bg-cover">
             <div className="photo-wrapper p-4 text-center">
               <div className="mb-4">
                 <Avatar className="w-36 h-36 rounded-full mx-auto mb-2">

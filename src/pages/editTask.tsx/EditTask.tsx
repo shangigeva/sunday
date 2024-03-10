@@ -229,15 +229,18 @@ const EditTask: React.FC<{
                 ))}
               </select>
               <div className="flex justify-end mt-4">
-                <Button
+                <label
                   onClick={handleUpdateChangesClick}
-                  className="bg-blue-500 text-white mr-2"
+                  className="btn bg-[#715CF8] text-white mr-2 border-[#715CF8]"
                 >
                   Save
-                </Button>
-                <Button onClick={closeModal} className="border border-gray-300">
+                </label>
+                <label
+                  onClick={closeModal}
+                  className="btn bg-[#9484ffa9] text-white mr-2 border-[#9484ff7f]"
+                >
                   Cancel
-                </Button>
+                </label>
               </div>
             </div>
           </div>

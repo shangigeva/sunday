@@ -50,8 +50,6 @@ const CreateTask: React.FC<{
   };
   console.log(newTask);
 
-  // const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
-  // console.log(userData?.payload.isAdmin);
   const getUsers = () => {
     axios
       .get("/users/allusers")

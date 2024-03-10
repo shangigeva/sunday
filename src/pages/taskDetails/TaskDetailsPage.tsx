@@ -93,7 +93,7 @@ const TaskDetailsPage = () => {
             </div>
             <div>
               <strong className="text-gray-700">Create Time:</strong>{" "}
-              {taskDetails.createTime}
+              {new Date(taskDetails.createTime).toLocaleString()}
             </div>
           </div>
         ) : (
@@ -121,7 +121,7 @@ const TaskDetailsPage = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill="#9584FF"
+            fill="#715CF8"
             fillOpacity="1"
             d="M0,96L60,74.7C120,53,240,11,360,37.3C480,64,600,160,720,186.7C840,213,960,171,1080,149.3C1200,128,1320,128,1380,128L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
           ></path>

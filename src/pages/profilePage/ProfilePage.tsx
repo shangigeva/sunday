@@ -12,6 +12,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getInitials } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Save } from "lucide-react";
+import { toast } from "react-toastify";
+
 const ProfilePage = () => {
   const [picture, setPicture] = useState<FileList | null>();
   const [newPic, setNewPic] = useState<string>("");
@@ -57,7 +59,21 @@ const ProfilePage = () => {
       reader.readAsDataURL(file); // Read the file as a data URL
     }
   };
-  console.log(newPic);
+
+  const handleSavePicture = () => {
+    axios
+      .patch(`/users/${user?._id}/updatePicture`, {
+        picture: newPic,
+      })
+      .then((response) => {
+        toast.success("Image updated successfully!");
+        setUser(response.data.updatedImage);
+      })
+      .catch((error) => {
+        toast.error("Something went wrong!");
+        console.error("Error updating image:", error);
+      });
+  };
 
   return (
     <div className="flex items-center h-screen w-full justify-center ">
@@ -67,7 +83,10 @@ const ProfilePage = () => {
             <div className="photo-wrapper p-4 text-center">
               <div className="mb-4">
                 <Avatar className="w-36 h-36 rounded-full mx-auto mb-2">
-                  <AvatarImage src={newPic} alt="@shadcn" />
+                  <AvatarImage
+                    src={!newPic ? user.picture : newPic}
+                    alt="@shadcn"
+                  />
                   <AvatarFallback className="text-3xl">
                     {getInitials(user.firstName, user.lastName)}
                   </AvatarFallback>
@@ -78,7 +97,7 @@ const ProfilePage = () => {
                     onChange={handleFileInputChange}
                     className="file-input file-input-bordered file-input-xs w-full max-w-xs"
                   />
-                  {newPic && <Button className="">Save</Button>}
+                  {newPic && <Button onClick={handleSavePicture}>Save</Button>}
                 </div>
               </div>
             </div>

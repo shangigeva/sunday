@@ -19,7 +19,7 @@ const Links: React.FC = () => {
         {/* regular user */}
         {loggedIn && !userData?.payload.isAdmin
           ? loggedInLinks.map((myItem, index) => (
-              <li key={index}>
+              <li key={index} className="text-black">
                 <Link to={myItem.to}>{myItem.children}</Link>
               </li>
             ))
@@ -27,7 +27,7 @@ const Links: React.FC = () => {
         {/* admin user */}
         {loggedIn && userData?.payload.isAdmin
           ? isAdminHeader.map((myItem, index) => (
-              <li key={index}>
+              <li key={index} className="text-black">
                 <Link to={myItem.to}>{myItem.children}</Link>
               </li>
             ))
@@ -35,7 +35,7 @@ const Links: React.FC = () => {
         {/* loggedOut */}
         {!loggedIn &&
           loggedOutLinks.map((myItem, index) => (
-            <li key={index}>
+            <li key={index} className="text-black">
               <Link to={myItem.to}>{myItem.children}</Link>
             </li>
           ))}

@@ -23,7 +23,7 @@ const LinksFooter: React.FC = () => {
         {/* regular user */}
         {loggedIn && !userData?.payload.isAdmin
           ? loggedInLinksFooter.map((myItem, index) => (
-              <li key={index} className="flex">
+              <li key={index} className="flex text-black">
                 <Link to={myItem.to}>{myItem.children}</Link>
               </li>
             ))
@@ -31,7 +31,7 @@ const LinksFooter: React.FC = () => {
         {/* admin user */}
         {loggedIn && userData?.payload.isAdmin
           ? isAdminFooter.map((myItem, index) => (
-              <li key={index} className="flex">
+              <li key={index} className="flex text-black">
                 <Link to={myItem.to}>{myItem.children}</Link>
               </li>
             ))
@@ -39,7 +39,7 @@ const LinksFooter: React.FC = () => {
         {/* loggedOut */}
         {!loggedIn &&
           loggedOutLinksFooter.map((myItem, index) => (
-            <li key={index} className="flex">
+            <li key={index} className="flex text-black">
               <Link to={myItem.to}>{myItem.children}</Link>
             </li>
           ))}

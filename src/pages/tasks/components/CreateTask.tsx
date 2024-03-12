@@ -132,7 +132,7 @@ const CreateTask: React.FC<{
         <div className="fixed inset-0 z-10 overflow-y-auto ">
           <div className="flex items-center justify-center min-h-screen ">
             <div className="fixed inset-0 bg-black opacity-50"></div>
-            <div className="bg-white p-4 rounded shadow-md w-96 relative z-10 ">
+            <div className="text-black bg-white p-4 rounded shadow-md w-96 relative z-10 ">
               <h1 className="text-2xl font-bold mb-4">Create New Task</h1>
               <label className="block mt-2">Project:</label>
               <select

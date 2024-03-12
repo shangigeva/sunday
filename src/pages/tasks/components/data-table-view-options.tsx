@@ -111,7 +111,7 @@ export function DataTableViewOptions<TData>({
 
         <input type="checkbox" id="my_modal_6" className="modal-toggle" />
         <div className="modal" role="dialog">
-          <div className="modal-box">
+          <div className="modal-box text-black">
             <h3 className="font-bold text-lg">Add project</h3>
             <input
               id="label"

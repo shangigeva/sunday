@@ -6,12 +6,6 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-// interface EditUserProps {
-//   isModalOpen: boolean;
-//   closeModal: () => void;
-//   userId: string;
-// }
-
 const EditUser = ({
   isModalOpen,
   closeModal,
@@ -107,7 +101,7 @@ const EditUser = ({
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex items-center justify-center min-h-screen">
             <div className="fixed inset-0 bg-black opacity-50"></div>
-            <div className="bg-white p-4 rounded shadow-md w-96 relative z-10">
+            <div className="bg-white p-4 rounded shadow-md w-96 relative z-10 text-black">
               <h1 className="text-2xl font-bold mb-4">Edit User</h1>{" "}
               <label className="block mt-2">First name:</label>
               <input
@@ -142,15 +136,18 @@ const EditUser = ({
                 className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
               />
               <div className="flex justify-end mt-4">
-                <Button
+                <label
                   onClick={handleEditUser}
-                  className="bg-blue-500 text-white mr-2"
+                  className="btn bg-[#715CF8] text-white mr-2 border-[#715CF8]"
                 >
                   Save
-                </Button>
-                <Button onClick={closeModal} className="border border-gray-300">
+                </label>
+                <label
+                  onClick={closeModal}
+                  className="btn bg-[#9484ffa9] text-white mr-2 border-[#9484ff7f]"
+                >
                   Cancel
-                </Button>
+                </label>
               </div>
             </div>
           </div>

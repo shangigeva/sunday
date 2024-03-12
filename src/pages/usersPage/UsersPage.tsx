@@ -32,7 +32,7 @@ const UsersPage = () => {
     setIsModalOpen(false);
   };
   const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
-  console.log(userData?.payload.isAdmin);
+
   const getUsers = () => {
     axios
       .get("/users/allusers")
@@ -66,7 +66,6 @@ const UsersPage = () => {
           draggable: true,
           progress: undefined,
         });
-        console.log(userData?.payload.isAdmin);
         getUsers();
         setEditUser(response.data);
       })
@@ -100,7 +99,6 @@ const UsersPage = () => {
       })
       .catch((error) => {
         if (error.response && error.response.status === 403) {
-          // message for 403 Forbidden error
           toast.error("You cannot delete yourself!", {
             position: "top-center",
             autoClose: 3000,
@@ -111,7 +109,6 @@ const UsersPage = () => {
             progress: undefined,
           });
         } else {
-          //a generic error message for other errors
           toast.error("Something went wrong!", {
             position: "top-center",
             autoClose: 3000,
@@ -125,8 +122,7 @@ const UsersPage = () => {
         }
       });
   };
-  console.log(userData?.payload._id);
-  console.log(users);
+
   const editUserProps: EditUsers = {
     isModalOpen,
     closeModal,
@@ -134,6 +130,7 @@ const UsersPage = () => {
     setEditUser,
     userId: editUser._id,
   };
+
   return (
     <div className="container mx-auto">
       <h1 className="text-xl font-bold mb-4 text-center">Users</h1>
@@ -141,26 +138,31 @@ const UsersPage = () => {
         {users.length > 0 ? (
           <table className="table w-full">
             <thead>
-              <tr>
-                <th>first name</th>
-                <th>last name</th>
-                <th>phone</th>
-                <th>email</th>
-                <th>delete</th>
-                <th>status</th>
-                <th>edit</th>
+              <tr className="bg-[#a5a2a3]">
+                <th className=" text-white">First Name</th>
+                <th className=" text-white">Last Name</th>
+                <th className=" text-white">Phone</th>
+                <th className=" text-white">Email</th>
+                <th className=" text-white">Delete</th>
+                <th className=" text-white">Status</th>
+                <th className=" text-white">Edit</th>
               </tr>
             </thead>
-            <tbody>
-              {users.map((user: User) => (
-                <tr key={user._id} className="bg-base-200">
+            <tbody className="text-black">
+              {users.map((user: User, index: number) => (
+                <tr
+                  key={user._id}
+                  className={index % 2 === 0 ? "bg-white" : "bg-purple-100"}
+                >
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
                   <td>{user.phone}</td>
                   <td>{user.email}</td>
                   <td>
-                    {" "}
-                    <label htmlFor={`delete_modal_${user._id}`} className="btn">
+                    <label
+                      htmlFor={`delete_modal_${user._id}`}
+                      className="cursor-pointer bg-transparent"
+                    >
                       <DeleteIcon />
                     </label>
                     <input
@@ -191,15 +193,17 @@ const UsersPage = () => {
                       </div>
                     </div>
                   </td>
-
                   <td>
                     {user.isAdmin ? (
-                      <label className="btn">
+                      <span className="bg-transparent">
                         <BusinessCenterIcon />
-                      </label>
+                      </span>
                     ) : (
                       <div>
-                        <label className="btn">
+                        <label
+                          htmlFor={`upgrade_modal_${user._id}`}
+                          className="cursor-pointer bg-transparent"
+                        >
                           <UpgradeIcon />
                         </label>
                         <input
@@ -232,11 +236,13 @@ const UsersPage = () => {
                       </div>
                     )}
                   </td>
-
                   <td>
-                    <label className="btn" onClick={() => openModal(user)}>
+                    <button
+                      className="bg-transparent"
+                      onClick={() => openModal(user)}
+                    >
                       <EditIcon />
-                    </label>
+                    </button>
                   </td>
                 </tr>
               ))}

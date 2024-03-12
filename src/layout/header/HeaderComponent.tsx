@@ -7,14 +7,13 @@ import Links from "./Links";
 import axios from "axios";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ROUTES from "@/Routes/ROUTES";
-import { IUser, User } from "@/lib/types";
+import { User } from "@/lib/types";
 import { getInitials } from "@/lib/utils";
 
 const HeaderComponent = () => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState<User | undefined>(undefined);
   const loggedIn: boolean = useSelector(
     (bigPie: RootStateType) => bigPie.auth.loggedIn
@@ -149,7 +148,7 @@ const HeaderComponent = () => {
             </div>
             <ul
               tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 text-black"
             >
               <li>
                 <a

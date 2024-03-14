@@ -18,10 +18,8 @@ const HeaderComponent = () => {
   const loggedIn: boolean = useSelector(
     (bigPie: RootStateType) => bigPie.auth.loggedIn
   );
-  console.log(loggedIn);
 
   const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
-  console.log(userData?.payload.isAdmin);
   useEffect(() => {
     console.log("this is the userData:", userData);
 

@@ -1,11 +1,12 @@
 import ROUTES from "@/Routes/ROUTES";
-import { EditTasks, TaskInput, TaskType } from "@/lib/types";
+import { EditTasks, TaskInput, TaskType, User } from "@/lib/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import EditTask from "../editTask.tsx/EditTask";
 
 const TaskDetailsPage = () => {
+  const [user, setUser] = useState<User | null>(null);
   const [taskDetails, setTaskDetails] = useState<TaskType | null>(null);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,6 +28,14 @@ const TaskDetailsPage = () => {
       .get(`/tasks/${taskId}`)
       .then(({ data }) => {
         setTaskDetails(data);
+        axios
+          .get(`/users/${data.owner}`)
+          .then(({ data }) => {
+            setUser(data.user);
+          })
+          .catch((error) => {
+            console.log("Error fetching user data", error);
+          });
         setLoading(false);
       })
       .catch((error) => {
@@ -89,7 +98,7 @@ const TaskDetailsPage = () => {
             </div>
             <div>
               <strong className="text-gray-700">Owner:</strong>{" "}
-              {taskDetails.owner}
+              {user?.firstName + " " + user?.lastName}
             </div>
             <div>
               <strong className="text-gray-700">Create Time:</strong>{" "}

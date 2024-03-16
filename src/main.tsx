@@ -7,7 +7,8 @@ import axios from "axios";
 import { Provider } from "react-redux";
 import store from "./store/bigPie.ts";
 import { getToken } from "./service/storageService.ts";
-axios.defaults.baseURL = "http://localhost:9090/api/v1";
+axios.defaults.baseURL =
+  "https://sunday-nodejs-ae45497a96e2.herokuapp.com/api/v1";
 axios.interceptors.request.use((config) => {
   const token = getToken();
 

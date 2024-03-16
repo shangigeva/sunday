@@ -123,7 +123,7 @@ const CreateTask: React.FC<{
         progress: undefined,
       });
     }
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (

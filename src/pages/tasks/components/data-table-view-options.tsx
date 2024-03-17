@@ -20,9 +20,11 @@ import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { userInfo } from "os";
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
 }
+const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
 
 export function DataTableViewOptions<TData>({
   table,
@@ -46,11 +48,14 @@ export function DataTableViewOptions<TData>({
   const openModal = () => {
     setIsModalOpen(true);
   };
+
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { id, value } = e.target;
     console.log(id);
+    console.log(userData?.payload.isAdmin);
+
     setNewProject((currentState) => ({
       ...currentState,
       [id]: value,
@@ -101,43 +106,44 @@ export function DataTableViewOptions<TData>({
       >
         Create New Task
       </label>
-      <div>
-        <label
-          htmlFor="my_modal_6"
-          className="inline-flex items-center justify-center rounded-md px-3 py-1 mr-4 bg-[#9584FF] text-white text-sm lg:text-base cursor-pointer"
-        >
-          Create New Project
-        </label>
-
-        <input type="checkbox" id="my_modal_6" className="modal-toggle" />
-        <div className="modal" role="dialog">
-          <div className="modal-box text-black">
-            <h3 className="font-bold text-lg">Add project</h3>
-            <input
-              id="label"
-              type="text"
-              className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
-              value={newProject.label}
-              onChange={handleInputChange}
-            />
-            <div className="modal-action flex justify-end mt-4">
-              <label
-                htmlFor="my_modal_6"
-                className="btn bg-[#715CF8] text-white mr-2 border-[#715CF8]"
-                onClick={handleProjectSave}
-              >
-                Save
-              </label>
-              <label
-                htmlFor="my_modal_6"
-                className="btn bg-[#9484ffa9] text-white mr-2 border-[#9484ff7f]"
-              >
-                Cancel
-              </label>
+      {userData?.payload.isAdmin && (
+        <div>
+          <label
+            htmlFor="my_modal_6"
+            className="inline-flex items-center justify-center rounded-md px-3 py-1 mr-4 bg-[#9584FF] text-white text-sm lg:text-base cursor-pointer"
+          >
+            Create New Project
+          </label>
+          <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+          <div className="modal" role="dialog">
+            <div className="modal-box text-black">
+              <h3 className="font-bold text-lg">Add project</h3>
+              <input
+                id="label"
+                type="text"
+                className="w-full h-10 border border-gray-300 rounded px-2 focus:outline-none focus:border-blue-500"
+                value={newProject.label}
+                onChange={handleInputChange}
+              />
+              <div className="modal-action flex justify-end mt-4">
+                <label
+                  htmlFor="my_modal_6"
+                  className="btn bg-[#715CF8] text-white mr-2 border-[#715CF8]"
+                  onClick={handleProjectSave}
+                >
+                  Save
+                </label>
+                <label
+                  htmlFor="my_modal_6"
+                  className="btn bg-[#9484ffa9] text-white mr-2 border-[#9484ff7f]"
+                >
+                  Cancel
+                </label>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button

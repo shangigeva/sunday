@@ -2,50 +2,58 @@ import React from "react";
 
 const AboutPage = () => {
   return (
-    <div style={styles.container}>
-      {/* <h1 style={styles.header}>About Our System</h1> */}
-      <p style={styles.text}>
+    <div
+      style={styles.container}
+      className="bg-[url('/assets/images/blob-pink.png')] bg-no-repeat bg-cover p-7 m-auto rounded-xl"
+    >
+      <p className="text-base my-5 leading-6">
         Welcome to Sunday, the leading platform in project and task management.
-        In this system, we prioritize quality, flexibility, and personalization,
-        designed specifically for our users' needs.
+        Within our innovative system, we prioritize quality, flexibility, and
+        personalization, meticulously crafted to cater to the diverse needs of
+        our valued users.
       </p>
-      <h2 style={styles.subHeader}>What Does Our System Offer?</h2>
-      <ul style={styles.text}>
+      <h2 className="mt-8 text-3xl">What Does Our System Offer?</h2>
+      <ul className="text-base my-5 leading-6">
         <li>
-          <span style={styles.div}>Advanced Project Management</span> : Create,
-          edit, and track projects in a clear and intuitive interface.
+          <span className="font-bold">Advanced Project Management</span> :
+          Seamlessly create, edit, and monitor projects through a user-friendly
+          interface, ensuring clarity and efficiency.
         </li>
         <li>
-          <span style={styles.div}>Tasks and Progress Monitoring:</span> Assign
-          tasks to teams and set deadlines, ensuring everyone stays on track.
+          <span className="font-bold">Tasks and Progress Monitoring:</span>
+          Dynamically assign tasks to teams, establish deadlines, and
+          effortlessly track progress to keep projects on course.
         </li>
         <li>
-          <span style={styles.div}> Project Collaboration:</span> Collaborate
-          with team members, share updates, and streamline communication.
+          <span className="font-bold"> Project Collaboration:</span> Foster
+          seamless collaboration among team members, facilitating real-time
+          updates and streamlined communication channels.
         </li>
         <li>
-          <span style={styles.div}>Customizable Workflows: </span>Tailor the
-          system to fit your team's unique processes and requirements.
+          <span className="font-bold">Customizable Workflows: </span>Tailor the
+          system to align with the unique processes and specifications of your
+          team, enhancing productivity and effectiveness.
         </li>
         <li>
-          <span style={styles.div}>Reporting and Analytics:</span> Gain insights
-          into project progress, team performance, and more with comprehensive
-          reporting tools.
+          <span className="font-bold">Reporting and Analytics:</span> Harness
+          the power of comprehensive reporting tools to gain valuable insights
+          into project progression, team performance, and more.
         </li>
       </ul>
-      <h2 style={styles.subHeader}>Our Vision</h2>
-      <p style={styles.text}>
-        We strive to empower teams to work more efficiently, communicate
-        seamlessly, and achieve their goals. With continuous updates and user
-        feedback, we are committed to providing the best experience for all our
-        users.
+      <h2 className="mt-8 text-3xl">Our Vision</h2>
+      <p className="text-base my-5 leading-6">
+        our vision is to empower teams to operate with heightened efficiency,
+        fostering seamless communication and facilitating the achievement of
+        their objectives. Through continual updates and attentive user feedback,
+        we are steadfast in our commitment to delivering an unparalleled user
+        experience.
       </p>
-      <h2 style={styles.subHeader}>Contact Us</h2>
-      <p style={styles.text}>
-        For any questions, feedback, or support inquiries, please contact our
-        team:
+      <h2 className="mt-8 text-3xl">Contact Us</h2>
+      <p className="text-base my-5 leading-6">
+        Should you have any inquiries, feedback, or require support, please
+        don't hesitate to reach out to our dedicated team:
       </p>
-      <ul style={styles.text}>
+      <ul className="text-base my-5 leading-6">
         <li>
           Email: <a href="mailto:shanig7@gmail.com">shanig7@gmail.com</a>
         </li>
@@ -61,26 +69,7 @@ const AboutPage = () => {
 const styles = {
   container: {
     fontFamily: "Arial, sans-serif",
-    padding: "20px",
     maxWidth: "800px",
-    margin: "auto",
-    backgroundColor: "#f9f9f9",
   },
-  header: {
-    fontSize: "32px",
-    marginBottom: "20px",
-    textAlign: "center",
-  },
-  subHeader: {
-    fontSize: "28px",
-    marginTop: "30px",
-  },
-  text: {
-    fontSize: "16px",
-    lineHeight: "1.6",
-    marginBottom: "20px",
-  },
-  div: { fontWeight: "bold" },
 };
-
 export default AboutPage;

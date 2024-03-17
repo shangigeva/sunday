@@ -10,21 +10,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
 import { Button } from "@/components/ui/button";
 import { ChangeEvent, useState } from "react";
 import { CreateTasks, ProjectInput, TaskInput } from "@/lib/types";
 import CreateTask from "./CreateTask";
-import AddIcon from "@mui/icons-material/Add";
 import { useSelector } from "react-redux";
 import { RootStateType } from "@/store/bigPie";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { userInfo } from "os";
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
 }
-const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
 
 export function DataTableViewOptions<TData>({
   table,
@@ -42,20 +38,20 @@ export function DataTableViewOptions<TData>({
   const [newProject, setNewProject] = useState<ProjectInput>({
     label: "",
   });
+  const userData = useSelector((bigPie: RootStateType) => bigPie.auth.userData);
+  console.log(userData?.payload.isAdmin);
+
   const [validationErrors, setValidationErrors] = useState<
     Record<string, string>
   >({});
   const openModal = () => {
     setIsModalOpen(true);
   };
-
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { id, value } = e.target;
     console.log(id);
-    console.log(userData?.payload.isAdmin);
-
     setNewProject((currentState) => ({
       ...currentState,
       [id]: value,
@@ -114,6 +110,7 @@ export function DataTableViewOptions<TData>({
           >
             Create New Project
           </label>
+
           <input type="checkbox" id="my_modal_6" className="modal-toggle" />
           <div className="modal" role="dialog">
             <div className="modal-box text-black">

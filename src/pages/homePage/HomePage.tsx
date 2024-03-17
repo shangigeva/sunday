@@ -72,9 +72,9 @@ const HomePage: React.FC = () => {
           </ul>
         </div>
         <img
-          src="/assets/images/404img.jpg"
+          src="/assets/images/userslist.png"
           alt="TaskMaster Interface"
-          className="w-[40rem] h-[30rem] rounded-lg shadow-lg"
+          className="w-[30rem] h-[20rem] rounded-lg shadow-lg"
         />
       </div>
       {/* Support Section */}

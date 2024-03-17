@@ -8,7 +8,6 @@ This website serves as a powerful task management system, built with HTML, CSS, 
 - **Customizable Workflows:** Tailor the system to fit your unique processes and requirements.
 - **Real-time Collaboration:** Foster seamless collaboration among team members with real-time updates and communication channels.
 - **Comprehensive Reporting:** Gain insights into task progress, team performance, and more with comprehensive reporting tools.
-- **Responsive Design:** Ensures a seamless experience across various devices and screen sizes.
 
 ## Technologies Used
 
@@ -17,6 +16,7 @@ This website serves as a powerful task management system, built with HTML, CSS, 
 - **Node.js:** As the backend runtime environment for server-side scripting.
 - **React:** For building dynamic and interactive user interfaces.
 - **Vite:** For fast and efficient development and building processes.
+- **MongoDB:** As the database management system for storing task data.
 
 ## Getting Started
 
@@ -30,11 +30,11 @@ To run the project locally, follow these steps:
 
 ## Postman Documentation
 
-For API documentation and testing, please refer to the [Postman Documentation](https://www.getpostman.com/collections/XXXXXXXXX) for detailed instructions.
+For API documentation and testing, please refer to the [Postman Documentation](https://www.postman.com/interstellar-rocket-77712/workspace/sunday-project) for detailed instructions.
 
 ## Online Deployment
 
-You can view the live deployment of the website [here](https://sunday-shani.vercel.app/).
+You can view the live deployment of the website (https://sunday-shani.vercel.app/).
 
 ## Contributors
 
